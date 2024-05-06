@@ -1,0 +1,85 @@
+<div class="site-section site-section-sm bg-light" id="properties-container">
+
+    <div class="container">
+        @if(session('errors'))
+    @foreach(session('errors')->all() as $error)
+        <div class="alert alert-danger">{{ $error }}</div>
+    @endforeach
+    @endif
+        <div class="row mb-5">
+            @if ($properties->count() > 0)  {{-- Verifica se há propriedades --}}
+                @foreach ($properties as $property)
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="property-entry h-100">
+                        <a href="/detail/{{$property->id}}#property_details" class="property-thumbnail">
+                            <div class="offer-type-wrap">
+                                <span class="offer-type {{ $property->business_id === 1 ? 'bg-danger' : 'bg-info' }}">{{$property->business_name}}</span>
+                            </div>
+                            <img src="{{ Storage::url($property->technical_details_img) }}" alt="Image" class="img-fluid">
+                        </a>
+                        <div class="p-4 property-body">
+                            <a href="/detail/{{$property->id}}#property_details" class="property-favorite"><span class="icon-heart-o"></span></a>
+                            <h2 class="property-title"><a href="/detail/{{$property->id}}#property_details">{{$property->title}}</h2>
+                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{$property->cidade}}, {{$property->municipio_name}}-{{$property->distrito_name}}</span>
+                            <strong class="property-price text-primary mb-3 d-block text-success">{{$property->price}}.00Kz</strong>
+                            <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                <li>
+                                    <span class="property-specs">Tipologia</span>
+                                    <span class="property-specs-number">{{$property->typology_name}}</span>
+                                </li>
+                                <li>
+                                    <span class="property-specs">Visita</span>
+                                    <span class="property-specs-number">2</span>
+                                </li>
+                                <li>
+                                    <span class="property-specs">Área</span>
+                                    <span class="property-specs-number">{{$property->area}}m<sup>2</sup></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @else  {{-- Caso não haja propriedades, exibe a mensagem --}}
+                <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        Não há propriedades pesquisada de momento.
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    @if ($properties->count() > 0)  {{-- Paginação só aparece se houver propriedades --}}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="site-pagination">
+                {{-- Checar se a página anterior existe --}}
+                @if ($properties->onFirstPage())
+                    <span class="disabled">«</span>
+                @else
+                    <a href="{{ $properties->previousPageUrl() }}">«</a>
+                @endif
+
+                {{-- Páginas numéricas --}}
+                @foreach ($properties->getUrlRange(1, $properties->lastPage()) as $num => $link)
+                    @if ($num == $properties->currentPage())
+                        <a href="#" class="active">{{ $num }}</a>
+                    @elseif ($num == 1 || $num == $properties->lastPage() || ($num >= $properties->currentPage() - 2 && $num <= $properties->currentPage() + 2))
+                        <a href="{{ $link }}">{{ $num }}</a>
+                    @elseif ($num == $properties->currentPage() - 3 || $num == $properties->currentPage() + 3)
+                        <span>...</span>
+                    @endif
+                @endforeach
+
+                {{-- Checar se a próxima página existe --}}
+                @if ($properties->hasMorePages())
+                    <a href="{{ $properties->nextPageUrl() }}">»</a>
+                @else
+                    <span class="disabled">»</span>
+                @endif
+            </div>
+        </div>
+    </div>
+    @endif
+</div>
