@@ -426,10 +426,8 @@ class Controller extends BaseController
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
             ->get();
-
             $tipologies = Tipologies::all();
             $propertie_Type = propertyTypes::all();
-
             return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
 }
 
@@ -462,29 +460,87 @@ public function submitVisit(Request $request)
 
 }
 
-    public function showVerificationForm()
+    public function showVerificationForm($phone)
     {
-        return view('filament.pages.auth.verify-phone'); // Retorna a view com o formulário de verificação
+        //dd($phone);
+        return view('filament.pages.auth.verify-phone',compact('phone')); // Retorna a view com o formulário de verificação
     }
+
 
     public function verifyPhone(Request $request)
-    {
-        $request->validate([
-            'verification_code' => 'required|numeric',
-        ]);
+{
+    $request->validate([
+        'verification_code' => 'required|numeric',
+        'phone' => 'required'
+    ]);
 
-        $user = Auth::user();
-        if ($user->phone_verification_code == $request->verification_code) {
-            $user->phone_verified = true;
-            $user->phone_verification_code = null; // Limpa o código após a verificação
-            $user->save();
+    $user = User::where('phone', $request->phone)->first();
 
-            return view('filament.pages.auth.verify-phone'); // Redireciona para uma rota definida como 'home' return redirect()->route('admin');
-        }
-
-        return back()->withErrors(['verification_code' => 'Invalid verification code.']);
-        // Retorna erro se o código não corresponder
+    if (!$user) {
+        return back()->withErrors(['phone' => 'Phone number not found.']);
     }
+
+    // Verifica se o código expirou (alterado para 1 minuto)
+    /*if ($user->phone_verification_code_created_at >= now()->subMinutes(10)) {
+        return back()->withErrors(['verification_code' => 'Verification code has expired.']);
+    }*/
+
+    if ($user->phone_verification_code != $request->verification_code) {
+        return back()->withErrors(['verification_code' => 'Invalid verification code.']);
+    }
+
+    $user->phone_verified = true;
+    $user->phone_verification_code = null;
+    $user->phone_verification_code_created_at = null;
+    $user->save();
+
+    // Redirecionar para o login após a verificação bem-sucedida
+    return redirect()->to('/admin/login');
+}
+
+    protected function sendSMS($phoneNumber, $smsVerificationCode)
+    {
+        $basic  = new \Vonage\Client\Credentials\Basic("80e3a742", "Sbddov3EG8gYxhra");
+        $client = new \Vonage\Client($basic);
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS($phoneNumber, "Nzuaku", 'Seu Código de confirmação  Zuaku é ' . $smsVerificationCode)
+        );
+
+        $message = $response->current();
+
+        if ($message->getStatus() == 0) {
+
+            return true;
+        } else {
+            //echo "The message failed with status: " . $message->getStatus() . "\n";
+            return false;
+        }
+    }
+
+    public function resendCode(Request $request)
+    {
+    $phone = $request->input('phone');
+    $user = User::where('phone', $phone)->first();
+
+    if (!$user) {
+        return response()->json(['message' => 'Phone number not found.'], 404);
+    }
+    $newCode = rand(100000, 999999);
+    $smsSent =true;// $this->sendSMS($data['phone'], $newCode);
+    // Gere um novo código de verificação
+    if($smsSent){
+   $user->phone_verification_code = $newCode;
+    $user->phone_verification_code_created_at = now();
+    $user->save();
+    }
+
+
+    // Substitua isso pela sua lógica de envio de SMS
+    // $this->sendSMS($phone, $newCode);
+
+    return response()->json(['message' => 'Verification code resent successfully.']);
+}
 
 
 }

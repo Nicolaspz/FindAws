@@ -29,9 +29,9 @@ Route::get('/search', [Controller::class,'searchProperties'])->name('properties.
 Route::get('/properties/type/{type_id}',[Controller::class,'propertie_types'])->name('properties.searchByType');
 Route::post('/submit-visit', [Controller::class,'submitVisit'])->name('submitVisit');
 
-/*Filament::route('/minha-rota', function () {
-    return "olaaa";
-})->name('minha.rota');*/
+Route::get('/verify/{phone}',[Controller::class,'showVerificationForm'])->name('verify.phone');
+Route::post('/verifysubmit',[Controller::class,'verifyPhone'])->name('verify-phone.submit');
+Route::post('/verify-phone/resend', [Controller::class,'resendCode'])->name('verify-phone.resend');
 
 
 
