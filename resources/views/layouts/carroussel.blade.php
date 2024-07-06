@@ -9,7 +9,7 @@
                                 {{$property->business_name}}
                               </div>
                         </span>
-                        <h1 class="mb-2">{{ $property->title }}</h1>
+                        <h1 class="mb-2 pz14">{{ $property->title }}</h1>
                         <p class="mb-5"><strong class="h2 text-success font-weight-bold">${{ number_format($property->price, 2) }}</strong></p>
                         <p><a href="/detail/{{$property->id}}#property_details" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
                     </div>
