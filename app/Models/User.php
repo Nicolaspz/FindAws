@@ -73,9 +73,16 @@ class User extends Authenticatable  implements FilamentUser
         'password' => 'hashed',
     ];
 
-    public function canAccessPanel(Panel $panel): bool
+   public function canAccessPanel(Panel $panel): bool
     {
-        return $this->role === self::ROLE_USER || $this->role === self::ROLE_COLABORATE;
+        if ($panel->getId() === 'admin' && $this->role === self::ROLE_USER) {
+            return true;
+        } else if ($panel->getId() === 'colaborador' &&  $this->role ===  self::ROLE_COLABORATE) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 

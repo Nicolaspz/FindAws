@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Propertie;
-use App\Models\PropertyTypes;
+use App\Models\propertyTypes;
 use App\Models\Tipologies;
 use App\Models\User;
 use App\Models\Visit;
@@ -53,6 +53,7 @@ class Controller extends BaseController
         $properties = $properties
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
+            ->where('properties.fechado', 0)
             ->paginate(10);
 
         // Consulta para $properties_destaque
@@ -63,9 +64,101 @@ class Controller extends BaseController
             ->where('properties.destaque', 1)
             ->get();
             $tipologies = Tipologies::all();
-            $propertie_Type = PropertyTypes::all();
+            $propertie_Type = propertyTypes::all();
         return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
     }
+    public function sobre()
+    {
+
+        $baseQuery = DB::table('properties')
+        ->leftJoin('users', 'properties.user_id', '=', 'users.id')
+        ->leftJoin('businesses', 'properties.business_id', '=', 'businesses.id')
+        ->leftJoin('tipologies', 'properties.tipologies_id', '=', 'tipologies.id')
+        ->leftJoin('property_types', 'properties.property_types_id', '=', 'property_types.id')
+        ->leftJoin('conditions', 'properties.conditions_id', '=', 'conditions.id')
+        ->leftJoin('tipe_energies', 'properties.tipe_energies_id', '=', 'tipe_energies.id')
+        ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
+        ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
+        ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+        ->select(
+            'properties.*',
+            'users.name as user_name',
+            'businesses.name as business_name',
+            'businesses.id as business_id',
+            'tipologies.name as typology_name',
+            'property_types.name as type_name',
+            'conditions.name as condition_name',
+            'tipe_energies.name as energy_type_name',
+            'distritos.name_distrito as distrito_name',
+            'municipios.name as municipio_name',
+            'provinces.name as provincia_name'
+        );
+
+        // Consulta para $properties
+        $properties = clone $baseQuery;
+        $properties = $properties
+            ->where('properties.reservedo', 0)
+            ->where('properties.publish', 1)
+            ->where('properties.fechado', 0)
+            ->paginate(10);
+        // Consulta para $properties_destaque
+        $properties_destaque = clone $baseQuery;
+        $properties_destaque = $properties_destaque
+            ->where('properties.reservedo', 0)
+            ->where('properties.publish', 1)
+            ->where('properties.destaque', 1)
+            ->get();
+        $tipologies = Tipologies::all();
+        $propertie_Type = propertyTypes::all();
+        return view('layouts.sobre', compact('properties_destaque', 'tipologies', 'propertie_Type'));
+    }
+
+    public function contacto()
+    {
+
+        $baseQuery = DB::table('properties')
+        ->leftJoin('users', 'properties.user_id', '=', 'users.id')
+        ->leftJoin('businesses', 'properties.business_id', '=', 'businesses.id')
+        ->leftJoin('tipologies', 'properties.tipologies_id', '=', 'tipologies.id')
+        ->leftJoin('property_types', 'properties.property_types_id', '=', 'property_types.id')
+        ->leftJoin('conditions', 'properties.conditions_id', '=', 'conditions.id')
+        ->leftJoin('tipe_energies', 'properties.tipe_energies_id', '=', 'tipe_energies.id')
+        ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
+        ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
+        ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+        ->select(
+            'properties.*',
+            'users.name as user_name',
+            'businesses.name as business_name',
+            'businesses.id as business_id',
+            'tipologies.name as typology_name',
+            'property_types.name as type_name',
+            'conditions.name as condition_name',
+            'tipe_energies.name as energy_type_name',
+            'distritos.name_distrito as distrito_name',
+            'municipios.name as municipio_name',
+            'provinces.name as provincia_name'
+        );
+
+        // Consulta para $properties
+        $properties = clone $baseQuery;
+        $properties = $properties
+            ->where('properties.reservedo', 0)
+            ->where('properties.publish', 1)
+            ->paginate(10);
+        // Consulta para $properties_destaque
+        $properties_destaque = clone $baseQuery;
+        $properties_destaque = $properties_destaque
+            ->where('properties.reservedo', 0)
+            ->where('properties.publish', 1)
+            ->where('properties.destaque', 1)
+            ->where('properties.fechado', 0)
+            ->get();
+        $tipologies = Tipologies::all();
+        $propertie_Type = propertyTypes::all();
+        return view('layouts.contacto', compact('properties_destaque', 'tipologies', 'propertie_Type'));
+    }
+
 
     public function propertie_types($type_id){
 
@@ -107,9 +200,10 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
+            ->where('properties.fechado', 0)
             ->get();
             $tipologies = Tipologies::all();
-            $propertie_Type = PropertyTypes::all();
+            $propertie_Type = propertyTypes::all();
         return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
     }
 
@@ -154,11 +248,12 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
+            ->where('properties.fechado', 0)
             ->get();
 
 
             $tipologies = Tipologies::all();
-            $propertie_Type = PropertyTypes::all();
+            $propertie_Type = propertyTypes::all();
 
             return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
     }
@@ -203,10 +298,11 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
+            ->where('properties.fechado', 0)
             ->get();
 
             $tipologies = Tipologies::all();
-            $propertie_Type = PropertyTypes::all();
+            $propertie_Type = propertyTypes::all();
 
             return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
  }
@@ -243,6 +339,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.business_id', 1)
+            ->where('properties.fechado', 0)
             ->paginate(10);
 
         // Consulta para $properties_destaque
@@ -284,6 +381,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.business_id', 2)
+            ->where('properties.fechado', 0)
             ->paginate(10);
 
             return response()->json($properties);
@@ -347,9 +445,10 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
+            ->where('properties.fechado', 0)
             ->get();
     $images = Image::where('propertie_id', $id)->get();
-    $propertie_Type = PropertyTypes::all();
+    $propertie_Type = propertyTypes::all();
 
     return view('detail',
      ['propertie' => $properties[0] ,
@@ -382,6 +481,7 @@ class Controller extends BaseController
         ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
         ->where('properties.reservedo', 0)
         ->where('properties.publish', 1)
+        ->where('properties.fechado', 0)
         ->select(
             'properties.*',
             'users.name as user_name',
@@ -427,7 +527,7 @@ class Controller extends BaseController
             ->where('properties.destaque', 1)
             ->get();
             $tipologies = Tipologies::all();
-            $propertie_Type = PropertyTypes::all();
+            $propertie_Type = propertyTypes::all();
             return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
 }
 

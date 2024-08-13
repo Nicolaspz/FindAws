@@ -134,15 +134,15 @@ class AdminPanelProvider extends PanelProvider
             Filament::registerUserMenuItems([
                 UserMenuItem::make()
                 ->label('settings')
-                ->url(BusinessResource::getUrl())
+                //->url(BusinessResource::getUrl())
 
-                ->icon('heroicon-s-cog'),
+                //->icon('heroicon-s-cog'),
 
-                UserMenuItem::make()
-                ->label('Conditions')
+                //UserMenuItem::make()
+                //->label('Conditions')
 
-                ->url(ConditionResource::getUrl())
-                ->icon('heroicon-s-cog'),
+               // ->url(ConditionResource::getUrl())
+                //->icon('heroicon-s-cog'),
             ]);
         });
     }
