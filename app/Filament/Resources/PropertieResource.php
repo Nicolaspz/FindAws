@@ -5,10 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PropertieResource\Pages;
 use App\Filament\Resources\PropertieResource\RelationManagers;
 use App\Filament\Resources\PropertieResource\RelationManagers\ImagesRelationManager;
-use App\Models\distrito;
-use App\Models\municipio;
+use App\Models\Distrito;
+use App\Models\Municipio;
 use App\Models\Propertie;
-use App\Models\province;
+use App\Models\Province;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
@@ -137,6 +137,7 @@ class PropertieResource extends Resource
                         Forms\Components\DatePicker::make('visible_until'),
                         Forms\Components\TextInput::make('order')
                             ->numeric(),
+			Forms\Components\Toggle::make('publish')->required(),
 
                         FileUpload::make('technical_details_img')
                             ->disk('public')

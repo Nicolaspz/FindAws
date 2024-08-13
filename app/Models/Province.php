@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class province extends Model
+class Province extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -14,6 +14,6 @@ class province extends Model
 
      ];
     public function muncicipio() {
-        return $this->hasMany(municipio::class);
+        return $this->hasMany(Municipio::class);
     }
 }

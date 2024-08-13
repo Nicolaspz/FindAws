@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class distrito extends Model
+class Distrito extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -14,6 +14,6 @@ class distrito extends Model
         'municipio_id',
      ];
     public function municipio() {
-        return $this->belongsTo(municipio::class);
+        return $this->belongsTo(Municipio::class);
     }
 }

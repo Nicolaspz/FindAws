@@ -30,7 +30,7 @@ Route::get('/properties/type/{type_id}',[Controller::class,'propertie_types'])->
 Route::post('/submit-visit', [Controller::class,'submitVisit'])->name('submitVisit');
 
 Route::get('/verify/{phone}',[Controller::class,'showVerificationForm'])->name('verify.phone');
-Route::post('/verifysubmit',[Controller::class,'verifyPhone'])->name('verify-phone.submit');
+//Route::post('/verifysubmit',[Controller::class,'verifyPhone'])->name('verify-phone.submit');
 Route::post('/verify-phone/resend', [Controller::class,'resendCode'])->name('verify-phone.resend');
 
 

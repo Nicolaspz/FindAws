@@ -146,11 +146,11 @@ class Propertie extends Model
     }
 
     public function property_types() {
-        return $this->belongsTo(propertyTypes::class);
+        return $this->belongsTo(PropertyTypes::class);
     }
 
     public function conditions() {
-        return $this->belongsTo(condition::class);
+        return $this->belongsTo(Condition::class);
     }
 
     public function tipe_energies() {
@@ -158,15 +158,15 @@ class Propertie extends Model
     }
 
     public function distritos() {
-        return $this->belongsTo(distrito::class);
+        return $this->belongsTo(Distrito::class);
     }
 
     public function provinces() {
-        return $this->belongsTo(province::class);
+        return $this->belongsTo(Province::class);
     }
 
     public function municipios() {
-        return $this->belongsTo(municipio::class);
+        return $this->belongsTo(Municipio::class);
     }
 
 
