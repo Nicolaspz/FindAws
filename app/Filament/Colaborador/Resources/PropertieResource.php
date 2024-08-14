@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\Distrito;
 use App\Models\Municipio;
 use App\Models\Province;
-
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
@@ -23,13 +22,11 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-
 use Filament\Forms\Get;
-
-
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Facades\Auth;
 
 
 class PropertieResource extends Resource {
@@ -233,5 +230,12 @@ class PropertieResource extends Resource {
             'view' => Pages\ViewPropertie::route( '/{record}' ),
             'edit' => Pages\EditPropertie::route( '/{record}/edit' ),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->whereHas('user', function ($query) {
+            $query->where('id', Auth::user()->id);
+        });
     }
 }
