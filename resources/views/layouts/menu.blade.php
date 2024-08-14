@@ -11,7 +11,9 @@
       <div class="container py-1">
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
-            <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong><span class="custom-bg">Meu</span>Kubiku<span class="custom-bg">.</span></strong></a></h1>
+           <a href="/" class="d-block">
+          <img src="{{ asset('images/logo.png') }}" alt="Meu Kubiku" class="img-fluid" style="max-height: 65px;">
+        </a>
           </div>
           <div class="col-4 col-md-4 col-lg-8">
             <nav class="site-navigation text-right text-md-right" role="navigation">
