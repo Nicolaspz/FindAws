@@ -68,7 +68,7 @@
                 {{-- Páginas numéricas --}}
                 @foreach ($properties->getUrlRange(1, $properties->lastPage()) as $num => $link)
                     @if ($num == $properties->currentPage())
-                        <a href="#" style="background: #00e7ff" >{{ $num }}</a>
+                        <a href="#" style="background: #8504a5; color:white" >{{ $num }}</a>
                     @elseif ($num == 1 || $num == $properties->lastPage() || ($num >= $properties->currentPage() - 2 && $num <= $properties->currentPage() + 2))
                         <a href="{{ $link }}">{{ $num }}</a>
                     @elseif ($num == $properties->currentPage() - 3 || $num == $properties->currentPage() + 3)
