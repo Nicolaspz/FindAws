@@ -21,9 +21,9 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 class ColaboradorPanelProvider extends PanelProvider {
     public function panel( Panel $panel ): Panel {
         return $panel
+	->sidebarCollapsibleOnDesktop(true)
         ->id( 'colaborador' )
         ->path( 'colaborador' )
-        ->sidebarCollapsibleOnDesktop( true )
         ->login()
         ->registration()
         ->colors( [

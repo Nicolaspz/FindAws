@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1a9ad6723f4fc72c801cabfc3185cd3ca9882673',
+        'reference' => '9efc774047cbfa34687b0c057a357bc6260b419b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -580,7 +580,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1a9ad6723f4fc72c801cabfc3185cd3ca9882673',
+            'reference' => '9efc774047cbfa34687b0c057a357bc6260b419b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -640,19 +640,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'lcobucci/clock' => array(
-            'pretty_version' => '2.3.0',
-            'version' => '2.3.0.0',
-            'reference' => 'c7aadcd6fd97ed9e199114269c0be3f335e38876',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../lcobucci/clock',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'lcobucci/jwt' => array(
-            'pretty_version' => '4.0.4',
-            'version' => '4.0.4.0',
-            'reference' => '55564265fddf810504110bd68ca311932324b0e9',
+            'pretty_version' => '5.3.0',
+            'version' => '5.3.0.0',
+            'reference' => '08071d8d2c7f4b00222cc4b1fb6aa46990a80f83',
             'type' => 'library',
             'install_path' => __DIR__ . '/../lcobucci/jwt',
             'aliases' => array(),
@@ -1015,8 +1006,8 @@
         'psr/http-factory-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^1.1 || ^2.0',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '^1.1 || ^2.0',
             ),
         ),
         'psr/http-message' => array(
@@ -1031,8 +1022,8 @@
         'psr/http-message-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^1.1 || ^2.0',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '^1.1 || ^2.0',
             ),
         ),
         'psr/log' => array(
@@ -1047,8 +1038,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -1330,15 +1321,6 @@
             'reference' => 'fe973a58b44380d0e8620107259b7bda22f70408',
             'type' => 'library',
             'install_path' => __DIR__ . '/../spatie/laravel-permission',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'stella-maris/clock' => array(
-            'pretty_version' => '0.1.7',
-            'version' => '0.1.7.0',
-            'reference' => 'fa23ce16019289a18bb3446fdecd45befcdd94f8',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../stella-maris/clock',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -1679,11 +1661,20 @@
             'dev_requirement' => false,
         ),
         'vonage/client-core' => array(
-            'pretty_version' => '4.3.2',
-            'version' => '4.3.2.0',
-            'reference' => 'a7db15d14754ce21b0006452e16dd907577c1e4b',
+            'pretty_version' => '4.8.6',
+            'version' => '4.8.6.0',
+            'reference' => 'eb73c220f46b1ecb6738ce4245128c17d28a01bc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../vonage/client-core',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'vonage/jwt' => array(
+            'pretty_version' => '0.5.1',
+            'version' => '0.5.1.0',
+            'reference' => 'c84adbf1c8d90526dde85a025b011aeeb8bc4c96',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../vonage/jwt',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

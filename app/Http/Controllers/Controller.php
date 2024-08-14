@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Propertie;
-use App\Models\propertyTypes;
+use App\Models\PropertyTypes;
 use App\Models\Tipologies;
 use App\Models\User;
 use App\Models\Visit;
@@ -64,7 +64,7 @@ class Controller extends BaseController
             ->where('properties.destaque', 1)
             ->get();
             $tipologies = Tipologies::all();
-            $propertie_Type = propertyTypes::all();
+            $propertie_Type = PropertyTypes::all();
         return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
     }
     public function sobre()
