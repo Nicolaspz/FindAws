@@ -13,15 +13,19 @@
                     <div class="property-entry h-100">
                         <a href="/detail/{{$property->id}}#property_details" class="property-thumbnail">
                             <div class="offer-type-wrap">
-                                <span class="offer-type {{ $property->business_id === 1 ? 'bg-danger' : 'bg-info' }}">{{$property->business_name}}</span>
+                                <span class="offer-type {{ $property->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }}">{{$property->business_name}}</span>
                             </div>
                             <img src="{{ Storage::url($property->technical_details_img) }}" alt="Image" class="img-fluid">
                         </a>
                         <div class="p-4 property-body">
-                            <a href="/detail/{{$property->id}}#property_details" class="property-favorite"><span class="icon-heart-o"></span></a>
+                            @if ($property->destaque=== 1)
+                                <a href="/detail/{{$property->id}}#property_details" style="background: #8504a5;" class="property-favorite">
+                                    <span style="color: #fff;" class="icon-heart-o"></span>
+                                </a>
+                            @endif
                             <h2 class="property-title"><a href="/detail/{{$property->id}}#property_details">{{$property->title}}</h2>
                             <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{$property->cidade}}, {{$property->municipio_name}}-{{$property->distrito_name}}</span>
-                            <strong class="property-price text-primary mb-3 d-block text-success">{{$property->price}}.00Kz</strong>
+                            <strong class="property-price text-primary mb-3 d-block custum-info ">{{$property->price}}.00</strong>
                             <ul class="property-specs-wrap mb-3 mb-lg-0">
                                 <li>
                                     <span class="property-specs">Tipologia</span>
@@ -64,7 +68,7 @@
                 {{-- Páginas numéricas --}}
                 @foreach ($properties->getUrlRange(1, $properties->lastPage()) as $num => $link)
                     @if ($num == $properties->currentPage())
-                        <a href="#" class="active">{{ $num }}</a>
+                        <a href="#" style="background: #00e7ff" >{{ $num }}</a>
                     @elseif ($num == 1 || $num == $properties->lastPage() || ($num >= $properties->currentPage() - 2 && $num <= $properties->currentPage() + 2))
                         <a href="{{ $link }}">{{ $num }}</a>
                     @elseif ($num == $properties->currentPage() - 3 || $num == $properties->currentPage() + 3)

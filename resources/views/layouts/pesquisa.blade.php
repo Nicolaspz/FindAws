@@ -42,7 +42,7 @@
               </div>
 
               <div class="col-md-2">
-                <input type="submit" class="btn btn-success text-white btn-block" value="Buscar">
+                <input type="submit" class="btn bg-info text-white btn-block" value="Buscar">
               </div>
             </div>
           </form>
