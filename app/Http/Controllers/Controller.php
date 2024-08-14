@@ -595,7 +595,7 @@ public function submitVisit(Request $request)
     $user->save();
 
     // Redirecionar para o login após a verificação bem-sucedida
-    return redirect()->to('/admin/login');
+    return redirect()->to('/colaborador/login');
 }
 
     protected function sendSMS($phoneNumber, $smsVerificationCode)
