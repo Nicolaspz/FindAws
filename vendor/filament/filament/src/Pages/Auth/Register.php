@@ -59,54 +59,92 @@ class Register extends SimplePage
         $this->form->fill();
     }
 
-    public function register()//: ?RegistrationResponse
+    public function register() //: ?RegistrationResponse
     {
 
         $data = $this->form->getState();
         //dd($data['phone']);
-    // Tente enviar o SMS antes de criar o usuário
-    $smsVerificationCode = rand(100000, 999999); // Gere o código aqui para passar para o sendSMS
-    $phone=$data['phone'];
-    $smsSent =true;// $this->sendSMS($data['phone'], $smsVerificationCode);
-    if ($smsSent) {
-        // Se o SMS não foi enviado, retorna null ou outra resposta apropriada.
-        $user = $this->getUserModel()::create($data + [
-        'phone_verification_code' => $smsVerificationCode,
-        'phone_verification_code_created_at' => now()]);
-        //event(new Registered($user));
-        //$this->sendEmailVerificationNotification($user);
-        //Filament::auth()->login($user);
-        //session()->regenerate();
-        return redirect()->route('verify.phone', ['phone' => $phone]);
-
-    }
-    else{
-       return redirect()->to('admin/register');
-    }
-
-    // Se o SMS foi enviado com sucesso, cria o usuário e salva o código de verificação
-
-
-
-    }
-    protected function sendSMS($phoneNumber, $smsVerificationCode)
-    {
-        $basic  = new \Vonage\Client\Credentials\Basic("80e3a742", "Sbddov3EG8gYxhra");
-        $client = new \Vonage\Client($basic);
-
-        $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS($phoneNumber, "Nzuaku", 'Seu Código de confirmação  Zuaku é ' . $smsVerificationCode)
-        );
-
-        $message = $response->current();
-
-        if ($message->getStatus() == 0) {
-
-            return true;
+        // Tente enviar o SMS antes de criar o usuário
+        $smsVerificationCode = rand(100000, 999999); // Gere o código aqui para passar para o sendSMS
+        $phone = $data['phone'];
+        $smsSent =$this->sendSMS($data['phone'], $smsVerificationCode);
+        //dd($smsSent);
+        if ($smsSent) {
+            // Se o SMS não foi enviado, retorna null ou outra resposta apropriada.
+            $user = $this->getUserModel()::create($data + [
+                'phone_verification_code' => $smsVerificationCode,
+                'phone_verification_code_created_at' => now()
+            ]);
+            //event(new Registered($user));
+            //$this->sendEmailVerificationNotification($user);
+            //Filament::auth()->login($user);
+            //session()->regenerate();
+            return redirect()->route('verify.phone', ['phone' => $phone]);
         } else {
-            //echo "The message failed with status: " . $message->getStatus() . "\n";
-            return false;
+            return redirect()->to('admin/register');
         }
+
+        // Se o SMS foi enviado com sucesso, cria o usuário e salva o código de verificação
+
+
+
+    }
+
+    protected $apiUrl;
+    protected $apiKey;
+    protected $secretKey;
+    protected $token;
+
+    public function __construct()
+    {
+        $this->apiUrl = env('SMS_API_URL');
+        $this->apiKey = env('SMS_HUB_API_KEY');
+        $this->secretKey = env('SMS_HUB_SECRET_KEY');
+        $this->token = null;
+    }
+
+    protected function fetchToken()
+    {
+        $response = Http::post('https://app.smshub.ao/api/authentication', [
+            'authId' => $this->apiKey,
+            'secretKey' => $this->secretKey,
+        ]);
+
+        $data = $response->json();
+        $this->token = $data['data']['authToken'] ?? null;
+
+        return $this->token;
+    }
+
+    public function sendSms($contactNo, $message)
+    {
+        // Remove o prefixo +244 do número de telefone e coloca em um array
+        $contactNoArray = [$contactNo];
+
+        if (!$this->token) {
+            $this->fetchToken();
+        }
+
+        $response = Http::withHeaders([
+            'accessToken' => $this->token,
+        ])->post($this->apiUrl, [
+            'contactNo' => $contactNoArray,
+            'message' => $message,
+             "from"=>"MEUKUBICO",
+        ]);
+
+        $responseData = $response->json();
+        //dd($responseData);
+        // Check if the response indicates success
+        if (
+            $responseData['status'] == 200 &&
+            isset($responseData['sms'][0]['data']['status']) &&
+            $responseData['sms'][0]['data']['status'] == 1
+        ) {
+            return true;
+        }
+
+        return false;
     }
 
 
@@ -148,8 +186,8 @@ class Register extends SimplePage
                     ->schema([
                         $this->getNameFormComponent(),
                         $this->getEmailFormComponent(),
-                        //$this->getPhoneFormComponent(),
-                        PhoneInput::make('phone'),
+                        $this->getPhoneFormComponent(),
+                        //PhoneInput::make('phone'),
                         $this->getPasswordFormComponent(),
                         $this->getPasswordConfirmationFormComponent(),
                     ])
@@ -185,7 +223,7 @@ class Register extends SimplePage
             ->revealable(filament()->arePasswordsRevealable())
             ->required()
             ->rule(Password::default())
-            ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+            ->dehydrateStateUsing(fn($state) => Hash::make($state))
             ->same('passwordConfirmation')
             ->validationAttribute(__('filament-panels::pages/auth/register.form.password.validation_attribute'));
     }
