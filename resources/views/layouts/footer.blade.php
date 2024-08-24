@@ -56,7 +56,7 @@ A nossa missão é simplificar e tornar mais seguro o processo de arrendamento, 
         <div class="col-md-12">
           <p>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> Este Sistema Foi Desenvolvido pela Empresa FyndMySpace <i class="icon-heart text-danger" aria-hidden="true"></i>
+          Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> Este Sistema Foi Desenvolvido pela Empresa MeuKubico <i class="icon-heart text-danger" aria-hidden="true"></i>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </p>
         </div>

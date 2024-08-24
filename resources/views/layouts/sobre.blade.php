@@ -68,7 +68,8 @@
         <div class="col-md-7">
           <div class="site-section-title text-center">
             <h2>Liderança</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum pariatur labore fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis! Optio minima quibusdam, laboriosam.</p>
+            <p>Nossa equipe de liderança é composta por cofundadores dedicados e experientes, que trazem uma combinação única de habilidades para garantir o sucesso e a inovação do Meu Kubiku.
+            </p>
           </div>
         </div>
       </div>
@@ -80,9 +81,17 @@
 
               <div class="text">
 
-                <h2 class="mb-2 font-weight-light text-black h4">Megan Smith</h2>
-                <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi dolorem totam non quis facere blanditiis praesentium est. Totam atque corporis nisi, veniam non. Tempore cupiditate, vitae minus obcaecati provident beatae!</p>
+                <h2 class="mb-2 font-weight-light text-black h4">Saroj Gupta</h2>
+                <span class="d-block mb-3 text-white-opacity-05">
+                    Cofundador e Chief Executive Officer (CEO)
+                </span>
+                <p>
+                    Saroj Gupta é um visionário com uma vasta experiência no setor imobiliário.
+                     Como CEO, ele lidera a equipe com um foco
+                     firme em inovação, expansão e em fornecer valor excepcional aos
+                      nossos clientes e parceiros.
+
+                </p>
                 <p>
                   <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                   <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -96,13 +105,24 @@
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="300">
             <div class="team-member">
 
-              <img src="images/person_2.jpg" alt="Image" class="img-fluid rounded mb-4">
+              <img src="images/helder.jpg" alt="Image" class="img-fluid rounded mb-4">
 
               <div class="text">
 
-                <h2 class="mb-2 font-weight-light text-black h4">Brooke Cagle</h2>
-                <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cumque vitae voluptates culpa earum similique corrupti itaque veniam doloribus amet perspiciatis recusandae sequi nihil tenetur ad, modi quos id magni!</p>
+                <h2 class="mb-2 font-weight-light text-black h4">Helder Manuel</h2>
+                <span class="d-block mb-3 text-white-opacity-05">
+                    Cofundador e Chief Operating Officer (COO)
+                </span>
+                <p>
+                     Helder Manuel é um líder com ampla experiência em tecnologia e gestão
+                      de negócios. Como CTO da maior fintech de Angola, PayPay Africa, ele
+                      foi fundamental na criação e implementação de tecnologias de ponta.
+                      Além de suas competências técnicas, Helder também teve uma participação
+                      decisiva em diversas áreas do negócio, como desenvolvimento de novos negócios
+                      e estratégias de crescimento. Sua habilidade de unir tecnologia com visão estratégica
+                      é essencial para a operação e o crescimento do Meu Kubiku.
+
+                </p>
                 <p>
                   <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                   <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -116,13 +136,22 @@
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="400">
             <div class="team-member">
 
-              <img src="images/person_3.jpg" alt="Image" class="img-fluid rounded mb-4">
+              <img src="images/nicolaspz.jpg" alt="Image" class="img-fluid rounded mb-4">
 
               <div class="text">
 
-                <h2 class="mb-2 font-weight-light text-black h4">Philip Martin</h2>
-                <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores illo iusto, inventore, iure dolorum officiis modi repellat nobis, praesentium perspiciatis, explicabo. Atque cupiditate, voluptates pariatur odit officia libero veniam quo.</p>
+                <h2 class="mb-2 font-weight-light text-black h4">
+                    Adão Nicolau
+</h2>
+                <span class="d-block mb-3 text-white-opacity-05">
+                    Cofundador e Chief Technology Officer (CTO)
+                </span>
+                <p>
+                    Adão Nicolau é o responsável pela tecnologia no Meu Kubiku,
+                     garantindo que nossa plataforma seja robusta, segura e inovadora.
+                      Sua experiência em tecnologia de ponta assegura que nossos
+                     usuários tenham uma experiência superior e eficiente.
+                </p>
                 <p>
                   <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                   <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -139,7 +168,7 @@
     </div>
     </div>
 
-
+<!--
     <div class="site-section bg-light">
       <div class="container" data-aos="fade">
         <div class="row mb-5 justify-content-center">
@@ -215,7 +244,7 @@
         </div>
       </div>
     </div>
-
+-->
     <div class="site-section">
       <div class="container">
 
@@ -224,7 +253,7 @@
             <div class="site-section-title">
               <h2>Perguntas frequentes</h2>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis maiores quisquam saepe architecto error corporis aliquam. Cum ipsam a consectetur aut sunt sint animi, pariatur corporis, eaque, deleniti cupiditate officia.</p>
+            <p></p>
           </div>
         </div>
 
@@ -233,48 +262,74 @@
             <div class="accordion unit-8" id="accordion">
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">What is the name of your company<span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">Como faço para listar uma propriedade no Meu Kubiku?<span class="icon"></span></a>
               </h3>
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quae cumque perspiciatis aperiam accusantium facilis provident aspernatur nisi optio debitis dolorum, est eum eligendi vero aut ad necessitatibus nulla sit labore doloremque magnam! Ex molestiae, dolor tempora, ad fuga minima enim mollitia consequuntur, necessitatibus praesentium eligendi officia recusandae culpa tempore eaque quasi ullam magnam modi quidem in amet. Quod debitis error placeat, tempore quasi aliquid eaque vel facilis culpa voluptate.</p>
+                  <p>
+                    Para listar uma propriedade, basta criar uma conta, acessar o painel
+                     do proprietário ou agente, e seguir as instruções para adicionar os
+                     detalhes da propriedade, incluindo fotos, descrição e preço.
+
+                  </p>
                 </div>
               </div>
             </div> <!-- .accordion-item -->
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">How much pay for 3  months?<span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">É possível negociar diretamente com os proprietários?<span class="icon"></span></a>
               </h3>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                  <p>
+                    Sim, nossa plataforma permite que os clientes entrem em contato direto com os proprietários ou agentes imobiliários para discutir detalhes e negociar valores.
+
+                  </p>
                 </div>
               </div>
             </div> <!-- .accordion-item -->
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">Do I need to register?  <span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">O Meu Kubiku cobra alguma taxa pelos serviços?  <span class="icon"></span></a>
               </h3>
               <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                  <p>
+                    Oferecemos diferentes planos de listagem com taxas variáveis, dependendo dos serviços adicionais que você desejar, como destaque de propriedade ou marketing especializado.
+
+                  </p>
                 </div>
               </div>
             </div> <!-- .accordion-item -->
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">Who should I contact in case of support.<span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">Como posso agendar uma visita à propriedade?<span class="icon"></span></a>
               </h3>
               <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
+                  <p>
+                    Você pode agendar visitas diretamente pela plataforma, utilizando o sistema de mensagens interno para combinar um horário conveniente com o proprietário ou agente.
+
+                  </p>
                 </div>
               </div>
             </div> <!-- .accordion-item -->
+             <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseFive" role="button" aria-expanded="false" aria-controls="collapseFour"> É seguro realizar transações imobiliárias através da plataforma?<span class="icon"></span></a>
+              </h3>
+              <div id="collapseFive" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>
+                    Sim, o Meu Kubiku implementa medidas de segurança rigorosas para proteger tanto os compradores quanto os vendedores, garantindo que todas as transações sejam realizadas de forma segura e transparente.
 
+                  </p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
           </div>
           </div>
         </div>
