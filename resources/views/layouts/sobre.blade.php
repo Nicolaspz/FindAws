@@ -72,8 +72,14 @@
             <div class="site-section-title">
               <h2>Nossa Empresa</h2>
             </div>
-            <p class="lead">Bem-vindo à Meu Kubico, a sua plataforma online de referência para a disponibilização de propriedades imobiliárias em Angola.</p>
-            <p> A nossa missão é simplificar e tornar mais seguro o processo de arrendamento, compra e venda de imóveis para todos os envolvidos!</p>
+            <p class="lead">
+                <strong>Meu Kubiku</strong> é uma plataforma inovadora dedicada à venda e arrendamento de propriedades. Facilitamos a conexão entre proprietários, agentes imobiliários, e clientes que buscam adquirir ou arrendar diversos tipos de imóveis, como residências, espaços comerciais, armazéns, escritórios, salões de festa, quadras e complexos desportivos. Nosso objetivo é simplificar o processo de encontrar a propriedade ideal, oferecendo uma interface intuitiva e uma ampla gama de opções para atender às suas necessidades imobiliárias.
+
+            </p>
+            <p>
+                Com <strong>Meu Kubiku</strong>, você tem a liberdade de listar ou encontrar propriedades com segurança e eficiência, seja para compra ou arrendamento. Confiamos na tecnologia para criar um mercado acessível e dinâmico, onde todas as partes possam realizar negócios de maneira transparente e confiável.
+
+            </p>
             {{--<p><a href="#" class="btn btn-outline-primary rounded-0 py-2 px-5">Read More</a></p>--}}
           </div>
         </div>
@@ -92,22 +98,21 @@
         </div>
       </div>
       <div class="row">
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="200">
+
+
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="300">
             <div class="team-member">
 
-              <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded mb-4">
+              <img src="images/helder.jpg" alt="Image" class="img-fluid rounded mb-4">
 
               <div class="text">
 
-                <h2 class="mb-2 font-weight-light text-black h4">Saroj Gupta</h2>
+                <h2 class="mb-2 font-weight-light text-black h4">Helder Manuel</h2>
                 <span class="d-block mb-3 text-white-opacity-05">
-                    Cofundador e Chief Executive Officer (CEO)
+                   Cofundador e Chief Executive Officer (CEO)
                 </span>
                 <p>
-                    Saroj Gupta é um visionário com uma vasta experiência no setor imobiliário.
-                     Como CEO, ele lidera a equipe com um foco
-                     firme em inovação, expansão e em fornecer valor excepcional aos
-                      nossos clientes e parceiros.
+                     Com uma visão estratégica e uma vasta experiência no setor tecnológico e negócios, Hélder Manuel lidera a equipe com foco na inovação e na expansão do Meu Kubiku no mercado imobiliário.
 
                 </p>
                 <p>
@@ -120,25 +125,22 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="300">
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="200">
             <div class="team-member">
 
-              <img src="images/helder.jpg" alt="Image" class="img-fluid rounded mb-4">
+              <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded mb-4">
 
               <div class="text">
 
-                <h2 class="mb-2 font-weight-light text-black h4">Helder Manuel</h2>
+                <h2 class="mb-2 font-weight-light text-black h4">Saroj Gupta</h2>
                 <span class="d-block mb-3 text-white-opacity-05">
                     Cofundador e Chief Operating Officer (COO)
                 </span>
                 <p>
-                     Helder Manuel é um líder com ampla experiência em tecnologia e gestão
-                      de negócios. Como CTO da maior fintech de Angola, PayPay Africa, ele
-                      foi fundamental na criação e implementação de tecnologias de ponta.
-                      Além de suas competências técnicas, Helder também teve uma participação
-                      decisiva em diversas áreas do negócio, como desenvolvimento de novos negócios
-                      e estratégias de crescimento. Sua habilidade de unir tecnologia com visão estratégica
-                      é essencial para a operação e o crescimento do Meu Kubiku.
+                    Saroj Gupta é um visionário com uma vasta experiência no setor imobiliário.
+                     Como CEO, ele lidera a equipe com um foco
+                     firme em inovação, expansão e em fornecer valor excepcional aos
+                      nossos clientes e parceiros.
 
                 </p>
                 <p>
@@ -160,7 +162,7 @@
 
                 <h2 class="mb-2 font-weight-light text-black h4">
                     Adão Nicolau
-</h2>
+            </h2>
                 <span class="d-block mb-3 text-white-opacity-05">
                     Cofundador e Chief Technology Officer (CTO)
                 </span>
@@ -301,7 +303,7 @@
               <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
                   <p>
-                    Sim, nossa plataforma permite que os clientes entrem em contato direto com os proprietários ou agentes imobiliários para discutir detalhes e negociar valores.
+                   Não, nossa plataforma não permite que os clientes entrem em contato direto com os proprietários ou agentes imobiliários para discutir detalhes e negociar valores, insto salvaguarda o interesse de cada um e aumenta o grau de segurança diminuindo os riscos de incumprimentos e burlas.
 
                   </p>
                 </div>
@@ -329,7 +331,8 @@
               <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
                   <p>
-                    Você pode agendar visitas diretamente pela plataforma, utilizando o sistema de mensagens interno para combinar um horário conveniente com o proprietário ou agente.
+                    Você pode agendar visitas diretamente pela plataforma, utilizando o sistema de agendamento para a propriedade desejado, selecionar uma data conveniente e preencher o respectivo formulário.
+
 
                   </p>
                 </div>
