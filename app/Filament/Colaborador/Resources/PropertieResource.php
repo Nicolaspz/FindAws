@@ -4,6 +4,7 @@ namespace App\Filament\Colaborador\Resources;
 
 use App\Filament\Colaborador\Resources\PropertieResource\Pages;
 use App\Filament\Colaborador\Resources\PropertieResource\RelationManagers;
+use App\Filament\Resources\PropertieResource\RelationManagers\ImagesRelationManager;
 use App\Models\Propertie;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -220,7 +221,7 @@ class PropertieResource extends Resource {
 
     public static function getRelations(): array {
         return [
-            //
+            ImagesRelationManager::class,
         ];
     }
 

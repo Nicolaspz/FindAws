@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\PropertieResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -18,9 +20,11 @@ class ImagesRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('url')
-                    ->required()
-                    ->maxLength(255),
+            FileUpload::make('url')
+            ->disk('public')
+            ->directory('destaque'),
+            Forms\Components\TextInput::make('title'),
+
             ]);
     }
 
@@ -29,7 +33,10 @@ class ImagesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('url')
             ->columns([
-                Tables\Columns\TextColumn::make('url'),
+            ImageColumn::make('url')
+            ->label("Imagem")
+            ->disk('public'),
+            Tables\Columns\TextColumn::make('title')
             ])
             ->filters([
                 //
