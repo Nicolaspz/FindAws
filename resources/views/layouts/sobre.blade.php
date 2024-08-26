@@ -332,8 +332,6 @@
                 <div class="body-text">
                   <p>
                     Você pode agendar visitas diretamente pela plataforma, utilizando o sistema de agendamento para a propriedade desejado, selecionar uma data conveniente e preencher o respectivo formulário.
-
-
                   </p>
                 </div>
               </div>
