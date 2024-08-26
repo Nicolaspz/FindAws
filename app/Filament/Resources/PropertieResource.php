@@ -153,9 +153,10 @@ class PropertieResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('technical_details_img'),
-                    Tables\Columns\TextColumn::make('reference')
-                    ->label("Imagem")
+                ImageColumn::make('technical_details_img')
+                	    ->label("Imagem")
+                        ->disk('public'),
+                Tables\Columns\TextColumn::make('reference')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('business.name')
                     ->sortable()

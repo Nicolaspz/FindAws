@@ -155,7 +155,8 @@ class PropertieResource extends Resource {
         return $table
        ->columns([
             ImageColumn::make('technical_details_img')
-            ->label("Imagem"),
+            ->label('Imagem')
+            ->defaultImageUrl(url('/destaque/technical_details_img')),
             TextColumn::make('reference')
                 ->label("Referência")
                 ->searchable(),

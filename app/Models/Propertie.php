@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Propertie extends Model
 {
@@ -116,7 +117,10 @@ class Propertie extends Model
             'movie'                     => 'mimes:mp4,webp',
         ];
     }
-
+    public function getTechnicalDetailsImgUrlAttribute()
+    {
+    return Storage::url($this->technical_details_img);
+    }
     public function user() {
         return $this->belongsTo(User::class);
     }
