@@ -21,7 +21,7 @@ class ListProperties extends ListRecords
     }
 
     public function getTabs(): array
-{
+    {
     return [
         'Todos' => Tab::make('Todos'),
         'renda' => Tab::make('Renda')
@@ -29,6 +29,6 @@ class ListProperties extends ListRecords
         'venda' => Tab::make('Venda')
             ->modifyQueryUsing(fn (Builder $query) => $query->where('business_id', '1')),
     ];
-}
+    }
 
 }

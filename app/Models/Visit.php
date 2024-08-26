@@ -18,6 +18,7 @@ class Visit extends Model
         'status',
     ];
     public function propertie() {
-        return $this->belongsTo(propertie::class);
+
+        return $this->belongsTo(Propertie::class, 'properties_id');
     }
 }
