@@ -39,6 +39,15 @@
             <h2 class="h4 text-black">Mais Informações</h2>
             <p>{{$propertie->abstract}}</p>
             <p>{{$propertie->description}}</p>
+            <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                
+                 <li>
+                  @isset($visitCounts[$property->id])
+                        <span class="property-specs">Esta propriedade teve: {{ $visitCounts[$property->id] }} Visitas</span>
+                 @endisset
+                </li>
+                                
+             </ul>
 
             <div class="row no-gutters mt-5">
 

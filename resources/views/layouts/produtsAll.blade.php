@@ -31,14 +31,21 @@
                                     <span class="property-specs">Tipologia</span>
                                     <span class="property-specs-number">{{$property->typology_name}}</span>
                                 </li>
-                                <li>
-                                    <span class="property-specs">Visita</span>
-                                    <span class="property-specs-number">2</span>
-                                </li>
+                                
                                 <li>
                                     <span class="property-specs">Área</span>
                                     <span class="property-specs-number">{{$property->area}}m<sup>2</sup></span>
                                 </li>
+                            </ul>
+                            <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                
+                                <li>
+                                    @isset($visitCounts[$property->id])
+                                        <span class="property-specs">Esta propriedade teve: {{ $visitCounts[$property->id] }} Visitas</span>
+                                    @endisset
+                                    
+                                </li>
+                                
                             </ul>
                         </div>
                     </div>

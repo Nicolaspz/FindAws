@@ -65,8 +65,18 @@ class Controller extends BaseController
             ->get();
             $tipologies = Tipologies::all();
             $propertie_Type = PropertyTypes::all();
-        return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
+
+           $visitCounts = DB::table('visits')
+            ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+            ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+            ->groupBy('properties_id')
+            ->pluck('visit_count', 'properties_id');
+
+        return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type', 'visitCounts'));
     }
+
+
+
     public function sobre()
     {
 
@@ -80,6 +90,7 @@ class Controller extends BaseController
         ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
         ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
         ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+        ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
         ->select(
             'properties.*',
             'users.name as user_name',
@@ -92,7 +103,14 @@ class Controller extends BaseController
             'distritos.name_distrito as distrito_name',
             'municipios.name as municipio_name',
             'provinces.name as provincia_name'
+           
         );
+
+        $visitCounts = DB::table('visits')
+            ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+            ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+            ->groupBy('properties_id')
+            ->pluck('visit_count', 'properties_id');
 
         // Consulta para $properties
         $properties = clone $baseQuery;
@@ -110,7 +128,7 @@ class Controller extends BaseController
             ->get();
         $tipologies = Tipologies::all();
         $propertie_Type = propertyTypes::all();
-        return view('layouts.sobre', compact('properties_destaque', 'tipologies', 'propertie_Type'));
+        return view('layouts.sobre', compact('properties_destaque', 'tipologies', 'propertie_Type', 'visitCounts'));
     }
 
     public function contacto()
@@ -126,6 +144,7 @@ class Controller extends BaseController
         ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
         ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
         ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+            ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
         ->select(
             'properties.*',
             'users.name as user_name',
@@ -138,8 +157,14 @@ class Controller extends BaseController
             'distritos.name_distrito as distrito_name',
             'municipios.name as municipio_name',
             'provinces.name as provincia_name'
+            
         );
 
+        $visitCounts = DB::table('visits')
+            ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+            ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+            ->groupBy('properties_id')
+            ->pluck('visit_count', 'properties_id');
         // Consulta para $properties
         $properties = clone $baseQuery;
         $properties = $properties
@@ -156,7 +181,7 @@ class Controller extends BaseController
             ->get();
         $tipologies = Tipologies::all();
         $propertie_Type = propertyTypes::all();
-        return view('layouts.contacto', compact('properties_destaque', 'tipologies', 'propertie_Type'));
+        return view('layouts.contacto', compact('properties_destaque', 'tipologies', 'propertie_Type', 'visitCounts'));
     }
 
 
@@ -172,6 +197,7 @@ class Controller extends BaseController
             ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
             ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
             ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+            ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
             ->select(
                 'properties.*',
                 'users.name as user_name',
@@ -184,6 +210,7 @@ class Controller extends BaseController
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name'
+            
             );
 
         // Consulta para $properties
@@ -204,13 +231,20 @@ class Controller extends BaseController
             ->get();
             $tipologies = Tipologies::all();
             $propertie_Type = propertyTypes::all();
-        return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
+
+        $visitCounts = DB::table('visits')
+            ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+            ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+            ->groupBy('properties_id')
+            ->pluck('visit_count', 'properties_id');
+
+        return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type', 'visitCounts'));
     }
 
 
     public function Properties_Venda(){
 
-    $baseQuery = DB::table('properties')
+        $baseQuery = DB::table('properties')
             ->leftJoin('users', 'properties.user_id', '=', 'users.id')
             ->leftJoin('businesses', 'properties.business_id', '=', 'businesses.id')
             ->leftJoin('tipologies', 'properties.tipologies_id', '=', 'tipologies.id')
@@ -231,7 +265,8 @@ class Controller extends BaseController
                 'tipe_energies.name as energy_type_name',
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
-                'provinces.name as provincia_name'
+                'provinces.name as provincia_name',
+
             );
 
         // Consulta para $properties
@@ -242,6 +277,8 @@ class Controller extends BaseController
             ->where('properties.business_id', 1)
             ->paginate(10);
 
+            //dd($properties);
+
         // Consulta para $properties_destaque
         $properties_destaque = clone $baseQuery;
         $properties_destaque = $properties_destaque
@@ -251,11 +288,16 @@ class Controller extends BaseController
             ->where('properties.fechado', 0)
             ->get();
 
+        $tipologies = Tipologies::all();
+        $propertie_Type = propertyTypes::all();
 
-            $tipologies = Tipologies::all();
-            $propertie_Type = propertyTypes::all();
+        $visitCounts = DB::table('visits')
+        ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+        ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+        ->groupBy('properties_id')
+        ->pluck('visit_count', 'properties_id');
 
-            return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
+            return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type','visitCounts'));
     }
 
     public function Properties_aluguer(){
@@ -281,7 +323,8 @@ class Controller extends BaseController
                 'tipe_energies.name as energy_type_name',
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
-                'provinces.name as provincia_name'
+                'provinces.name as provincia_name',
+                
             );
 
         // Consulta para $properties
@@ -290,6 +333,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.business_id', 2)
+            
             ->paginate(10);
 
         // Consulta para $properties_destaque
@@ -304,7 +348,13 @@ class Controller extends BaseController
             $tipologies = Tipologies::all();
             $propertie_Type = propertyTypes::all();
 
-            return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
+        $visitCounts = DB::table('visits')
+        ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+        ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+        ->groupBy('properties_id')
+        ->pluck('visit_count', 'properties_id');
+
+        return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type', 'visitCounts'));
  }
 
  public function Properties_Vendajs(){
@@ -330,7 +380,8 @@ class Controller extends BaseController
                 'tipe_energies.name as energy_type_name',
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
-                'provinces.name as provincia_name'
+                'provinces.name as provincia_name',
+               
             );
 
         // Consulta para $properties
@@ -342,6 +393,12 @@ class Controller extends BaseController
             ->where('properties.fechado', 0)
             ->paginate(10);
 
+
+        $visitCounts = DB::table('visits')
+        ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+        ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+        ->groupBy('properties_id')
+        ->pluck('visit_count', 'properties_id');
         // Consulta para $properties_destaque
 
 
@@ -361,6 +418,7 @@ class Controller extends BaseController
             ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
             ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
             ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+            ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
             ->select(
                 'properties.*',
                 'users.name as user_name',
@@ -372,7 +430,8 @@ class Controller extends BaseController
                 'tipe_energies.name as energy_type_name',
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
-                'provinces.name as provincia_name'
+                'provinces.name as provincia_name',
+           
             );
 
         // Consulta para $properties
@@ -384,7 +443,14 @@ class Controller extends BaseController
             ->where('properties.fechado', 0)
             ->paginate(10);
 
-            return response()->json($properties);
+        $visitCounts = DB::table('visits')
+        ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+        ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+        ->groupBy('properties_id')
+        ->pluck('visit_count', 'properties_id');
+        
+
+        return response()->json($properties);
  }
 
     public function details($id){
@@ -399,8 +465,9 @@ class Controller extends BaseController
         ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
         ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
         ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
-    ->where('properties.id', $id) // Adicionando a condição onde reservedo é igual a 0
-    ->select(
+            ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
+         ->where('properties.id', $id) // Adicionando a condição onde reservedo é igual a 0
+         ->select(
         'properties.*',
         'users.name as user_name',
         'businesses.name as business_name',
@@ -411,10 +478,11 @@ class Controller extends BaseController
         'tipe_energies.name as energy_type_name',
         'distritos.name_distrito as distrito_name',
         'municipios.name as municipio_name',
-        'provinces.name as provincia_name'
-    )
-    ->get();
-    $baseQuery = DB::table('properties')
+        'provinces.name as provincia_name',
+           
+        )
+         ->get();
+        $baseQuery = DB::table('properties')
             ->leftJoin('users', 'properties.user_id', '=', 'users.id')
             ->leftJoin('businesses', 'properties.business_id', '=', 'businesses.id')
             ->leftJoin('tipologies', 'properties.tipologies_id', '=', 'tipologies.id')
@@ -424,6 +492,7 @@ class Controller extends BaseController
             ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
             ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
             ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+            ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
             ->select(
                 'properties.*',
                 'users.name as user_name',
@@ -435,7 +504,8 @@ class Controller extends BaseController
                 'tipe_energies.name as energy_type_name',
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
-                'provinces.name as provincia_name'
+                'provinces.name as provincia_name',
+            DB::raw('COUNT(visits.id) as visit_count')
             );
 
 
@@ -447,15 +517,22 @@ class Controller extends BaseController
             ->where('properties.destaque', 1)
             ->where('properties.fechado', 0)
             ->get();
-    $images = Image::where('propertie_id', $id)->get();
-    $propertie_Type = propertyTypes::all();
+         $images = Image::where('propertie_id', $id)->get();
+        $propertie_Type = propertyTypes::all();
 
-    return view('detail',
-     ['propertie' => $properties[0] ,
-      'images' => $images,
-      'properties_destaque'=>$properties_destaque,
-      'propertie_Type'=>$propertie_Type
-    ]);
+        $visitCounts = DB::table('visits')
+        ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+        ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+            ->groupBy('properties_id')
+            ->pluck('visit_count', 'properties_id');
+
+        return view('detail',
+        ['propertie' => $properties[0] ,
+        'images' => $images,
+        'properties_destaque'=>$properties_destaque,
+        'propertie_Type'=>$propertie_Type,
+        'visitCounts'=> $visitCounts
+        ]);
     }
 
 
@@ -479,6 +556,7 @@ class Controller extends BaseController
         ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
         ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
         ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+            ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
         ->where('properties.reservedo', 0)
         ->where('properties.publish', 1)
         ->where('properties.fechado', 0)
@@ -492,7 +570,8 @@ class Controller extends BaseController
             'tipe_energies.name as energy_type_name',
             'distritos.name_distrito as distrito_name',
             'municipios.name as municipio_name',
-            'provinces.name as provincia_name'
+            'provinces.name as provincia_name',
+          
         );
 
     // Aplicação de filtros
@@ -520,6 +599,12 @@ class Controller extends BaseController
         })
         ->paginate(10);
 
+        $visitCounts = DB::table('visits')
+        ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+        ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+            ->groupBy('properties_id')
+            ->pluck('visit_count', 'properties_id');
+
         $properties_destaque = clone $baseQuery;
         $properties_destaque = $properties_destaque
             ->where('properties.reservedo', 0)
@@ -528,7 +613,7 @@ class Controller extends BaseController
             ->get();
             $tipologies = Tipologies::all();
             $propertie_Type = propertyTypes::all();
-            return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type'));
+            return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type','visitCounts'));
 }
 
 public function submitVisit(Request $request)
@@ -619,27 +704,27 @@ public function submitVisit(Request $request)
     }
 
     public function resendCode(Request $request)
-    {
-    $phone = $request->input('phone');
-    $user = User::where('phone', $phone)->first();
+{
+        $phone = $request->input('phone');
+        $user = User::where('phone', $phone)->first();
 
-    if (!$user) {
-        return response()->json(['message' => 'Phone number not found.'], 404);
-    }
-    $newCode = rand(100000, 999999);
-    $smsSent =true;// $this->sendSMS($data['phone'], $newCode);
-    // Gere um novo código de verificação
-    if($smsSent){
-   $user->phone_verification_code = $newCode;
-    $user->phone_verification_code_created_at = now();
-    $user->save();
-    }
+        if (!$user) {
+            return response()->json(['message' => 'Phone number not found.'], 404);
+        }
+        $newCode = rand(100000, 999999);
+        $smsSent =true;// $this->sendSMS($data['phone'], $newCode);
+        // Gere um novo código de verificação
+        if($smsSent){
+        $user->phone_verification_code = $newCode;
+        $user->phone_verification_code_created_at = now();
+        $user->save();
+     }
 
 
     // Substitua isso pela sua lógica de envio de SMS
     // $this->sendSMS($phone, $newCode);
 
-    return response()->json(['message' => 'Verification code resent successfully.']);
+     return response()->json(['message' => 'Verification code resent successfully.']);
 }
 
 
