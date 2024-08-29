@@ -640,7 +640,7 @@ public function submitVisit(Request $request)
         ->sendToUsers(User::all());
     }*/
 
-    return redirect()->to(url()->previous() . '#property_details')->with('success', 'Visita agendada com sucesso!');
+    return redirect()->to(url()->previous() . '#property_details')->with('success', 'Visita agendada com sucesso! aguarde o feedback  do nosso agete');
 
 }
 
