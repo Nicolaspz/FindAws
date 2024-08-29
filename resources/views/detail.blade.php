@@ -41,11 +41,12 @@
             <p>{{$propertie->description}}</p>
             <ul class="property-specs-wrap mb-3 mb-lg-0">
                                 
-                 <li>
-                  @isset($visitCounts[$property->id])
-                        <span class="property-specs">Esta propriedade teve: {{ $visitCounts[$property->id] }} Visitas</span>
-                 @endisset
-                </li>
+                 @if(isset($visitCounts[$propertie->id]))
+                    <span class="property-specs">
+                        Esta propriedade teve: {{ $visitCounts[$propertie->id] }} Visitas
+                    </span>
+                @endif
+
                                 
              </ul>
 

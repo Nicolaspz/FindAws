@@ -492,7 +492,6 @@ class Controller extends BaseController
             ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
             ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
             ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
-            ->leftJoin('visits', 'properties.id', '=', 'visits.properties_id')
             ->select(
                 'properties.*',
                 'users.name as user_name',
@@ -505,7 +504,7 @@ class Controller extends BaseController
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name',
-            DB::raw('COUNT(visits.id) as visit_count')
+            
             );
 
 

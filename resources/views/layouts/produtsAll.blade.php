@@ -9,7 +9,7 @@
         <div class="row mb-5">
             @if ($properties->count() > 0)  {{-- Verifica se há propriedades --}}
                 @foreach ($properties as $property)
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-3 mb-4">
                     <div class="property-entry h-100">
                         <a href="/detail/{{$property->id}}#property_details" class="property-thumbnail">
                             <div class="offer-type-wrap">
