@@ -239,20 +239,51 @@ a:hover {
 }
 
 @media (max-width: 767.98px) {
+    .bg-sm-height {
+        height: 300px;
+    }
     .display-3,
     .display-2,
     .display-4 {
         font-size: 2rem !important;
     }
-    .site-blocks-cover {
-        height: 300px; /* Ajuste de altura para iPhones e Androids */
-        background-size: cover;
-        background-position: center;
+    .site-blocks-cover,
+    .site-blocks-cover .row {
+        min-height: 400px; /* Ajuste a altura */
+        height: calc(70vh); /* Altura para tablets e smartphones grandes */
+    }
+
+    /* Ajuste o tamanho do texto */
+    .site-blocks-cover h1 {
+        font-size: 2rem; /* Reduzir tamanho do título */
+    }
+
+    .site-blocks-cover p {
+        font-size: 1.2rem; /* Reduzir tamanho do parágrafo */
+    }
+
+    .site-blocks-cover .sub-text {
+        font-size: 1rem; /* Ajuste do subtítulo */
     }
 }
 @media (max-width: 480px) {
-    .site-blocks-cover {
-        height: 250px; /* Ajuste extra para telas menores */
+    .site-blocks-cover,
+    .site-blocks-cover .row {
+        min-height: 300px; /* Ajuste a altura */
+        height: calc(50vh); /* Altura menor para telas pequenas */
+    }
+
+    /* Tamanho menor do texto */
+    .site-blocks-cover h1 {
+        font-size: 1.5rem; /* Reduzir tamanho da fonte do título */
+    }
+
+    .site-blocks-cover p {
+        font-size: 1rem; /* Reduzir tamanho do parágrafo */
+    }
+
+    .site-blocks-cover .sub-text {
+        font-size: 0.9rem; /* Reduzir tamanho do subtítulo */
     }
 }
 
@@ -261,10 +292,23 @@ a:hover {
         height: 300px;
     }
 }
+@media (max-width: 360px) {
+    .site-blocks-cover,
+    .site-blocks-cover .row {
+        min-height: 280px; /* Altura para dispositivos muito pequenos */
+        height: calc(50vh);
+    }
 
-@media (max-width: 767.98px) {
-    .bg-sm-height {
-        height: 300px;
+    .site-blocks-cover h1 {
+        font-size: 1.2rem; /* Reduzir ainda mais o título */
+    }
+
+    .site-blocks-cover p {
+        font-size: 0.9rem; /* Reduzir o texto */
+    }
+
+    .site-blocks-cover .sub-text {
+        font-size: 0.8rem; /* Reduzir o subtítulo */
     }
 }
 
