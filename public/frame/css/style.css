@@ -178,6 +178,7 @@ a:hover {
     .site-section {
         padding: 7em 0;
     }
+    .overlay;
 }
 .site-section.site-section-sm {
     padding: 4em 0;
@@ -242,6 +243,16 @@ a:hover {
     .display-2,
     .display-4 {
         font-size: 2rem !important;
+    }
+    .site-blocks-cover {
+        height: 300px; /* Ajuste de altura para iPhones e Androids */
+        background-size: cover;
+        background-position: center;
+    }
+}
+@media (max-width: 480px) {
+    .site-blocks-cover {
+        height: 250px; /* Ajuste extra para telas menores */
     }
 }
 
