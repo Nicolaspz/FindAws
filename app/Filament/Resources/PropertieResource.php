@@ -89,11 +89,11 @@ class PropertieResource extends Resource
                             ->prefix('Kz'),
                             Forms\Components\TextInput::make('title')
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('lng')
-                            ->numeric(),
+                        //Forms\Components\TextInput::make('lng')
+                           // ->numeric(),
 
-                        Forms\Components\TextInput::make('lat')
-                            ->numeric(),
+                        //Forms\Components\TextInput::make('lat')
+                           // ->numeric(),
 
                         Forms\Components\Textarea::make('abstract')
                             ->maxLength(65535),

@@ -128,7 +128,7 @@
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="200">
             <div class="team-member">
 
-              <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded mb-4">
+              <img src="images/person_0.jpg" alt="Image" class="img-fluid rounded mb-4">
 
               <div class="text">
 
@@ -137,10 +137,10 @@
                     Cofundador e Chief Operating Officer (COO)
                 </span>
                 <p>
-                    Saroj Gupta é um visionário com uma vasta experiência no setor imobiliário.
-                     Como CEO, ele lidera a equipe com um foco
-                     firme em inovação, expansão e em fornecer valor excepcional aos
-                      nossos clientes e parceiros.
+                      Saroj Gupta traz anos de experiência na gestão de operações e
+                       desenvolvimento de negócios, garantindo que cada aspecto do
+                       Meu Kubiku funcione perfeitamente para nossos clientes e parceiros.
+
 
                 </p>
                 <p>

@@ -12,7 +12,7 @@
         <div class="row align-items-center">
           <div class="col-8 col-md-8 col-lg-4">
            <a href="/" class="d-block">
-          <img src="{{ asset('images/logo.png') }}" alt="Meu Kubiku" class="img-fluid" style="max-height: 65px;">
+          <img src="{{ asset('images/Logo-01.svg') }}" alt="Meu Kubiku" class="img-fluid" style="max-height: 65px;">
         </a>
           </div>
           <div class="col-4 col-md-4 col-lg-8">

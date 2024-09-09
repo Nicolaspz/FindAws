@@ -17,4 +17,7 @@
             </div>
         </div>
     @endforeach
+    <div class="site-blocks-cover overlay" style="background-image:url('{{ asset('images/publicit.jpg') }}');" data-aos="fade" data-stellar-background-ratio="0.5">
+    </div>
+
 </div>
