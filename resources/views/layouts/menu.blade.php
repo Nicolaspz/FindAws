@@ -24,8 +24,8 @@
                 <li class="active">
                   <a href="/">Início</a>
                 </li>
-                <li><a href="/vendajs#properties-container" class="ajax-l" id="rent-b">Venda</a></li>
-                <li><a href="/rendajs#properties-container" class="ajax-l" id="sell-b" >Renda</a></li>
+                <li><a href="/vendajs#properties-container" class="ajax-l" id="rent-b">Comprar</a></li>
+                <li><a href="/rendajs#properties-container" class="ajax-l" id="sell-b" >Arrendar</a></li>
                 <li class="has-children">
                   <a href="properties.html">Propiedades</a>
                   <ul class="dropdown arrow-top">
