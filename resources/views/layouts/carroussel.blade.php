@@ -1,10 +1,13 @@
-<div class="slide-one-item home-slider owl-carousel">
-    @foreach ($properties_destaque as $property)
-        <div class="site-blocks-cover overlay" style="background-image:url('{{ Storage::url($property->technical_details_img) }}');" data-aos="fade" data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-10">
-                        <span class="d-inline-block {{ $property->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }} text-white px-3 mb-3 property-offer-type rounded">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Foreach loop para exibir as propriedades -->
+      @foreach ($properties_destaque as $index => $property)
+        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+          <img class="d-block w-100" src="{{ Storage::url($property->technical_details_img) }}" alt="{{ $property->title }}">
+          <div class="carousel-caption d-none d-md-block"  style="top: 37%;">
+                <div class="dentro">
+                    <span class="d-inline-block {{ $property->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }} text-white px-3 mb-3 property-offer-type rounded">
                             <div class="offer-type-wrap">
                                 {{$property->business_name}}
                               </div>
@@ -12,12 +15,28 @@
                         <h1 class="mb-2 pz14">{{ $property->title }}</h1>
                         <p class="mb-5"><strong class="h2  font-weight-bold">{{ number_format($property->price, 2) }}</strong></p>
                         <p><a href="/detail/{{$property->id}}#property_details" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">Ver Detalhe</a></p>
-                    </div>
                 </div>
-            </div>
+          </div>
         </div>
-    @endforeach
-    <div class="site-blocks-cover overlay" style="background-image:url('{{ asset('images/publicit.jpg') }}');" data-aos="fade" data-stellar-background-ratio="0.5">
+      @endforeach
+
+      <!-- Exemplo de imagem de publicidade -->
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{{ asset('images/publicit.jpg') }}" alt="Publicidade">
+        <div class="carousel-caption d-none d-md-block">
+
+        </div>
+      </div>
+
     </div>
 
-</div>
+    <!-- Controles de navegação -->
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>

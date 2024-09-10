@@ -42,7 +42,29 @@
     <link rel="stylesheet" href="{{ asset('frame/css/fl-bigmug-line.css') }}">
     <link rel="stylesheet" href="{{ asset('frame/css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('frame/css/style.css') }}">
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
 
+        .carousel-item {
+      height: 95vh; /* Altura ajustada */
+    }
+
+    .carousel-item img {
+      height: 100%; /* A imagem ocupa a altura total do item */
+      object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
+    }
+
+    @media (max-width: 768px) {
+      .carousel-item {
+        height: 300px; /* Altura menor para telas pequenas */
+      }
+
+      .carousel-item img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    </style>
 
   </head>
   <body>
@@ -83,6 +105,9 @@
   <script src="{{ asset('frame/js/aos.js') }}"></script>
   <script src="{{ asset('frame/js/circleaudioplayer.js') }}"></script>
   <script src="{{ asset('frame/js/main.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
 
   </script>
