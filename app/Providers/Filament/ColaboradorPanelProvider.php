@@ -24,8 +24,10 @@ class ColaboradorPanelProvider extends PanelProvider {
 	->sidebarCollapsibleOnDesktop(true)
         ->id( 'colaborador' )
         ->path( 'colaborador' )
-        ->login()
+        ->passwordReset()
+        ->profile()
         ->registration()
+        ->login()
         ->colors( [
             'primary' => Color::Amber,
         ] )

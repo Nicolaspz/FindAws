@@ -13,8 +13,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Pages\Page;
+use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
 {
@@ -36,9 +37,10 @@ class UserResource extends Resource
                     ->maxLength(255),
 
                 Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
+                ->password()
+                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
+                ->dehydrated(fn(?string $state): bool => filled($state))
+                ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord),
                     FileUpload::make('image_url')->disk('public')->directory('perfil'),
 
                 Forms\Components\TextInput::make('phone')
@@ -68,7 +70,9 @@ class UserResource extends Resource
                     ->searchable(),
 
 
-                Tables\Columns\ImageColumn::make('image_url'),
+                ImageColumn::make('image_url')
+                ->label('Perfil')
+                ->disk('public'),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('status')
