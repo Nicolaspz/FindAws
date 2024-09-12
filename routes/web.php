@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 return view( 'site' );
 */
 Route::get( '/', [ Controller::class, 'index' ] );
+Route::get('/listview', [Controller::class, 'indexView']);
 Route::get( '/sobre', [ Controller::class, 'sobre' ] );
 Route::get( '/contacto', [ Controller::class, 'contacto' ] );
 Route::get( '/detail/{id}', [ Controller::class, 'details' ] );

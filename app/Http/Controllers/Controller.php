@@ -21,6 +21,7 @@ use PhpParser\Builder\Property;
 
 class Controller extends BaseController
 {
+    //index-view
     use AuthorizesRequests, ValidatesRequests;
     public function index(){
 
@@ -75,7 +76,59 @@ class Controller extends BaseController
         return view('site', compact('properties', 'properties_destaque','tipologies','propertie_Type', 'visitCounts'));
     }
 
+    public function indexView()
+    {
 
+        $baseQuery = DB::table('properties')
+            ->leftJoin('users', 'properties.user_id', '=', 'users.id')
+            ->leftJoin('businesses', 'properties.business_id', '=', 'businesses.id')
+            ->leftJoin('tipologies', 'properties.tipologies_id', '=', 'tipologies.id')
+            ->leftJoin('property_types', 'properties.property_types_id', '=', 'property_types.id')
+            ->leftJoin('conditions', 'properties.conditions_id', '=', 'conditions.id')
+            ->leftJoin('tipe_energies', 'properties.tipe_energies_id', '=', 'tipe_energies.id')
+            ->leftJoin('distritos', 'properties.distritos_id', '=', 'distritos.id')
+            ->leftJoin('municipios', 'properties.municipios_id', '=', 'municipios.id')
+            ->leftJoin('provinces', 'properties.provinces_id', '=', 'provinces.id')
+            ->select(
+                'properties.*',
+                'users.name as user_name',
+                'businesses.name as business_name',
+                'businesses.id as business_id',
+                'tipologies.name as typology_name',
+                'property_types.name as type_name',
+                'conditions.name as condition_name',
+                'tipe_energies.name as energy_type_name',
+                'distritos.name_distrito as distrito_name',
+                'municipios.name as municipio_name',
+                'provinces.name as provincia_name'
+            );
+
+        // Consulta para $properties
+        $properties = clone $baseQuery;
+        $properties = $properties
+            ->where('properties.reservedo', 0)
+            ->where('properties.publish', 1)
+            ->where('properties.fechado', 0)
+            ->paginate(10);
+
+        // Consulta para $properties_destaque
+        $properties_destaque = clone $baseQuery;
+        $properties_destaque = $properties_destaque
+        ->where('properties.reservedo', 0)
+        ->where('properties.publish', 1)
+        ->where('properties.destaque', 1)
+        ->get();
+        $tipologies = Tipologies::all();
+        $propertie_Type = PropertyTypes::all();
+
+        $visitCounts = DB::table('visits')
+        ->select('properties_id', DB::raw('COUNT(id) as visit_count'))
+        ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
+        ->groupBy('properties_id')
+        ->pluck('visit_count', 'properties_id');
+
+        return view('indexView', compact('properties', 'properties_destaque', 'tipologies', 'propertie_Type', 'visitCounts'));
+    }
 
     public function sobre()
     {
@@ -103,7 +156,7 @@ class Controller extends BaseController
             'distritos.name_distrito as distrito_name',
             'municipios.name as municipio_name',
             'provinces.name as provincia_name'
-           
+
         );
 
         $visitCounts = DB::table('visits')
@@ -157,7 +210,7 @@ class Controller extends BaseController
             'distritos.name_distrito as distrito_name',
             'municipios.name as municipio_name',
             'provinces.name as provincia_name'
-            
+
         );
 
         $visitCounts = DB::table('visits')
@@ -210,7 +263,7 @@ class Controller extends BaseController
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name'
-            
+
             );
 
         // Consulta para $properties
@@ -324,7 +377,7 @@ class Controller extends BaseController
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name',
-                
+
             );
 
         // Consulta para $properties
@@ -333,7 +386,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.business_id', 2)
-            
+
             ->paginate(10);
 
         // Consulta para $properties_destaque
@@ -381,7 +434,7 @@ class Controller extends BaseController
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name',
-               
+
             );
 
         // Consulta para $properties
@@ -431,7 +484,7 @@ class Controller extends BaseController
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name',
-           
+
             );
 
         // Consulta para $properties
@@ -448,7 +501,7 @@ class Controller extends BaseController
         ->where('status', 'fechada') // Filtra apenas visitas com status 'fechada'
         ->groupBy('properties_id')
         ->pluck('visit_count', 'properties_id');
-        
+
 
         return response()->json($properties);
  }
@@ -479,7 +532,7 @@ class Controller extends BaseController
         'distritos.name_distrito as distrito_name',
         'municipios.name as municipio_name',
         'provinces.name as provincia_name',
-           
+
         )
          ->get();
         $baseQuery = DB::table('properties')
@@ -504,7 +557,7 @@ class Controller extends BaseController
                 'distritos.name_distrito as distrito_name',
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name',
-            
+
             );
 
 
@@ -570,7 +623,7 @@ class Controller extends BaseController
             'distritos.name_distrito as distrito_name',
             'municipios.name as municipio_name',
             'provinces.name as provincia_name',
-          
+
         );
 
     // Aplicação de filtros
