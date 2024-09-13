@@ -73,7 +73,7 @@
         </div>
 
         <!-- Comuna -->
-        <div class="col-md-3">
+        <div class="col-md-3 mb-2">
           <label for="comuna_id" style="font-size: 12px;">Distrito</label>
           <input type="text" name="comuna_id" id="comuna_id" class="form-control form-control-sm">
         </div>
@@ -89,7 +89,7 @@
 
     </form>
 <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 d-none">
             <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
               <div class="mr-auto">
                 <a href="/" class="icon-view view-module active"><span class="icon-view_module"></span></a>
