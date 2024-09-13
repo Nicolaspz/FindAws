@@ -74,7 +74,7 @@
 
         <!-- Comuna -->
         <div class="col-md-3 mb-2">
-          <label for="comuna_id" style="font-size: 12px;">Distrito</label>
+          <label for="comuna_id" style="font-size: 12px;">Distritoo</label>
           <input type="text" name="comuna_id" id="comuna_id" class="form-control form-control-sm">
         </div>
 
