@@ -52,26 +52,30 @@ class PropertieResource extends Resource
                         ->label('Estado da Propriedade')
                         ->relationship('conditions', 'name')
                         ->required(),
-                    Select::make('tipe_energies_id')
-                        ->label('Tipo de Energia')
-                        ->relationship('tipe_energies', 'name')
-                        ->required(),
+                    
 
                 Select::make('provinces_id')  // O nome do campo é 'province_id' para corresponder ao banco de dados
                 ->options(fn() => Province::pluck('name', 'id'))
                 ->required()
                 ->reactive()
-                    ->afterStateUpdated(fn(callable $set) => $set('municipios_id', null)),
+                ->label('Provincia')
+                ->afterStateUpdated(fn(callable $set) => $set('municipios_id', null)),
 
                 Select::make('municipios_id')  // O nome do campo é 'municipios_id' para corresponder ao banco de dados
                 ->options(fn(Get $get) => Municipio::where('provincia_id', $get('provinces_id'))->pluck('name', 'id'))
                 ->required()
                 ->reactive()
-                    ->afterStateUpdated(fn(callable $set) => $set('distritos_id', null)),
+                ->label('Município')
+                ->afterStateUpdated(fn(callable $set) => $set('distritos_id', null)),
 
                 Select::make('distritos_id')  // O nome do campo é 'distritos_id' para corresponder ao banco de dados
                 ->options(fn(Get $get) => Distrito::where('municipio_id', $get('municipios_id'))->pluck('name', 'id'))
-                ->required(),
+                ->required()
+                ->label('Distrito'),
+                Select::make('tipe_energies_id')
+                    ->label('Tipo de Energia')
+                    ->relationship('tipe_energies', 'name')
+                    ->required(),
 
                     //Select::make('provinces_id')
                       //  ->label('Província')
