@@ -57,17 +57,21 @@ class PropertieResource extends Resource
                         ->relationship('tipe_energies', 'name')
                         ->required(),
 
-                        Select::make('province')
-                        ->options(fn () => Province::pluck('name', 'id'))
-                        ->live(),
+                Select::make('provinces_id')  // O nome do campo é 'province_id' para corresponder ao banco de dados
+                ->options(fn() => Province::pluck('name', 'id'))
+                ->required()
+                ->reactive()
+                    ->afterStateUpdated(fn(callable $set) => $set('municipios_id', null)),
 
-                    Select::make('municipio')
-                        ->options(fn (Get $get) => Municipio::where('provincia_id', $get('province'))->pluck('name', 'id'))
-                        ->live(),
+                Select::make('municipios_id')  // O nome do campo é 'municipios_id' para corresponder ao banco de dados
+                ->options(fn(Get $get) => Municipio::where('provincia_id', $get('provinces_id'))->pluck('name', 'id'))
+                ->required()
+                ->reactive()
+                    ->afterStateUpdated(fn(callable $set) => $set('distritos_id', null)),
 
-                    Select::make('distrito')
-                        ->options(fn (Get $get) => Distrito::where('municipio_id', $get('municipio'))->pluck('name_distrito', 'id'))
-                        ->live(),
+                Select::make('distritos_id')  // O nome do campo é 'distritos_id' para corresponder ao banco de dados
+                ->options(fn(Get $get) => Distrito::where('municipio_id', $get('municipios_id'))->pluck('name', 'id'))
+                ->required(),
 
                     //Select::make('provinces_id')
                       //  ->label('Província')
@@ -79,7 +83,7 @@ class PropertieResource extends Resource
                         //->required(),
                     //Select::make('distritos_id')
                       //  ->label('Distrito')
-                        //->relationship('distritos', 'name_distrito')
+                        //->relationship('distritos', 'name')
                         //->required(),--}}
                 ]),
 
@@ -189,7 +193,7 @@ class PropertieResource extends Resource
                     ->markdown()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                    Tables\Columns\TextColumn::make('distritos.name_distrito')
+                    Tables\Columns\TextColumn::make('distritos.name')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                     Tables\Columns\TextColumn::make('users.name')

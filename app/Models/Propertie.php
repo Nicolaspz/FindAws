@@ -161,15 +161,15 @@ class Propertie extends Model
         return $this->belongsTo(TipeEnergie::class);
     }
 
-    public function distritos() {
+    public function distrito() {
         return $this->belongsTo(Distrito::class);
     }
 
-    public function provinces() {
+    public function province() {
         return $this->belongsTo(Province::class);
     }
 
-    public function municipios() {
+    public function municipio() {
         return $this->belongsTo(Municipio::class);
     }
 

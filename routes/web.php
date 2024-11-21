@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Models\Distrito;
+use App\Models\Municipio;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +38,13 @@ Route::get( '/verify/{phone}', [ Controller::class, 'showVerificationForm' ] )->
 //Route::post( '/verifysubmit', [ Controller::class, 'verifyPhone' ] )->name( 'verify-phone.submit' );
 Route::post( '/verify-phone/resend', [ Controller::class, 'resendCode' ] )->name( 'verify-phone.resend' );
 
+
+Route::get('/get-municipios/{province_id}', function ($province_id) {
+  $municipios = Municipio::where('provincia_id', $province_id)->get();
+  return response()->json($municipios);
+});
+
+Route::get('/get-distritos/{municipio_id}', function ($municipio_id) {
+  $distritos = Distrito::where('municipio_id', $municipio_id)->get();
+  return response()->json($distritos);
+});

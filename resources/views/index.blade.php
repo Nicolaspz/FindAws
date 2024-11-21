@@ -106,127 +106,56 @@
   <script src="{{ asset('frame/js/circleaudioplayer.js') }}"></script>
   <script src="{{ asset('frame/js/main.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
 
+  $(document).ready(function() {
+    // Quando a província for alterada, carregue os municípios
+    $('#province_id').change(function() {
+      var province_id = $(this).val();
+      if (province_id) {
+        $.ajax({
+          url: '/get-municipios/' + province_id,  // Rota para obter municípios
+          type: 'GET',
+          success: function(data) {
+            $('#municipio_id').empty();  // Limpa o campo de municípios
+            $('#municipio_id').append('<option value="">Selecione Município</option>');
+            $.each(data, function(index, municipio) {
+              $('#municipio_id').append('<option value="' + municipio.id + '">' + municipio.name + '</option>');
+            });
+          }
+        });
+      } else {
+        $('#municipio_id').empty();
+        $('#municipio_id').append('<option value="">Selecione Município</option>');
+      }
+    });
+
+    // Quando o município for alterado, carregue os distritos
+    $('#municipio_id').change(function() {
+      var municipio_id = $(this).val();
+      if (municipio_id) {
+        $.ajax({
+          url: '/get-distritos/' + municipio_id,  // Rota para obter distritos
+          type: 'GET',
+          success: function(data) {
+            $('#distrito_id').empty();  // Limpa o campo de distritos
+            $('#distrito_id').append('<option value="">Selecione Distrito</option>');
+            $.each(data, function(index, distrito) {
+              $('#distrito_id').append('<option value="' + distrito.id + '">' + distrito.name + '</option>');
+            });
+          }
+        });
+      } else {
+        $('#distrito_id').empty();
+        $('#distrito_id').append('<option value="">Selecione Distrito</option>');
+      }
+    });
+  });
   </script>
   @yield('javascript')
-<script>
+</body>
 
-if (typeof jQuery != 'undefined') {
-    $(document).ready(function() {
-
-        $('.ajax-link').click(function(event) {
-            alert("olaaa");
-            event.preventDefault(); // Impede que o link mude a página
-            var type = this.id === 'rent-button' ? 'venda' : 'renda'; // Determina o tipo baseado no ID do botão
-            loadProperties(type); // Chama a função que faz a requisição AJAX
-
-
-
-
-        });
-    });
-
-    function loadProperties(type) {
-        $.ajax({
-            url: `/${type}`, // Endpoint para a requisição
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                console.log(data.data);
-                updateProperties(data.data); // Atualiza a página com os novos dados
-                scrollToElement('properties-container', 60);
-            },
-            error: function(xhr) {
-                console.error("Erro ao buscar propriedades: ", xhr.statusText);
-            }
-        });
-    }
-    function scrollToElement(elementId, offset) {
-    // Assegura que um offset padrão é usado se nenhum for fornecido
-    offset = offset || 60; // Você pode ajustar o valor padrão conforme necessário
-
-    var offsetTop = $('#' + elementId).offset().top - offset;
-    $('html, body').animate({'scrollTop': offsetTop}, 2000); // 2000 ms para a animação
-}
-
-    function updateProperties(data) {
-        var container = $('#properties-container > .container > .row.mb-5');
-        container.empty(); // Limpa os dados existentes
-
-    // Insere novos dados recebidos
-    if (data.length === 0) {
-        // Insere uma mensagem de "nenhum resultado encontrado"
-        container.append('<div class="alert alert-warning center">Nenhum resultado encontrado para o tipo de pesquisa selecionado.</div>');
-    } else {
-    data.forEach(function(property) {
-        var businessClass = property.business_id === 1 ? 'bg-danger' : 'bg-info';
-        var imageUrl =`/storage/${property.technical_details_img}`; // Ajuste conforme o caminho real da imagem
-
-        var html = `
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="property-entry h-100">
-                    <a href="/detail/${property.id}#property_details" class="property-thumbnail">
-                        <div class="offer-type-wrap">
-                            <span class="offer-type ${businessClass}">${property.business_name}</span>
-                        </div>
-
-                        <img src="${imageUrl}" alt="Image" class="img-fluid">
-                    </a>
-                    <div class="p-4 property-body">
-                        <a href="/detail/${property.id}#property_details" class="property-favorite"><span class="icon-heart-o"></span></a>
-                        <h2 class="property-title"><a href="/detail/${property.id}#property_details">${property.title}</a></h2>
-                        <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>${property.cidade}, ${property.municipio_name}-${property.distrito_name}</span>
-                        <strong class="property-price text-primary mb-3 d-block text-success">${property.price}.00Kz</strong>
-                        <ul class="property-specs-wrap mb-3 mb-lg-0">
-                            <li>
-                                <span class="property-specs">Tipologia</span>
-                                <span class="property-specs-number">${property.typology_name}</span>
-                            </li>
-                            <li>
-                                <span class="property-specs">Visita</span>
-                                <span class="property-specs-number">2</span> <!-- Suponho que isso seja estático -->
-                            </li>
-                            <li>
-                                <span class="property-specs">Área</span>
-                                <span class="property-specs-number">${property.area}m<sup>2</sup></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        container.append(html);
-    });
-}
-    }
-} else {
-    console.error("jQuery não está definido");
-}
-
-
-$(document).ready(function() {
-    // Verifica se há um hash no URL
-    if(window.location.hash) {
-        var hash = window.location.hash.substring(1); // Pega o ID do hash, removendo o '#'
-        var offsetTop = $('#' + hash).offset().top - 60; // Calcula o deslocamento do topo da propriedade, considerando uma barra de navegação de 65 pixels (ou qualquer outro valor necessário)
-        $('html, body').animate({'scrollTop': offsetTop}, 2000); // Anima o scroll até a propriedade
-    }
-
-
-});
-
-
-
-
-
-
-</script>
-
-
-
-  </body>
 </html>

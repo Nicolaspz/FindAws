@@ -57,26 +57,35 @@
         <div class="col-md-3">
           <label for="province_id" style="font-size: 12px;">Província</label>
           <div class="select-wrap">
-            <select name="province_id" id="province_id" class="form-control form-control-sm">
-              <option value="">Selecione Província</option>
-              <option value="1">Luanda</option>
-              <option value="2">Benguela</option>
-              <!-- Outras opções -->
-            </select>
+                <select name="province_id" id="province_id" class="form-control form-control-sm">
+                    <option value="">Selecione Província</option>
+                    @foreach ($provinces as $province)
+                      <option value="{{ $province->id }}">{{ $province->name }}</option>
+                    @endforeach
+              </select>
           </div>
         </div>
 
         <!-- Município -->
         <div class="col-md-3">
-          <label for="municipio_id" style="font-size: 12px;">Município</label>
-          <input type="text" name="municipio_id" id="municipio_id" class="form-control form-control-sm">
-        </div>
+  <label for="municipio_id" style="font-size: 12px;">Município</label>
+  <div class="select-wrap">
+    <select name="municipio_id" id="municipio_id" class="form-control form-control-sm">
+      <option value="">Selecione Município</option>
+      <!-- Municípios serão carregados dinamicamente -->
+    </select>
+  </div>
+</div>
 
-        <!-- Comuna -->
-        <div class="col-md-3 mb-2">
-          <label for="comuna_id" style="font-size: 12px;">Distrito</label>
-          <input type="text" name="comuna_id" id="comuna_id" class="form-control form-control-sm">
-        </div>
+        <div class="col-md-3">
+  <label for="distrito_id" style="font-size: 12px;">Distrito</label>
+  <div class="select-wrap">
+    <select name="distrito_id" id="distrito_id" class="form-control form-control-sm">
+      <option value="">Selecione Distrito</option>
+      <!-- Distritos serão carregados dinamicamente -->
+    </select>
+  </div>
+</div>
 
         <div class="col-md-3">
 
