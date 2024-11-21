@@ -23,8 +23,9 @@
                                     <span style="color: #fff;" class="icon-heart-o"></span>
                                 </a>
                             @endif
+                            
                             <h2 class="property-title"><a href="/detail/{{$property->id}}#property_details">{{$property->title}}</h2>
-                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{$property->cidade}}, {{$property->municipio_name}}-{{$property->distrito_name}}</span>
+                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{$property->provincia_name}} - {{$property->municipio_name}}-{{$property->distrito_name}}</span>
                             <strong class="property-price text-primary mb-3 d-block custum-info ">{{$property->price}}.00</strong>
                             <ul class="property-specs-wrap mb-3 mb-lg-0">
                                 <li>
