@@ -388,7 +388,7 @@ class Controller extends BaseController
         $properties = $properties
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
-            ->where('properties.business_id', 2)
+            ->where('properties.business_id', 1)
 
             ->paginate(10);
 
@@ -445,7 +445,7 @@ class Controller extends BaseController
         $properties = $properties
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
-            ->where('properties.business_id', 1)
+            ->where('properties.business_id', 2)
             ->where('properties.fechado', 0)
             ->paginate(10);
 

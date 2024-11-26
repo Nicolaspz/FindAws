@@ -87,7 +87,8 @@ class PropertieResource extends Resource {
                     ->relationship('tipe_energies', 'name')
                     ->required(),
                     Forms\Components\TextInput::make('cidade')
-                        ->maxLength(255),
+                        ->maxLength(255)
+                        ->label('Bairro'),
 
                 ])
                     ->columns(3), // Define o layout como 3 colunas
