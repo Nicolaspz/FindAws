@@ -330,7 +330,7 @@ class Controller extends BaseController
         $properties = $properties
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
-            ->where('properties.business_id', 1)
+            ->where('properties.business_id', 2)
             ->paginate(10);
 
             //dd($properties);
@@ -495,7 +495,7 @@ class Controller extends BaseController
         $properties = $properties
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
-            ->where('properties.business_id', 2)
+            ->where('properties.business_id', 1)
             ->where('properties.fechado', 0)
             ->paginate(10);
 
@@ -647,12 +647,16 @@ class Controller extends BaseController
             // Caso apenas município seja fornecido
             $query->where('properties.municipios_id', $request->municipio_id);
         })
+        
         ->when(!$request->province_id && !$request->municipio_id && $request->distrito_id, function ($query) use ($request) {
             // Caso apenas distrito seja fornecido
             $query->where('properties.distritos_id', $request->distrito_id);
         })
         ->when($request->business_id, function ($query) use ($request) {
             return $query->where('properties.business_id', $request->business_id);
+        })
+        ->when($request->propriedade_id, function ($query) use ($request) {
+                return $query->where('properties.property_types_id', $request->propriedade_id);
         })
         ->when($request->typology_id, function ($query) use ($request) {
             return $query->where('properties.tipologies_id', $request->typology_id);
