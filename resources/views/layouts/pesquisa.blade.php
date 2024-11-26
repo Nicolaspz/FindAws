@@ -91,6 +91,18 @@
   </div>
 
   <div class="row align-items-end mt-3">
+    <!-- Bairro -->
+    <div class="col-md-3">
+      <label for="bairro" style="font-size: 12px;">Bairro</label>
+      <input 
+        type="text" 
+        name="bairro" 
+        id="bairro" 
+        class="form-control form-control-sm" 
+        placeholder="Digite o bairro"
+      >
+    </div>
+
     <!-- Botão de Buscar -->
     <div class="col-md-3">
       <input type="submit" class="btn bg-info text-white btn-block" value="Buscar">
@@ -98,12 +110,13 @@
   </div>
 </form>
 
-<div class="row">
+
+<div class="row" style="">
           <div class="col-md-12 d-none">
             <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
               <div class="mr-auto">
                 <a href="/" class="icon-view view-module active"><span class="icon-view_module"></span></a>
-                <a href="/listview" class="icon-view view-list"><span class="icon-view_list"></span></a>
+                <a href="/listview" class="icon-view view-list"><span class="icon-view_list">list</span></a>
 
               </div>
               <div class="ml-auto d-flex align-items-center">

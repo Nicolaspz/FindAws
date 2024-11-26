@@ -35,9 +35,7 @@ class DistritoResource extends Resource
                 Forms\Components\TextInput::make('name_distrito')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('bairro')
-                    ->required()
-                    ->maxLength(255),
+                
             ]);
     }
 

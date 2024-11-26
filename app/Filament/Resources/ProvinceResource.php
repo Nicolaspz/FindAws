@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProvinceResource\Pages;
 use App\Filament\Resources\ProvinceResource\RelationManagers;
+use App\Filament\Resources\ProvinceResource\RelationManagers\MunicipioRelationManager;
 use App\Models\Province;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -64,7 +65,7 @@ class ProvinceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            MunicipioRelationManager::class,
         ];
     }
 

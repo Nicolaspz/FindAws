@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MunicipioResource\Pages;
 use App\Filament\Resources\MunicipioResource\RelationManagers;
+use App\Filament\Resources\MunicipioResource\RelationManagers\DistritoRelationManager;
 use App\Models\Municipio;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -70,7 +71,7 @@ class MunicipioResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            DistritoRelationManager::class,
         ];
     }
 

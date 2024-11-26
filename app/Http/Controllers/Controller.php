@@ -661,8 +661,8 @@ class Controller extends BaseController
         ->when($request->typology_id, function ($query) use ($request) {
             return $query->where('properties.tipologies_id', $request->typology_id);
         })
-        ->when($request->cidade, function ($query) use ($request) {
-            $query->where('properties.cidade', 'like', '%' . $request->cidade . '%');
+        ->when($request->bairro, function ($query) use ($request) {
+            $query->where('properties.cidade', 'like', '%' . $request->bairro . '%');
         })
         ->when($request->price_min, function ($query) use ($request) {
             return $query->where('properties.price', '>=', $request->price_min);
