@@ -35,6 +35,10 @@ a:hover {
 .custom-bg-danger {
     background-color: #8504a5;
 }
+.custom-menu {
+    border-bottom: 3px solid #8504a5;
+    
+}
 .custom-bg-ver {
     color: white; /* Opcional, para garantir que o texto seja legível em um fundo escuro */
     border: 1px solid #8504a5; /* Opcional, para adicionar uma borda com a mesma cor do fundo */

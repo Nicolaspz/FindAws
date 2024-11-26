@@ -21,29 +21,20 @@
               <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
               <ul class="site-menu js-clone-nav d-none d-lg-block ">
-                <li class="active">
+                <li class="{{ request()->is('/') ? 'active' : '' }}">
                   <a href="/">Início</a>
                 </li>
-                <li><a href="/vendajs#properties-container" class="ajax-l" id="rent-b">Comprar</a></li>
-                <li><a href="/rendajs#properties-container" class="ajax-l" id="sell-b" >Arrendar</a></li>
-                <li class="has-children">
-                  <a href="properties.html">Propiedades</a>
-                  <ul class="dropdown arrow-top">
-                    @foreach ($propertie_Type as $item)
-                    <li>
-                        <a href="{{ route('properties.searchByType', ['type_id' => $item->id]) }}#properties-container">
-                        {{ $item->name }}
-                        </a>
-                    </li>
-                    @endforeach
-
-                  </ul>
-
+                <li class="{{ request()->is('vendajs*') ? 'active' : '' }}">
+                  <a href="/vendajs#properties-container" class="ajax-l" id="rent-b">Comprar</a>
                 </li>
+                <li class="{{ request()->is('rendajs*') ? 'active' : '' }}">
+                  <a href="/rendajs#properties-container" class="ajax-l" id="sell-b" >Arrendar</a>
+                </li>
+                
 
-                <li><a href="/sobre">Sobre Nôs</a></li>
-                <li><a href="contacto">Contacto</a></li>
-                <li><a href="/colaborador/login">Login</a></li>
+                <li class="{{ request()->is('sobre') ? 'active' : '' }}"><a href="/sobre">Sobre Nôs</a></li>
+                <li class="{{ request()->is('contacto') ? 'active' : '' }}"><a href="contacto">Contacto</a></li>
+                <li class="{{ request()->is('contacto') ? 'active' : '' }}" ><a href="/colaborador/login">Login</a></li>
               </ul>
             </nav>
           </div>

@@ -37,7 +37,13 @@
     <!-- Preço Mínimo -->
     <div class="col-md-3">
       <label for="price_min" style="font-size: 12px;">Preço Mínimo</label>
-      <input type="number" name="price_min" id="price_min" class="form-control form-control-sm">
+      <input 
+      type="number" 
+      name="price_min"
+       id="price_min"
+      class="form-control form-control-sm"
+      oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+      >
     </div>
   </div>
 
@@ -45,7 +51,13 @@
     <!-- Preço Máximo -->
     <div class="col-md-3">
       <label for="price_max" style="font-size: 12px;">Preço Máximo</label>
-      <input type="number" name="price_max" id="price_max" class="form-control form-control-sm">
+      <input 
+      type="number"
+      name="price_max"
+      id="price_max" 
+      class="form-control form-control-sm"
+      oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+      >
     </div>
 
     <!-- Província -->

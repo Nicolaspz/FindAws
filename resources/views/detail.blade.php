@@ -40,7 +40,7 @@
             <p>{{$propertie->description}}</p>
             <p>{{$propertie->abstract}}</p>
             <hr>
-            <span class="property-icon icon-room"></span>{{$propertie->provincia_name}} - {{$propertie->municipio_name}}-{{$propertie->name}} - {{$propertie->cidade}}
+            <span class="property-icon icon-room"></span>{{$propertie->provincia_name}} - {{$propertie->municipio_name}}-{{$propertie->distrito_name}} - {{$propertie->cidade}}
             <ul class="property-specs-wrap mb-3 mb-lg-0">
                                 
                  @if(isset($visitCounts[$propertie->id]))
