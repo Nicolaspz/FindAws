@@ -39,115 +39,137 @@ class PropertieResource extends Resource {
         return $form
         ->schema([
             Section::make('Informações Principais')->columns(2)->columnSpan(2)->schema([
-                Select::make('business_id')
+                Forms\Components\Group::make([
+                    Select::make('business_id')
                     ->label('Negócio')
-                    ->relationship('business', 'name')
-                    ->required(),
-                Select::make('tipologies_id')
+                        ->relationship('business', 'name')
+                        ->required(),
+
+                    Select::make('tipologies_id')
                     ->label('Tipologia')
-                    ->relationship('tipologies', 'name')
-                    ->required(),
-                Select::make('property_types_id')
-                ->label('Tipo')
-                    ->relationship('property_types', 'name')
-                    ->required(),
-                Select::make('conditions_id')
+                        ->relationship('tipologies', 'name')
+                        ->required(),
+
+                    Select::make('property_types_id')
+                    ->label('Tipo')
+                        ->relationship('property_types', 'name')
+                        ->required(),
+
+                    Select::make('conditions_id')
                     ->label('Estado da Propriedade')
                     ->relationship('conditions', 'name')
                     ->required(),
-                Select::make('tipe_energies_id')
-                ->label('Tipo de Energia')
-                ->relationship('tipe_energies', 'name')
-                ->required(),
+                ])
+                    ->columns(2), // Define o layout como 2 colunas
 
-                Select::make('province')
+
+                Forms\Components\Group::make([
+                    Select::make('provinces_id') // Campo para Província
                     ->options(fn() => Province::pluck('name', 'id'))
-                    ->live(),
+                    ->required()
+                        ->reactive()
+                        ->label('Província')
+                        ->afterStateUpdated(fn(callable $set) => $set('municipios_id', null)),
 
-                Select::make('municipio')
-                    ->options(fn(Get $get) => Municipio::where('provincia_id', $get('province'))->pluck('name', 'id'))
-                    ->live(),
+                    Select::make('municipios_id') // Campo para Município
+                    ->options(fn(Get $get) => Municipio::where('provincia_id', $get('provinces_id'))->pluck('name', 'id'))
+                    ->required()
+                        ->reactive()
+                        ->label('Município')
+                        ->afterStateUpdated(fn(callable $set) => $set('distritos_id', null)),
 
-                Select::make('distrito')
-                    ->options(fn(Get $get) => Distrito::where('municipio_id', $get('municipio'))->pluck('name_distrito', 'id'))
-                    ->live(),
+                    Select::make('distritos_id') // Campo para Distrito
+                    ->options(fn(Get $get) => Distrito::where('municipio_id', $get('municipios_id'))->pluck('name', 'id'))
+                    ->required()
+                        ->label('Distrito'),
+                    Select::make('tipe_energies_id')
+                    ->label('Tipo de Energia')
+                    ->relationship('tipe_energies', 'name')
+                    ->required(),
+                    Forms\Components\TextInput::make('cidade')
+                        ->maxLength(255),
 
-                //Select::make('provinces_id')
-                //  ->label('Província')
-                //->relationship('provinces', 'name')
-                //->required(),
-                //Select::make('municipios_id')
-                //  ->label('Município')
-                //->relationship('municipios', 'name')
-                //->required(),
-                //Select::make('distritos_id')
-                //  ->label('Distrito')
-                //->relationship('distritos', 'name_distrito')
-                //->required(),--}}
+                ])
+                    ->columns(3), // Define o layout como 3 colunas
             ]),
 
-            Section::make('Informações da Propriedade')->columns(2)->columnSpan(2)->schema([
-                TextInput::make('price')
+            Section::make('Informações da Propriedade')->columns(3)->columnSpan(2)->schema([
+
+
+                Forms\Components\TextInput::make('price')
                     ->numeric()
-                    ->prefix('Kz'),
-                TextInput::make('title')
-                    ->maxLength(255),
-                TextInput::make('lng')
-                    ->numeric(),
+                    ->prefix('Kz')
+                    ->label("Preço"),
+                Forms\Components\TextInput::make('title')
+                    ->maxLength(255)
+                    ->label("Titulo da Propriedade"),
+                //Forms\Components\TextInput::make('lng')
+                // ->numeric(),
 
-                TextInput::make('lat')
-                    ->numeric(),
+                //Forms\Components\TextInput::make('lat')
+                // ->numeric(),
 
-                Textarea::make('abstract')
-                    ->maxLength(65535),
-                Textarea::make('description')
-                    ->maxLength(65535),
-                TextInput::make('cidade')
-                    ->maxLength(255),
-                TextInput::make('area'),
-                TextInput::make('ano_construcao'),
-                TextInput::make('quarto'),
-                TextInput::make('banheiro')
-                /* ->numeric(),
-                    Toggle::make('destaque'),*/
+                Forms\Components\Textarea::make('description')
+                ->maxLength(65535)
+                    ->label("Preço")
+                    ->label("Descrição"),
+                Forms\Components\Textarea::make('abstract')
+                    ->maxLength(65535)
+                    ->label("Mais informações"),
+
+
+                Forms\Components\TextInput::make('area')
+                    ->label("Área")
+                    ->numeric(),
+                Forms\Components\TextInput::make('ano_construcao'),
+                Forms\Components\TextInput::make('quarto')
+                    ->label("Qtd Quarto"),
+                Forms\Components\TextInput::make('banheiro')
+                    ->numeric()
+                    ->label("Nº Banheiro"),
+                Forms\Components\Toggle::make('destaque'),
             ]),
             Section::make('Comodidades')->columns(4)->columnSpan(2)->schema([
-                Toggle::make('ar_condicionado')
+                Forms\Components\Toggle::make('ar_condicionado')
                 ->required(),
-                Toggle::make('roupeiro_imbutido')
+                Forms\Components\Toggle::make('roupeiro_imbutido')
                 ->required(),
-                Toggle::make('elevator')
+                Forms\Components\Toggle::make('elevator')
                     ->required(),
 
-                Toggle::make('jardin')
+                Forms\Components\Toggle::make('jardin')
                     ->required(),
-                Toggle::make('piscina')
+                Forms\Components\Toggle::make('piscina')
                     ->required(),
-                Toggle::make('terraco')
+                Forms\Components\Toggle::make('terraco')
+                    ->required()
+                    ->label("Terraço"),
+                Forms\Components\Toggle::make('dispensa')
+
                     ->required(),
-                Toggle::make('dispensa')
+                Forms\Components\Toggle::make('propiedade_acessivel')
+                ->required()
+                    ->label("Acessivel"),
+                Forms\Components\Toggle::make('reservedo')
                     ->required(),
-                Toggle::make('propiedade_acessivel')
-                ->required(),
-                //Toggle::make('reservedo')
-                   // ->required(),
-                Toggle::make('negociavel')
+                Forms\Components\Toggle::make('negociavel')
+                    ->label("Negociável")
                     ->required(),
-                TextInput::make('park')
+                Forms\Components\TextInput::make('park')
+                    ->label("Qtd de Ecionamento")
                     ->numeric(),
             ]),
             Section::make('Destaques e Mídia')->columns(2)->columnSpan(2)->schema([
-                DatePicker::make('visible_until'),
-                TextInput::make('order')
-                    ->numeric(),
-                //Toggle::make('publish')->required(),
-
+                
+                
                 FileUpload::make('technical_details_img')
                 ->disk('public')
-                    ->directory('destaque'),
-                FileUpload::make('movie')
+                    ->directory('destaque')
+                    ->label("Imagem Frontal"),
+                Forms\Components\FileUpload::make('movie')
                     ->disk('public')
-                    ->directory('videos'),
+                    ->directory('videos')
+                    ->label("Vídeo de Apresentação"),
             ]),
             ]);
     }
@@ -196,7 +218,7 @@ class PropertieResource extends Resource {
                 ->markdown()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
-            TextColumn::make('distritos.name_distrito')
+            TextColumn::make('distritos.name')
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
             TextColumn::make('users.name')
