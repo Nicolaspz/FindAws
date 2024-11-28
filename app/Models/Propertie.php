@@ -67,7 +67,8 @@ class Propertie extends Model
         'technical_details_img',
         'the_project',
         'the_renders',
-        'movie'
+        'movie',
+        'created_at'
     ];
     protected $casts = [
         'visible_until' => 'datetime:Y-m-d'
@@ -121,8 +122,8 @@ class Propertie extends Model
     {
     return Storage::url($this->technical_details_img);
     }
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function users() {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function images() {
@@ -152,6 +153,19 @@ class Propertie extends Model
     public function property_types() {
         return $this->belongsTo(PropertyTypes::class);
     }
+    public function municipios()
+    {
+        return $this->belongsTo(Municipio::class);
+    }
+    public function provinces()
+    {
+        return $this->belongsTo(Province::class);
+    }
+    public function distritos()
+    {
+        return $this->belongsTo(Distrito::class);
+    }
+    
 
     public function conditions() {
         return $this->belongsTo(Condition::class);

@@ -25,11 +25,14 @@ use App\Filament\Resources\DocumentResource;
 use App\Filament\Resources\ImageResource;
 use App\Filament\Resources\MunicipioResource;
 use App\Filament\Resources\PropertieResource;
+use App\Filament\Resources\PropertieResource\Widgets\Proprertie;
 use App\Filament\Resources\PropertyTypesResource;
 use App\Filament\Resources\ProvinceResource;
 use App\Filament\Resources\TipologiesResource;
 use App\Filament\Resources\UserResource;
 use App\Filament\Resources\VisitResource;
+use App\Filament\Resources\VisitResource\Widgets\TotalVisitas;
+use App\Filament\Resources\VisitResource\Widgets\Visita;
 use Filament\Facades\Filament;
 use Filament\Navigation\NavigationBuilder;
 use Filament\Navigation\NavigationGroup;
@@ -60,7 +63,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-
+                TotalVisitas::class,
+                Proprertie::class,
+                Visita::class,
             ])
             ->middleware([
                 EncryptCookies::class,

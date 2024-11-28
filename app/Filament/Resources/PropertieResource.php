@@ -206,7 +206,7 @@ class PropertieResource extends Resource
                     Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable()
-                    ->label("Tipologia"),
+                    ->label("Preço"),
 
                     Tables\Columns\TextColumn::make('municipios.name')
                     ->numeric()
