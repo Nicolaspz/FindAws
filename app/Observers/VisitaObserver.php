@@ -17,11 +17,11 @@ class VisitaObserver
         $propertyOwner = $visit->propertie->users; // Supondo que a propriedade tem um relacionamento com o usuário (proprietário)
 
         // 2. Administradores do sistema
-        $admins = User::where('role', 'admin')->get(); // Filtra todos os usuários com o papel 'admin'
+        $admins = User::where('role', 'ADMIN')->get(); // Filtra todos os usuários com o papel 'admin'
 
         // 3. Criar a notificação
         $notificationTitle = 'Nova Visita Registrada';
-        $notificationMessage = "A visita para a propriedade com referencia: '{$visit->propertie->reference}' foi registrada.";
+        $notificationMessage = "A visita para a propriedade com referencia: {$visit->propertie->reference} foi registrada.";
 
         // Enviar a notificação para o proprietário
             Notification::make()
