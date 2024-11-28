@@ -45,7 +45,7 @@ class DistritoResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('municipio.name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('name_distrito')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('bairro')
                     ->searchable(),

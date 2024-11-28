@@ -13,7 +13,7 @@ class Municipio extends Model
         'provincia_id',
      ];
     public function distrito() {
-        return $this->hasMany(distrito::class);
+        return $this->hasMany(Distrito::class);
     }
 
     public function provincia() {
