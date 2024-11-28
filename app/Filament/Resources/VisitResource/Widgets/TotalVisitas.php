@@ -20,7 +20,7 @@ class TotalVisitas extends BaseWidget
         $totalPropiedades = Propertie::query()->count();
         $destquePropiedades = Propertie::query()->where('destaque', 1)->count();
         $publicadoPropiedades = Propertie::query()->where('publish', 1)->count();
-        $NpublicadoPropiedades = Propertie::query()->where('publish', 0)->count();
+        $npublicadoPropiedades = Propertie::query()->where('publish', 0)->count();
         $rendaPropiedades = Propertie::query()->where('business_id', 1)->count();
 
 
@@ -40,23 +40,23 @@ class TotalVisitas extends BaseWidget
             ->description($rendaPropiedades > 100 ? 'Crescimento!' : 'Estável')
             ->descriptionIcon('heroicon-s-chart-bar'), // Ícone de gráfico
 
-            Stat::make('Propiedade em Destque', $destquePropiedades)
+            Stat::make('Propiedades em Destque', $destquePropiedades)
             ->color('success') // Verde
             ->icon('heroicon-o-home-modern') // Ícone de usuários
             ->description($destquePropiedades > 100 ? 'Crescimento!' : 'Estável')
             ->descriptionIcon('heroicon-s-chart-bar'), // Ícone de gráfico
 
-            Stat::make('Propiedade Publicadas', $publicadoPropiedades)
+            Stat::make('Propiedades Publicadas', $publicadoPropiedades)
             ->color('success') // Verde
             ->icon('heroicon-o-home-modern') // Ícone de usuários
             ->description($publicadoPropiedades > 100 ? 'Crescimento!' : 'Estável')
             ->descriptionIcon('heroicon-s-chart-bar'), // Ícone de gráfico
 
-            Stat::make('heroicon-o-home-modern', $NpublicadoPropiedades)
-            ->color($NpublicadoPropiedades > 0 ? 'warning' : 'success') // Laranja se > 0
-            ->icon('heroicon-o-user') // Ícone de remoção de usuário
-                ->description($NpublicadoPropiedades > 0 ? 'Precisa de verificação' : 'Tudo OK')
-                ->descriptionIcon($NpublicadoPropiedades > 0 ? 'heroicon-s-information-circle' : 'heroicon-s-check-circle'),
+            Stat::make('Propiedades não Publicadas', $npublicadoPropiedades)
+            ->color($npublicadoPropiedades > 0 ? 'warning' : 'success') // Laranja se > 0
+            ->icon('heroicon-o-home-modern') // Ícone de remoção de usuário
+                ->description($npublicadoPropiedades > 0 ? 'Precisa de verificação' : 'Tudo OK')
+                ->descriptionIcon($npublicadoPropiedades > 0 ? 'heroicon-s-information-circle' : 'heroicon-s-check-circle'),
 
 
             Stat::make('Visitas Abertas', $visitasAbertas)
