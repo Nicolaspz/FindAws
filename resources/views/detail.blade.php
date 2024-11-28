@@ -185,6 +185,7 @@
   @section('javascript')
 
   <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API&callback=initMap" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
 <script>
 
 $(document).ready(function() {
@@ -217,7 +218,10 @@ $(document).ready(function() {
             });
         }
 
+Inputmask("999999999").mask(document.getElementById("phone"));
 
+    // Garantir que a data da visita não seja no passado
+document.getElementById("data_vista").setAttribute("min", new Date().toISOString().split("T")[0]);
 
 </script>
 

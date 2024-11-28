@@ -182,9 +182,9 @@ class Controller extends BaseController
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
             ->get();
-        $tipologies = Tipologies::all();
-        $propertie_Type = propertyTypes::all();
-        return view('layouts.sobre', compact('properties_destaque', 'tipologies', 'propertie_Type', 'visitCounts'));
+            $tipologies = Tipologies::all();
+            $propertie_Type = propertyTypes::all();
+            return view('layouts.sobre', compact('properties_destaque', 'tipologies', 'propertie_Type', 'visitCounts'));
     }
 
     public function contacto()
@@ -715,15 +715,7 @@ public function submitVisit(Request $request)
     $visit->data_vista = $validated['data_vista'];
     $visit->properties_id = $validated['properties_id'];
     $visit->save();
-    /*if($visit){
-        Notification::make()
-        ->title('Pedido de Visita')
-        ->body('Um novo pedido de visita enviado com sucesso.')
-        ->success() // Define o tipo da notificação como sucesso
-        ->sendToUsers(User::all());
-    }*/
-
-    return redirect()->to(url()->previous() . '#property_details')->with('success', 'Visita agendada com sucesso! aguarde o feedback  do nosso agete');
+    return redirect()->to(url()->previous() . '#property_details')->with('success', 'Visita agendada com sucesso! aguarde o feedback  do nosso agente');
 
 }
 
