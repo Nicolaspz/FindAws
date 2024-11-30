@@ -32,7 +32,7 @@
               </div>
               <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
                 <span class="d-inline-block text-black mb-0 caption-text">Preço</span>
-                <strong class="d-block">{{$propertie->price}}.00Kz</strong>
+                <strong class="d-block">{{ number_format($propertie->price, 2) }} Kz </strong>
               </div>
 
             </div>

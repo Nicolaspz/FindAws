@@ -28,6 +28,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Auth;
+use Filament\Support\RawJs;
 
 
 class PropertieResource extends Resource {
@@ -99,9 +100,10 @@ class PropertieResource extends Resource {
 
 
                 Forms\Components\TextInput::make('price')
-                    ->numeric()
-                    ->prefix('Kz')
-                    ->label("Preço"),
+                        ->mask(RawJs::make('$money($input)'))
+                        ->stripCharacters(',')
+                        ->numeric()
+                        ->label("Preço"),
                 Forms\Components\TextInput::make('title')
                     ->maxLength(255)
                     ->label("Titulo da Propriedade"),

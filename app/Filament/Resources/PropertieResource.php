@@ -23,6 +23,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Support\RawJs;
 
 class PropertieResource extends Resource
 {
@@ -64,22 +65,22 @@ class PropertieResource extends Resource
                     Select::make('provinces_id') // Campo para Província
                     ->options(fn() => Province::pluck('name', 'id'))
                     ->required()
-                        ->reactive()
-                        ->label('Província')
-                        ->afterStateUpdated(fn(callable $set) => $set('municipios_id', null)),
+                    ->reactive()
+                    ->label('Província')
+                    ->afterStateUpdated(fn(callable $set) => $set('municipios_id', null)),
 
                     Select::make('municipios_id') // Campo para Município
-                    ->options(fn(Get $get) => Municipio::where('provincia_id', $get('provinces_id'))->pluck('name', 'id'))
-                    ->required()
+                        ->options(fn(Get $get) => Municipio::where('provincia_id', $get('provinces_id'))->pluck('name', 'id'))
+                        ->required()
                         ->reactive()
                         ->label('Município')
                         ->afterStateUpdated(fn(callable $set) => $set('distritos_id', null)),
 
                     Select::make('distritos_id') // Campo para Distrito
-                    ->options(fn(Get $get) => Distrito::where('municipio_id', $get('municipios_id'))->pluck('name', 'id'))
-                    ->required()
+                        ->options(fn(Get $get) => Distrito::where('municipio_id', $get('municipios_id'))->pluck('name', 'id'))
+                        ->required()
                         ->label('Distrito'),
-                        Select::make('tipe_energies_id')
+                    Select::make('tipe_energies_id')
                         ->label('Tipo de Energia')
                         ->relationship('tipe_energies', 'name')
                         ->required(),
@@ -94,33 +95,31 @@ class PropertieResource extends Resource
                     Section::make('Informações da Propriedade')->columns(3)->columnSpan(2)->schema([
                         
                         
-                        Forms\Components\TextInput::make('price')
+                    Forms\Components\TextInput::make('price')
+                            ->mask(RawJs::make('$money($input)'))
+                            ->stripCharacters(',')
                             ->numeric()
-                            ->prefix('Kz')
                             ->label("Preço"),
-                            Forms\Components\TextInput::make('title')
+                    Forms\Components\TextInput::make('title')
                             ->maxLength(255)
                             ->label("Titulo da Propriedade"),
-                //Forms\Components\TextInput::make('lng')
-                // ->numeric(),
+               
 
-                //Forms\Components\TextInput::make('lat')
-                // ->numeric(),
 
-                Forms\Components\Textarea::make('description')
-                    ->maxLength(65535)
-                    ->label("Preço")
-                    ->label("Descrição"),
-                        Forms\Components\Textarea::make('abstract')
+                    Forms\Components\Textarea::make('description')
+                            ->maxLength(65535)
+                            ->label("Descrição"),
+                    Forms\Components\Textarea::make('abstract')
                             ->maxLength(65535)
                             ->label("Mais informações"),
                         
                         
-                        Forms\Components\TextInput::make('area')
+                    Forms\Components\TextInput::make('area')
                         ->label("Área")
                         ->numeric(),
-                        Forms\Components\TextInput::make('ano_construcao'),
-                        Forms\Components\TextInput::make('quarto')
+
+                    Forms\Components\TextInput::make('ano_construcao'),
+                    Forms\Components\TextInput::make('quarto')
                         ->label("Qtd Quarto"),
                         Forms\Components\TextInput::make('banheiro')
                             ->numeric()
