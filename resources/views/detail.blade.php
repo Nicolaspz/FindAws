@@ -12,9 +12,11 @@
         <div class="col-lg-8">
           <div>
             <div class="slide-one-item home-slider owl-carousel">
-              <div><img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Image" class="img-fluid"></div>
+             {{--
+                <div><img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Image" class="img-fluid"></div>
               @foreach ($images as $image)
               <div>
+             --}} 
                 <div><img src="{{ Storage::url($image->url) }}" alt="Image" class="img-fluid"></div>
               </div>
               @endforeach
