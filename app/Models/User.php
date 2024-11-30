@@ -12,10 +12,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PhpParser\Builder\Property;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable  implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    
 
     const ROLE_USER = 'ADMIN';
     const ROLE_COLABORATE = 'COLABORATE';

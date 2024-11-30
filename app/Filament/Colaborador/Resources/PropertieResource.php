@@ -33,7 +33,8 @@ use Illuminate\Support\Facades\Auth;
 class PropertieResource extends Resource {
     protected static ?string $model = Propertie::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
+    protected static ?string $navigationLabel = 'Propriedades';
 
     public static function form( Form $form ): Form {
         return $form
@@ -259,7 +260,7 @@ class PropertieResource extends Resource {
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->whereHas('user', function ($query) {
+        return parent::getEloquentQuery()->whereHas('users', function ($query) {
             $query->where('id', Auth::user()->id);
         });
     }

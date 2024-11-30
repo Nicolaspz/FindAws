@@ -11,7 +11,7 @@ return [
 
     'preload_permissions' => true,
 
-    'navigation_section_group' => 'Settings',
+    'navigation_section_group' => 'filament-spatie-roles-permissions::filament-spatie.section.roles_and_permissions', // Default uses language constant
 
     'team_model' => \App\Models\Team::class,
 
@@ -23,6 +23,36 @@ return [
     'should_register_on_navigation' => [
         'permissions' => true,
         'roles' => true,
+    ],
+
+    /*
+     * Set as true to use simple modal resource.
+     */
+    'should_use_simple_modal_resource' => [
+        'permissions' => false,
+        'roles' => false,
+    ],
+
+    /*
+     * Set as true to remove empty state actions.
+     */
+    'should_remove_empty_state_actions' => [
+        'permissions' => false,
+        'roles' => false,
+    ],
+
+    /**
+     * Set to true to redirect to the resource index instead of the view
+     */
+    'should_redirect_to_index' => [
+        'permissions' => [
+            'after_create' => false,
+            'after_edit' => false
+        ],
+        'roles' => [
+            'after_create' => false,
+            'after_edit' => false
+        ],
     ],
 
     /*
@@ -48,7 +78,10 @@ return [
         ],
     ],
 
-    'default_guard_name' => 'web',
+    'default_guard_name' => null,
+
+    // if false guard option will not be show on screen. You should set a default_guard_name in this case
+    'should_show_guard' => true,
 
     'model_filter_key' => 'return \'%\'.$value;', // Eg: 'return \'%\'.$key.'\%\';'
 
