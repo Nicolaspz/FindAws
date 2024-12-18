@@ -3,10 +3,22 @@
   <head>
     <title>@yield('title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')</title>
     <meta charset="utf-8">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3XVXKJQVK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W3XVXKJQVK');
+</script>
+
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Venda e arrendamento de casas, apartamentos, salões de festas, e armazéns em Angola. Confira as melhores ofertas no MeuKubiku.">
-    <meta name="keywords" content="Venda de Casas, Arrenda de casas, Arrendamentos, casas Angola, Imobiliarias Angola, Meu kubico, MeuKubiku, MeuKubiko, Apartamentos, Salão de festas, Armazéns">
+    <meta name="keywords" content="Venda de Casas, Arrenda de casas, Arrendamentos, casas Angola, Imobiliarias Angola, Meu kubico, MeuKubiku, MeuKubiko, Apartamentos, Salão de festas, Armazéns,meu cubicu">
     <!-- Restante do seu código -->
     <!-- Meta Description -->
     <meta name="description" content="@yield('description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku, sua plataforma de confiança para casas e escritórios.')">
