@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <link rel="icon" type="image/x-icon" href="{{ asset('images/logo1.ico') }}">
     <title>@yield('title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')</title>
     <meta charset="utf-8">
     
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W3XVXKJQVK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3XVXKJQVK"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-W3XVXKJQVK');
-</script>
-
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Venda e arrendamento de casas, apartamentos, salões de festas, e armazéns em Angola. Confira as melhores ofertas no MeuKubiku.">
-    <meta name="keywords" content="Venda de Casas, Arrenda de casas, Arrendamentos, casas Angola, Imobiliarias Angola, Meu kubico, MeuKubiku, MeuKubiko, Apartamentos, Salão de festas, Armazéns,meu cubicu">
-    <!-- Restante do seu código -->
-    <!-- Meta Description -->
-    <meta name="description" content="@yield('description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku, sua plataforma de confiança para casas e escritórios.')">
-
-    <!-- Meta Keywords -->
-    <meta name="keywords" content="@yield('keywords', 'Meu Kubiku, imóveis, casas, escritórios, venda, arrendamento, alugar, imobiliária')">
-
-    <!-- Open Graph Metadata -->
-    <meta property="og:title" content="@yield('og_title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')">
-    <meta property="og:description" content="@yield('og_description', 'Encontre as melhores opções de casas e escritórios no Meu Kubiku. Veja mais detalhes e encontre o imóvel ideal para você.')">
-    <meta property="og:image" content="@yield('og_image', asset('frame/images/default-image.jpg'))">
-    <meta property="og:url" content="@yield('og_url', url()->current())">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Metadata -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('twitter_title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')">
-    <meta name="twitter:description" content="@yield('twitter_description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku.')">
-    <meta name="twitter:image" content="@yield('twitter_image', asset('frame/images/default-image.jpg'))">
+        gtag('config', 'G-W3XVXKJQVK');
+      </script>
 
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
-    <link rel="stylesheet" href="{{ asset('frame/fonts/icomoon/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/mediaelementplayer.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/fonts/flaticon/font/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/fl-bigmug-line.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/aos.css') }}">
-    <link rel="stylesheet" href="{{ asset('frame/css/style.css') }}">
-     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
 
-        .carousel-item {
-      height: 95vh; /* Altura ajustada */
-    }
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <meta name="description" content="Venda e arrendamento de casas, apartamentos, salões de festas, e armazéns em Angola. Confira as melhores ofertas no MeuKubiku.">
+          <meta name="keywords" content="Venda de Casas, Arrenda de casas, Arrendamentos, casas Angola, Imobiliarias Angola, Meu kubico, MeuKubiku, MeuKubiko, Apartamentos, Salão de festas, Armazéns,meu cubicu">
+          <!-- Restante do seu código -->
+          <!-- Meta Description -->
+          <meta name="description" content="@yield('description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku, sua plataforma de confiança para casas e escritórios.')">
 
-    .carousel-item img {
-      height: 100%; /* A imagem ocupa a altura total do item */
-      object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
-    }
+          <!-- Meta Keywords -->
+          <meta name="keywords" content="@yield('keywords', 'Meu Kubiku, imóveis, casas, escritórios, venda, arrendamento, alugar, imobiliária')">
 
-    @media (max-width: 768px) {
-      .carousel-item {
-        height: 300px; /* Altura menor para telas pequenas */
-      }
+          <!-- Open Graph Metadata -->
+          <meta property="og:title" content="@yield('og_title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')">
+          <meta property="og:description" content="@yield('og_description', 'Encontre as melhores opções de casas e escritórios no Meu Kubiku. Veja mais detalhes e encontre o imóvel ideal para você.')">
+          <meta property="og:image" content="@yield('og_image', asset('frame/images/default-image.jpg'))">
+          <meta property="og:url" content="@yield('og_url', url()->current())">
+          <meta property="og:type" content="website">
 
-      .carousel-item img {
-        height: 100%;
-        object-fit: cover;
-      }
-    }
+          <!-- Twitter Metadata -->
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:title" content="@yield('twitter_title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')">
+          <meta name="twitter:description" content="@yield('twitter_description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku.')">
+          <meta name="twitter:image" content="@yield('twitter_image', asset('frame/images/default-image.jpg'))">
+
+
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+          <link rel="stylesheet" href="{{ asset('frame/fonts/icomoon/style.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/bootstrap.min.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/magnific-popup.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/jquery-ui.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/owl.carousel.min.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/owl.theme.default.min.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/bootstrap-datepicker.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/mediaelementplayer.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/animate.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/fonts/flaticon/font/flaticon.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/fl-bigmug-line.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/aos.css') }}">
+          <link rel="stylesheet" href="{{ asset('frame/css/style.css') }}">
+          <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+          <style>
+
+                .carousel-item {
+              height: 95vh; /* Altura ajustada */
+            }
+
+            .carousel-item img {
+              height: 100%; /* A imagem ocupa a altura total do item */
+              object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
+            }
+
+            @media (max-width: 768px) {
+              .carousel-item {
+                height: 300px; /* Altura menor para telas pequenas */
+              }
+
+              .carousel-item img {
+                height: 100%;
+                object-fit: cover;
+              }
+            }
     </style>
 
   </head>
