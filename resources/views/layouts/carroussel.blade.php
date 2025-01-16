@@ -9,12 +9,12 @@
                 <div class="dentro">
                     <span class="d-inline-block {{ $property->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }} text-white px-3 mb-3 property-offer-type rounded">
                             <div class="offer-type-wrap">
-                                {{$property->business_name}}
-                              </div>
+                                 {{ $property->business_id === 1 ? __('messages.Vend1') : __('messages.Rend1') }}
+                            </div>
                         </span>
                         <h1 class="mb-2 pz14">{{ $property->title }}</h1>
                         <p class="mb-5"><strong class="h2  font-weight-bold">{{ number_format($property->price, 2) }}</strong></p>
-                        <p><a href="/detail/{{$property->id}}#property_details" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">Ver Detalhe</a></p>
+                        <p><a href="/detail/{{$property->id}}#property_details" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">{{__('messages.detalhe')}}</a></p>
                 </div>
           </div>
         </div>
@@ -39,4 +39,4 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
+</div>

@@ -20,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 /*Route::get( '/', function () {
 return view( 'site' );
 */
+Route::get('/set-locale/{locale}', function ($locale) {
+    if (in_array($locale, ['pt', 'en'])) { // Aceita apenas 'pt' ou 'en'
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('set.locale');
+
 Route::get( '/', [ Controller::class, 'index' ] );
 Route::get('/listview', [Controller::class, 'indexView']);
 Route::get( '/sobre', [ Controller::class, 'sobre' ] );

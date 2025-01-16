@@ -63,7 +63,7 @@ class TotalVisitas extends BaseWidget
                 ->color($visitasAbertas > 0 ? 'success' : 'danger') // Verde se > 0
                 ->icon('heroicon-o-eye') // Ícone de olho
                 ->description($visitasAbertas > 10 ? 'Alta demanda' : 'Baixa demanda') // Texto extra
-                ->descriptionIcon($visitasAbertas > 10 ? 'heroicon-s-trending-up' : 'heroicon-s-arrow-down'),
+                ->descriptionIcon($visitasAbertas > 10 ? 'heroicon-s-arrow-down' : 'heroicon-s-arrow-down'),
 
             // Estatística de Visitas Fechadas
             Stat::make('Visitas Fechadas', $visitasFechadas)

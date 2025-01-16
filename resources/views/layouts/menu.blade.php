@@ -1,3 +1,7 @@
+@php
+    $currentLocale = session('locale', 'pt');
+    $nextLocale = ($currentLocale == 'pt') ? 'en' : 'pt';
+@endphp
 <div class="site-mobile-menu">
     <div class="site-mobile-menu-header">
       <div class="site-mobile-menu-close mt-3">
@@ -22,19 +26,27 @@
 
               <ul class="site-menu js-clone-nav d-none d-lg-block ">
                 <li class="{{ request()->is('/') ? 'active' : '' }}">
-                  <a href="/">Início</a>
+                  <a href="/">{{__('messages.menu1')}}</a>
                 </li>
                 <li class="{{ request()->is('vendajs*') ? 'active' : '' }}">
-                  <a href="/vendajs#properties-container" class="ajax-l" id="rent-b">Comprar</a>
+                  <a href="/vendajs#properties-container" class="ajax-l" id="rent-b">{{__('messages.menu2')}}</a>
                 </li>
                 <li class="{{ request()->is('rendajs*') ? 'active' : '' }}">
-                  <a href="/rendajs#properties-container" class="ajax-l" id="sell-b" >Arrendar</a>
+                  <a href="/rendajs#properties-container" class="ajax-l" id="sell-b" >{{__('messages.menu3')}}</a>
                 </li>
                 
 
-                <li class="{{ request()->is('sobre') ? 'active' : '' }}"><a href="/sobre">Sobre Nôs</a></li>
-                <li class="{{ request()->is('contacto') ? 'active' : '' }}"><a href="contacto">Contacto</a></li>
-                <li class="{{ request()->is('contacto') ? 'active' : '' }}" ><a href="/colaborador/login">Login</a></li>
+                <li class="{{ request()->is('sobre') ? 'active' : '' }}"><a href="/sobre">{{__('messages.menu4')}}</a></li>
+                <li class="{{ request()->is('contacto') ? 'active' : '' }}"><a href="contacto">{{__('messages.menu5')}}</a></li>
+                <li class="{{ request()->is('login') ? 'active' : '' }}" ><a href="/colaborador/login">{{__('messages.menu6')}}</a></li>
+                <li class="" style="">
+                            
+                            <a class="text-white px-3 mb-3 property-offer-type rounded " href="{{ route('set.locale', ['locale' => $nextLocale]) }}" style="text-transform: uppercase;background-color: #8504a5;">
+                                {{ $currentLocale == 'en' ? 'PT' : 'ENG' }}
+                            </a>
+
+                 </li>
+                
               </ul>
             </nav>
           </div>

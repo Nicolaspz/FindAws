@@ -52,7 +52,7 @@
 
 
     <div class="conteudo-contacto">
-        <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/contacto.jpeg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
@@ -114,13 +114,13 @@
             <div class="p-4 mb-3 bg-white">
               <h3 class="h6 text-black mb-3 text-uppercase">Informação de Contacto</h3>
               <p class="mb-0 font-weight-bold">Endereço</p>
-              <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+              <p class="mb-4">Ingombotas, Rua Francisco Boa Vida, Edificio Palacio Real.</p>
 
               <p class="mb-0 font-weight-bold">Telefone</p>
-              <p class="mb-4"><a href="#">+244 949714096</a></p>
+              <p class="mb-4"><a href="#">+244 933828592 /+244 949714096</a></p>
 
               <p class="mb-0 font-weight-bold">Endereço de Email</p>
-              <p class="mb-0"><a href="#">nicolaspz14@hotmail.com</a></p>
+              <p class="mb-0"><a href="#">geral@meukubiku.com</a></p>
 
             </div>
 

@@ -27,20 +27,20 @@
           <div class="bg-white property-body border-bottom border-left border-right">
             <div class="row mb-5">
               <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
-                <span class="d-inline-block text-black mb-0 caption-text">Estado</span>
+                <span class="d-inline-block text-black mb-0 caption-text"> {{__('messages.d1')}} </span>
                 <strong class="d-block">{{$propertie->condition_name}}</strong>
               </div>
               <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
-                <span class="d-inline-block text-black mb-0 caption-text">Construção</span>
+                <span class="d-inline-block text-black mb-0 caption-text">{{__('messages.d2')}} </span>
                 <strong class="d-block">{{$propertie->ano_construcao}}</strong>
               </div>
               <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
-                <span class="d-inline-block text-black mb-0 caption-text">Preço</span>
+                <span class="d-inline-block text-black mb-0 caption-text">{{__('messages.d3')}} </span>
                 <strong class="d-block">{{ number_format($propertie->price, 2) }} Kz </strong>
               </div>
 
             </div>
-            <h2 class="h4 text-black">Mais Informações</h2>
+            <h2 class="h4 text-black">{{__('messages.d4')}} </h2>
             <p>{{$propertie->description}}</p>
             <p>{{$propertie->abstract}}</p>
             <hr>
@@ -49,7 +49,7 @@
                                 
                  @if(isset($visitCounts[$propertie->id]))
                     <span class="property-specs">
-                        Esta propriedade teve: {{ $visitCounts[$propertie->id] }} Visitas
+                        {{__('messages.d5')}}: {{ $visitCounts[$propertie->id] }}  {{__('messages.visita')}}
                     </span>
                 @endif
 
@@ -59,12 +59,12 @@
             <div class="row no-gutters mt-5">
 
                 <div class="col-md-12">
-                  <h5>Apresentação</h5>
+                  <h5> {{__('messages.d6')}}</h5>
                   <video style="width: 100%;" controls src="{{Storage::url($propertie->movie) }}"></video>
                 </div>
 
               <div class="col-12">
-                <h2 class="h4 text-black mb-3">Galleria</h2>
+                <h2 class="h4 text-black mb-3"> {{__('messages.d7')}}</h2>
               </div>
               @foreach ($images as $image)
               <div class="col-sm-6 col-md-4 col-lg-3">
@@ -83,25 +83,25 @@
         </div>
         <div class="col-lg-4">
           <div class="bg-white widget border rounded">
-            <h3 class="h4 text-black widget-title mb-3">Detalhes</h3>
+            <h3 class="h4 text-black widget-title mb-3"> {{__('messages.d8')}}</h3>
             <div class="col text-muted">
               <div class="flex-container">
                   <div class="flex-item">
-                      <p class="mb-2"><img src="{{asset('images/area.png')}}" class="property-details-icons"/> Área: {{ $propertie->area ? $propertie->area : 'N/A' }} m<sup>2</sup></p>
+                      <p class="mb-2"><img src="{{asset('images/area.png')}}" class="property-details-icons"/>  {{__('messages.d9')}}: {{ $propertie->area ? $propertie->area : 'N/A' }} m<sup>2</sup></p>
                   </div>
                   <div class="flex-item">
                       @if ($propertie->piscina)
-                      <p class="mb-2"><img  src="{{asset('images/piscina.png')}}" class="property-details-icons"/> Piscina</p>
+                      <p class="mb-2"><img  src="{{asset('images/piscina.png')}}" class="property-details-icons"/>  {{__('messages.d10')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->terraco)
-                      <p class="mb-2"><img src="{{asset('images/terraco.png')}}" class="property-details-icons"/> Terraço</p>
+                      <p class="mb-2"><img src="{{asset('images/terraco.png')}}" class="property-details-icons"/> {{__('messages.d11')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->jardin)
-                      <p class="mb-2"><img src="{{asset('images/jardim.png')}}" class="property-details-icons"/> Jardim</p>
+                      <p class="mb-2"><img src="{{asset('images/jardim.png')}}" class="property-details-icons"/> {{__('messages.d12')}}</p>
                       @endif
                   </div>
                   {{--<div class="flex-item">
@@ -111,37 +111,37 @@
                   </div>--}}
                   <div class="flex-item">
                       @if ($propertie->park > 0)
-                      <p class="mb-2"><img src="{{asset('images/garagem.png')}}" class="property-details-icons"/>{{$propertie->park }} Vagas de garagem</p>
+                      <p class="mb-2"><img src="{{asset('images/garagem.png')}}" class="property-details-icons"/>{{$propertie->park }} {{__('messages.d13')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->ar_condicionado)
-                      <p class="mb-2"><img src="{{asset('images/ar-condicionado.png')}}" class="property-details-icons"/> Ar-Condicionado</p>
+                      <p class="mb-2"><img src="{{asset('images/ar-condicionado.png')}}" class="property-details-icons"/> {{__('messages.d14')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->roupeiro_imbutido)
-                      <p class="mb-2"><img src="{{asset('images/armario-embutido.png')}}" class="property-details-icons"/> Armário Embutido</p>
+                      <p class="mb-2"><img src="{{asset('images/armario-embutido.png')}}" class="property-details-icons"/> {{__('messages.d15')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->elevator)
-                      <p class="mb-2"><img src="{{asset('images/elevador.png')}}" class="property-details-icons"/> Elevador</p>
+                      <p class="mb-2"><img src="{{asset('images/elevador.png')}}" class="property-details-icons"/> {{__('messages.d16')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->propiedade_acessivel)
-                      <p class="mb-2"><img src="{{asset('images/acessibilidade.png')}}" class="property-details-icons"/> Acessibilidade</p>
+                      <p class="mb-2"><img src="{{asset('images/acessibilidade.png')}}" class="property-details-icons"/> {{__('messages.d17')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->quarto)
-                      <p class="mb-2"><img src="{{asset('images/quartos.png')}}" class="property-details-icons"/>{{ $propertie->quarto }} Quartos</p>
+                      <p class="mb-2"><img src="{{asset('images/quartos.png')}}" class="property-details-icons"/>{{ $propertie->quarto }} {{__('messages.d18')}}</p>
                       @endif
                   </div>
                   <div class="flex-item">
                       @if ($propertie->banheiro)
-                      <p class="mb-2"><img  src="{{asset('images/wc.png')}}" class="property-details-icons"/>{{ $propertie->banheiro }} Casas de banho</p>
+                      <p class="mb-2"><img  src="{{asset('images/wc.png')}}" class="property-details-icons"/>{{ $propertie->banheiro }} {{__('messages.d19')}}</p>
                       @endif
                   </div>
               </div>
@@ -151,25 +151,25 @@
 
 
           <div class="bg-white widget border rounded">
-            <h3 class="h4 text-black widget-title mb-3">Contactar Agente</h3>
+            <h3 class="h4 text-black widget-title mb-3">{{__('messages.df1')}}</h3>
 
             <form id="ajaxForm" method="POST" action="{{ route('submitVisit') }}">
                 @csrf
                 <input type="hidden" id="properties_id" name="properties_id" value="{{ $propertie->id }}">
 
-                <label for="name">Nome:</label>
+                <label for="name">{{__('messages.df2')}}:</label>
                 <input type="text" id="name" name="name" class="form-control" required>
 
-                <label for="phone">Telefone:</label>
+                <label for="phone">{{__('messages.df3')}}:</label>
                 <input type="text" id="phone" name="phone" class="form-control" required>
 
-                <label for="info">Descrição:</label>
+                <label for="info">{{__('messages.df4')}}:</label>
                 <textarea id="info" name="info" class="form-control" required></textarea>
 
-                <label for="data_vista">Data da Visita:</label>
+                <label for="data_vista">{{__('messages.df5')}}:</label>
                 <input type="date" id="data_vista" name="data_vista" class="form-control mb-2" required>
 
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">{{__('messages.df6')}}</button>
             </form>
 
 
