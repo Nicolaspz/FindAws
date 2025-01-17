@@ -8,8 +8,8 @@ return [
 'menu6'=>'Entrar',
 'venda'=>'Venda',
 'renda'=>'Renda',
-'Rend1'=>'A Renda',
-'Vend1'=>'A Venda',
+'Rend1'=>'A Venda',
+'Vend1'=>'A Renda',
 'detalhe'=>'VER DETALHE',
 'form1'=>'Tipo de Negócio',
 'form2'=>'Tipo De Propriedade',
@@ -57,5 +57,65 @@ return [
 'df5'=>'Data da Visita',
 'df6'=>'Enviar',
 'visita'=>'Visita(s)',
+
+/// aqui
+'s'=>'Sobre MeuKubiku',
+'s1'=>'Nossa Empresa',
+'sStr'=>'Meu Kubiku',
+'s3'=>'é uma plataforma inovadora dedicada à venda e arrendamento de propriedades. Facilitamos a conexão entre proprietários, agentes imobiliários, e clientes que buscam adquirir ou arrendar diversos tipos de imóveis, como residências, espaços comerciais, armazéns, escritórios, salões de festa, quadras e complexos desportivos. Nosso objetivo é simplificar o processo de encontrar a propriedade ideal, oferecendo uma interface intuitiva e uma ampla gama de opções para atender às suas necessidades imobiliárias.',
+'s4'=>'Com',
+'s5'=>', você tem a liberdade de listar ou encontrar propriedades com segurança e eficiência, seja para compra ou arrendamento. Confiamos na tecnologia para criar um mercado acessível e dinâmico, onde todas as partes possam realizar negócios de maneira transparente e confiável.',
+'Sl'=>'Liderança',
+'Sl1'=>'Nossa equipe de liderança é composta por cofundadores dedicados e experientes, que trazem uma combinação única de habilidades para garantir o sucesso e a inovação do Meu Kubiku.',
+'Sl2'=>' Cofundador e Chief Executive Officer (CEO)',
+'Sl3'=>' Com uma visão estratégica e uma vasta experiência no setor tecnológico e negócios, Hélder Manuel lidera a equipe com foco na inovação e na expansão do Meu Kubiku no mercado imobiliário.',
+'Sl4'=>' Cofundador e Chief Operating Officer (COO)',
+'Sl5'=>' Saroj Gupta traz anos de experiência na gestão de operações e
+                       desenvolvimento de negócios, garantindo que cada aspecto do
+                       Meu Kubiku funcione perfeitamente para nossos clientes e parceiros. ',
+'Sl6'=>' Cofundador e Chief Technology Officer (CTO)',
+'Sl7'=>' Adão Nicolau é o responsável pela tecnologia no Meu Kubiku,
+                     garantindo que nossa plataforma seja robusta, segura e inovadora.
+                      Sua experiência em tecnologia de ponta assegura que nossos
+                     usuários tenham uma experiência superior e eficiente.',
+'SP'=>'Perguntas frequentes',
+'SP1'=>'Como faço para listar uma propriedade no Meu Kubiku?',
+'SP2'=>'Para listar uma propriedade, basta criar uma conta, acessar o painel
+                     do proprietário ou agente, e seguir as instruções para adicionar os
+                     detalhes da propriedade, incluindo fotos, descrição e preço.',
+'SP3'=>'É possível negociar diretamente com os proprietários?',
+'SP4'=>' Não, nossa plataforma não permite que os clientes entrem em contato direto com os proprietários ou agentes imobiliários para discutir detalhes e negociar valores, insto salvaguarda o interesse de cada um e aumenta o grau de segurança diminuindo os riscos de incumprimentos e burlas.',
+'SP5'=>'O Meu Kubiku cobra alguma taxa pelos serviços?',
+'SP6'=>' Oferecemos diferentes planos de listagem com taxas variáveis, dependendo dos serviços adicionais que você desejar, como destaque de propriedade ou marketing especializado.',
+'SP7'=>'Como posso agendar uma visita à propriedade?',
+'SP8'=>'Você pode agendar visitas diretamente pela plataforma, utilizando o sistema de agendamento para a propriedade desejado, selecionar uma data conveniente e preencher o respectivo formulário.',
+'SP9'=>' É seguro realizar transações imobiliárias através da plataforma?',
+'SP10'=>'Sim, o Meu Kubiku implementa medidas de segurança rigorosas para proteger tanto os compradores quanto os vendedores, garantindo que todas as transações sejam realizadas de forma segura e transparente.',
+
+//contact
+
+'C'=>'Contate-nos',
+'Cf1'=>'Nome Completo',
+'Cfl1'=>'Inserir nome completo',
+'Cf2'=>'Email',
+'Cfl2'=>'Inserir email',
+'Cf3'=>'Assunto',
+'Cfl3'=>'Inserir Assunto',
+'Cf4'=>'Mensagem',
+'Cfl4'=>'inserir a sua mensagem',
+'Cf5'=>'Informação de Contacto',
+'Cf6'=>'Endereço',
+'Cf7'=>'Telefone',
+'Cf8'=>'Endereço de Email',
+
+//footer
+
+'fot'=>'Sobre MeuKubiku',
+'fot1'=>'Bem-vindo à MeuKubiko, a sua plataforma online de referência para a disponibilização de propriedades imobiliárias em Angola.
+A nossa missão é simplificar e tornar mais seguro o processo de arrendamento, compra e venda de imóveis para todos os envolvidos!!',
+'fot2'=>'Navegação',
+'fot3'=>'Sobre',
+'fot4'=>'Parceiros',
+'fot5'=>'Este Sistema Foi Desenvolvido pela Empresa MeuKubiku',
 
 ];

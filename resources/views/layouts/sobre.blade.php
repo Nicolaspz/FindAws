@@ -55,7 +55,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
-            <h1 class="mb-2">Sobre MeuKubico</h1>
+            <h1 class="mb-2">{{__('messages.s')}}</h1>
           </div>
         </div>
       </div>
@@ -70,14 +70,14 @@
           </div>
           <div class="col-md-5 ml-auto"  data-aos="fade-up" data-aos-delay="200">
             <div class="site-section-title">
-              <h2>Nossa Empresa</h2>
+              <h2>{{__('messages.s1')}}</h2>
             </div>
             <p class="lead">
-                <strong>Meu Kubiku</strong> é uma plataforma inovadora dedicada à venda e arrendamento de propriedades. Facilitamos a conexão entre proprietários, agentes imobiliários, e clientes que buscam adquirir ou arrendar diversos tipos de imóveis, como residências, espaços comerciais, armazéns, escritórios, salões de festa, quadras e complexos desportivos. Nosso objetivo é simplificar o processo de encontrar a propriedade ideal, oferecendo uma interface intuitiva e uma ampla gama de opções para atender às suas necessidades imobiliárias.
+                <strong>{{__('messages.sStr')}}</strong>{{__('messages.s3')}}
 
             </p>
             <p>
-                Com <strong>Meu Kubiku</strong>, você tem a liberdade de listar ou encontrar propriedades com segurança e eficiência, seja para compra ou arrendamento. Confiamos na tecnologia para criar um mercado acessível e dinâmico, onde todas as partes possam realizar negócios de maneira transparente e confiável.
+                {{__('messages.s4')}} <strong>{{__('messages.sStr')}}</strong>{{__('messages.s5')}}
 
             </p>
             {{--<p><a href="#" class="btn btn-outline-primary rounded-0 py-2 px-5">Read More</a></p>--}}
@@ -91,8 +91,9 @@
       <div class="row mb-5 justify-content-center"  data-aos="fade-up" >
         <div class="col-md-7">
           <div class="site-section-title text-center">
-            <h2>Liderança</h2>
-            <p>Nossa equipe de liderança é composta por cofundadores dedicados e experientes, que trazem uma combinação única de habilidades para garantir o sucesso e a inovação do Meu Kubiku.
+            <h2>{{__('messages.Sl')}}</h2>
+            <p>
+              {{__('messages.Sl1')}}
             </p>
           </div>
         </div>
@@ -109,10 +110,10 @@
 
                 <h2 class="mb-2 font-weight-light text-black h4">Helder Manuel</h2>
                 <span class="d-block mb-3 text-white-opacity-05">
-                   Cofundador e Chief Executive Officer (CEO)
+                  {{__('messages.Sl2')}}
                 </span>
                 <p>
-                     Com uma visão estratégica e uma vasta experiência no setor tecnológico e negócios, Hélder Manuel lidera a equipe com foco na inovação e na expansão do Meu Kubiku no mercado imobiliário.
+                     {{__('messages.Sl3')}}
 
                 </p>
                 <p>
@@ -134,15 +135,9 @@
 
                 <h2 class="mb-2 font-weight-light text-black h4">Saroj Gupta</h2>
                 <span class="d-block mb-3 text-white-opacity-05">
-                    Cofundador e Chief Operating Officer (COO)
+                    {{__('messages.Sl4')}}
                 </span>
-                <p>
-                      Saroj Gupta traz anos de experiência na gestão de operações e
-                       desenvolvimento de negócios, garantindo que cada aspecto do
-                       Meu Kubiku funcione perfeitamente para nossos clientes e parceiros.
-
-
-                </p>
+                <p>{{__('messages.Sl5')}}</p>
                 <p>
                   <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
                   <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
@@ -164,13 +159,10 @@
                     Adão Nicolau
             </h2>
                 <span class="d-block mb-3 text-white-opacity-05">
-                    Cofundador e Chief Technology Officer (CTO)
+                  <p>{{__('messages.Sl6')}}</p>
                 </span>
                 <p>
-                    Adão Nicolau é o responsável pela tecnologia no Meu Kubiku,
-                     garantindo que nossa plataforma seja robusta, segura e inovadora.
-                      Sua experiência em tecnologia de ponta assegura que nossos
-                     usuários tenham uma experiência superior e eficiente.
+                   <p>{{__('messages.Sl7')}}</p>
                 </p>
                 <p>
                   <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
@@ -271,7 +263,7 @@
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center">
             <div class="site-section-title">
-              <h2>Perguntas frequentes</h2>
+              <h2><p>{{__('messages.SP')}}</p></h2>
             </div>
             <p></p>
           </div>
@@ -282,14 +274,12 @@
             <div class="accordion unit-8" id="accordion">
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">Como faço para listar uma propriedade no Meu Kubiku?<span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">{{__('messages.SP')}}<span class="icon"></span></a>
               </h3>
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
                   <p>
-                    Para listar uma propriedade, basta criar uma conta, acessar o painel
-                     do proprietário ou agente, e seguir as instruções para adicionar os
-                     detalhes da propriedade, incluindo fotos, descrição e preço.
+                    {{__('messages.SP2')}}
 
                   </p>
                 </div>
@@ -298,13 +288,12 @@
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">É possível negociar diretamente com os proprietários?<span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">{{__('messages.SP3')}}<span class="icon"></span></a>
               </h3>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
                   <p>
-                   Não, nossa plataforma não permite que os clientes entrem em contato direto com os proprietários ou agentes imobiliários para discutir detalhes e negociar valores, insto salvaguarda o interesse de cada um e aumenta o grau de segurança diminuindo os riscos de incumprimentos e burlas.
-
+                  {{__('messages.SP4')}}
                   </p>
                 </div>
               </div>
@@ -312,12 +301,12 @@
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">O Meu Kubiku cobra alguma taxa pelos serviços?  <span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">{{__('messages.SP5')}} <span class="icon"></span></a>
               </h3>
               <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
                   <p>
-                    Oferecemos diferentes planos de listagem com taxas variáveis, dependendo dos serviços adicionais que você desejar, como destaque de propriedade ou marketing especializado.
+                    {{__('messages.SP6')}}
 
                   </p>
                 </div>
@@ -326,25 +315,24 @@
 
             <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">Como posso agendar uma visita à propriedade?<span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">{{__('messages.SP7')}}<span class="icon"></span></a>
               </h3>
               <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
                   <p>
-                    Você pode agendar visitas diretamente pela plataforma, utilizando o sistema de agendamento para a propriedade desejado, selecionar uma data conveniente e preencher o respectivo formulário.
+                    {{__('messages.SP8')}}
                   </p>
                 </div>
               </div>
             </div> <!-- .accordion-item -->
              <div class="accordion-item">
               <h3 class="mb-0 heading">
-                <a class="btn-block" data-toggle="collapse" href="#collapseFive" role="button" aria-expanded="false" aria-controls="collapseFour"> É seguro realizar transações imobiliárias através da plataforma?<span class="icon"></span></a>
+                <a class="btn-block" data-toggle="collapse" href="#collapseFive" role="button" aria-expanded="false" aria-controls="collapseFour"> {{__('messages.SP9')}}<span class="icon"></span></a>
               </h3>
               <div id="collapseFive" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="body-text">
                   <p>
-                    Sim, o Meu Kubiku implementa medidas de segurança rigorosas para proteger tanto os compradores quanto os vendedores, garantindo que todas as transações sejam realizadas de forma segura e transparente.
-
+                   {{__('messages.SP10')}}
                   </p>
                 </div>
               </div>

@@ -379,6 +379,7 @@ a:hover {
     padding: 4em 0;
     background: #333333;
 }
+
 @media (min-width: 768px) {
     .site-footer {
         padding: 7em 0;

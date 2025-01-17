@@ -56,7 +56,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
-            <h1 class="mb-2">Contate-nos</h1>
+            <h1 class="mb-2"> {{__('messages.C')}} </h1>
           </div>
         </div>
       </div>
@@ -75,28 +75,28 @@
 
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Nome Completo</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="Full Name">
+                  <label class="font-weight-bold" for="fullname">{{__('messages.Cf1')}}</label>
+                  <input type="text" id="fullname" class="form-control" placeholder="{{__('messages.Cfl1')}}">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="email">Email</label>
-                  <input type="email" id="email" class="form-control" placeholder="Email Address">
+                  <label class="font-weight-bold" for="email">{{__('messages.Cf2')}}</label>
+                  <input type="email" id="email" class="form-control" placeholder="{{__('messages.Cfl2')}}">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="email">Assunto</label>
-                  <input type="text" id="subject" class="form-control" placeholder="Enter Subject">
+                  <label class="font-weight-bold" for="email">{{__('messages.Cf3')}}</label>
+                  <input type="text" id="subject" class="form-control" placeholder="{{__('messages.Cfl3')}}">
                 </div>
               </div>
 
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="message">Mensagem</label>
-                  <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us"></textarea>
+                  <label class="font-weight-bold" for="message">{{__('messages.Cf4')}}</label>
+                  <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="{{__('messages.Cfl4')}}"></textarea>
                 </div>
               </div>
 
@@ -112,14 +112,14 @@
 
           <div class="col-lg-4">
             <div class="p-4 mb-3 bg-white">
-              <h3 class="h6 text-black mb-3 text-uppercase">Informação de Contacto</h3>
-              <p class="mb-0 font-weight-bold">Endereço</p>
+              <h3 class="h6 text-black mb-3 text-uppercase">{{__('messages.Cf5')}}</h3>
+              <p class="mb-0 font-weight-bold">E{{__('messages.Cf6')}}</p>
               <p class="mb-4">Ingombotas, Rua Francisco Boa Vida, Edificio Palacio Real.</p>
 
-              <p class="mb-0 font-weight-bold">Telefone</p>
+              <p class="mb-0 font-weight-bold">{{__('messages.Cf7')}}</p>
               <p class="mb-4"><a href="#">+244 933828592 /+244 949714096</a></p>
 
-              <p class="mb-0 font-weight-bold">Endereço de Email</p>
+              <p class="mb-0 font-weight-bold">{{__('messages.Cf8')}}</p>
               <p class="mb-0"><a href="#">geral@meukubiku.com</a></p>
 
             </div>
