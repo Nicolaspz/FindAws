@@ -17,6 +17,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Facades\Filament;
 
 class ColaboradorPanelProvider extends PanelProvider {
     public function panel( Panel $panel ): Panel {
@@ -56,4 +57,15 @@ class ColaboradorPanelProvider extends PanelProvider {
             Authenticate::class,
         ] );
     }
+
+    public function boot()
+{
+    Filament::serving(function () {
+        Filament::registerRenderHook('head.end', function () {
+            return <<<'HTML'
+                <link rel="icon" type="image/x-icon" href="{{ asset('images/logo1.ico') }}">
+            HTML;
+        });
+    });
+}
 }

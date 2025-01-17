@@ -466,7 +466,7 @@ a:hover {
     padding-left: 0;
 }
 .site-navbar .site-navigation .site-menu .active > a {
-    color: #360143;
+    color: #fff;
 }
 .site-navbar .site-navigation .site-menu a {
     text-decoration: none !important;
