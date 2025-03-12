@@ -161,8 +161,7 @@ class PropertieResource extends Resource
                         Forms\Components\TextInput::make('order')
                             ->numeric(),
 			Forms\Components\Toggle::make('publish')
-            ->required()
-            ->label("Publicado"),
+            ->label("Publicar"),
 
                         FileUpload::make('technical_details_img')
                             ->disk('public')

@@ -67,11 +67,15 @@
                 <h2 class="h4 text-black mb-3"> {{__('messages.d7')}}</h2>
               </div>
               @foreach ($images as $image)
-              <div class="col-sm-6 col-md-4 col-lg-3">
-                <a href="{{ Storage::url($image->url) }}" class="image-popup gal-item">
-                  <img src="{{ Storage::url($image->url) }}" alt="Image" class="img-fluid"></a>
-              </div>
+                @foreach ($image->url as $imgUrl)  {{-- Percorre cada URL dentro do array --}}
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="{{ Storage::url($imgUrl) }}" class="image-popup gal-item">
+                            <img src="{{ Storage::url($imgUrl) }}" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                @endforeach
               @endforeach
+
               <div class="col-sm-6 col-md-4 col-lg-3">
                 <a href="{{ Storage::url($propertie->technical_details_img) }}" class="image-popup gal-item">
                   <img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Image" class="img-fluid"></a>

@@ -801,10 +801,6 @@ class Controller extends BaseController
     }
 
 
-
-
-
-
 public function submitVisit(Request $request)
 {
     $validated = $request->validate([

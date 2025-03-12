@@ -22,6 +22,8 @@ class ImagesRelationManager extends RelationManager
             ->schema([
             FileUpload::make('url')
             ->disk('public')
+            ->label("Imagem")
+            ->multiple()
             ->directory('destaque'),
             Forms\Components\TextInput::make('title'),
 
@@ -31,7 +33,7 @@ class ImagesRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('url')
+            ->recordTitleAttribute('Imagens da propiedade')
             ->columns([
             ImageColumn::make('url')
             ->label("Imagem")
