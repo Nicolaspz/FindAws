@@ -32,7 +32,7 @@ class DistritoResource extends Resource
                 ->relationship('municipio','name')
                 ->required(),
 
-                Forms\Components\TextInput::make('name_distrito')
+                Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
                 
