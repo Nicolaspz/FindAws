@@ -47,6 +47,10 @@ class PropertieResource extends Resource {
                         ->relationship('business', 'name')
                         ->required(),
 
+                        Forms\Components\TextInput::make('contact_resp')
+                     ->label('Seu Contacto Visistar o imóvel')
+                       ->required(),
+
                     Select::make('tipologies_id')
                     ->label('Tipologia')
                         ->relationship('tipologies', 'name')
@@ -57,15 +61,17 @@ class PropertieResource extends Resource {
                         ->relationship('property_types', 'name')
                         ->required(),
 
-                    Select::make('conditions_id')
-                    ->label('Estado da Propriedade')
-                    ->relationship('conditions', 'name')
-                    ->required(),
+                   
                 ])
                     ->columns(2), // Define o layout como 2 colunas
 
 
                 Forms\Components\Group::make([
+
+                     Select::make('conditions_id')
+                    ->label('Estado da Propriedade')
+                    ->relationship('conditions', 'name')
+                    ->required(),
                     Select::make('provinces_id') // Campo para Província
                     ->options(fn() => Province::pluck('name', 'id'))
                     ->required()

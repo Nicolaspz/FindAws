@@ -31,7 +31,7 @@ class Propertie extends Model
         'reference',
         'business_id',
         'tipologies_id',
-
+        'contact_resp',
         'property_types_id',
         'price',
         'conditions_id',
@@ -80,7 +80,7 @@ class Propertie extends Model
             'reference'                 => "required|size:6",
             'business_id'               => 'exists:businesses,id',
             'tipologies_id'               => 'exists:tipologies,id',
-
+            
             'property_types_id'           => 'exists:property_types,id',
             'price'                     => 'integer|nullable|between:1,99999999',
             'conditions_id'              => 'exists:conditions,id',

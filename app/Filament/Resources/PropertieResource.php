@@ -42,6 +42,10 @@ class PropertieResource extends Resource
                     ->label('Negócio')
                     ->relationship('business', 'name')
                     ->required(),
+                    
+                     Forms\Components\TextInput::make('contact_resp')
+                     ->label('nome/nº do responsável')
+                       ->required(),
 
                     Select::make('tipologies_id')
                     ->label('Tipologia')
@@ -53,15 +57,17 @@ class PropertieResource extends Resource
                     ->relationship('property_types', 'name')
                     ->required(),
 
-                    Select::make('conditions_id')
-                    ->label('Estado da Propriedade')
-                    ->relationship('conditions', 'name')
-                    ->required(),
+                   
                 ])
                 ->columns(2), // Define o layout como 2 colunas
 
 
                 Forms\Components\Group::make([
+
+                     Select::make('conditions_id')
+                    ->label('Estado da Propriedade')
+                    ->relationship('conditions', 'name')
+                    ->required(),
                     Select::make('provinces_id') // Campo para Província
                     ->options(fn() => Province::pluck('name', 'id'))
                     ->required()
@@ -157,11 +163,10 @@ class PropertieResource extends Resource
                             ->numeric(),
                     ]),
                     Section::make('Destaques e Mídia')->columns(2)->columnSpan(2)->schema([
-                        Forms\Components\DatePicker::make('visible_until'),
-                        Forms\Components\TextInput::make('order')
-                            ->numeric(),
-			Forms\Components\Toggle::make('publish')
-            ->label("Publicar"),
+                       
+                      
+                            Forms\Components\Toggle::make('publish')
+                        ->label("Publicar"),
 
                         FileUpload::make('technical_details_img')
                             ->disk('public')
@@ -183,6 +188,9 @@ class PropertieResource extends Resource
                 	    ->label("Imagem")
                         ->disk('public'),
                 Tables\Columns\TextColumn::make('reference')
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('contact_resp')
+                    ->label("Responsável")
                     ->searchable(),
                 Tables\Columns\TextColumn::make('business.name')
                     ->sortable()
