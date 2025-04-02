@@ -230,6 +230,10 @@ class PropertieResource extends Resource
                     ->sortable()
                     ->label("Usuário")
                     ->toggleable(isToggledHiddenByDefault: true),
+                    Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
+                    ->label("Data Listagem")
+                    ->toggleable(isToggledHiddenByDefault: true),
 
 
             ])

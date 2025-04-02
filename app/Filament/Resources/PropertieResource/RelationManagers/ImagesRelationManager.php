@@ -24,7 +24,10 @@ class ImagesRelationManager extends RelationManager
             ->disk('public')
             ->label("Imagem")
             ->multiple()
-            ->directory('destaque'),
+            ->directory('destaque')
+            ->enableReordering()
+            ->enableDownload()
+            ->enableOpen(),
             Forms\Components\TextInput::make('title'),
 
             ]);
