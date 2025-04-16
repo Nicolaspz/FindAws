@@ -71,7 +71,7 @@
               @endif
               <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
                 <span class="d-inline-block text-black mb-0 caption-text">{{__('messages.d3')}} </span>
-                <strong class="d-block">{{ number_format($propertie->price, 2) }} {{$propertie->moeda }} 
+                <strong class="d-block">{{ number_format($propertie->price, 2) }} {{$propertie->moeda}} 
                   @if($propertie->negociavel === 1)
                            <span class="mb-2" style="color:#8504a5;background: #fff ; border-radius: 4px; padding: 5px" > {{__('messages.fot7')}} </span>
                         

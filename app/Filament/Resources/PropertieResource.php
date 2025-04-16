@@ -106,10 +106,10 @@ class PropertieResource extends Resource
                             ->stripCharacters(',')
                             ->numeric()
                             ->label("Preço"),
-                            Select::make('Moeda')
+                            Select::make('moeda')
                                 ->options([
-                                    'Kwanza' => 'Kz',
-                                    'Dollar' => 'USD',
+                                    'Kz' => 'Kz',
+                                    'USD' => 'USD',
                                 ]),
                     Forms\Components\TextInput::make('title')
                             ->maxLength(255)

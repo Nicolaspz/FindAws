@@ -29,7 +29,7 @@
                             </div>
                       </span>
                         <h1 class="mb-2 pz14">{{ $property->title }}</h1>
-                        <p class="mb-2" ><strong class="h2  font-weight-bold">{{ number_format($property->price, 2) }} Kz</strong></p>
+                        <p class="mb-2" ><strong class="h2  font-weight-bold">{{ number_format($property->price, 2) }} {{$property->moeda}}</strong></p>
                         @if($property->negociavel === 1)
                            <span class="mb-2" style="color:#8504a5;background: #fff ; border-radius: 4px; padding: 5px" > {{__('messages.fot7')}} </span>
                         
