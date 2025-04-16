@@ -13,7 +13,27 @@
                     <div class="property-entry h-100">
                         <a href="/detail/{{$property->id}}#property_details" class="property-thumbnail">
                             <div class="offer-type-wrap">
-                                <span class="offer-type {{ $property->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }}">{{ $property->business_id === 1 ? __('messages.Vend1') : __('messages.Rend1') }}</span>
+                                <span class="offer-type {{ $property->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }}">
+
+                                    @switch($property->business_id)
+                                        @case(1)
+                                            {{ __('messages.Vend1') }}
+                                            @break
+
+                                        @case(2)
+                                            {{ __('messages.Rend1') }}
+                                            @break
+
+                                        @case(3)
+                                            {{ __('messages.Vend1') }} e {{ __('messages.Rend1') }}
+                                            @break
+
+                                        @case(4)
+                                           {{ __('messages.fot6') }} 
+                                            @break
+                                    @endswitch
+
+                                </span>
                             </div>
                             <img src="{{ Storage::url($property->technical_details_img) }}" alt="Image" class="img-fluid">
                         </a>

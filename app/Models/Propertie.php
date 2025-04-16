@@ -68,7 +68,8 @@ class Propertie extends Model
         'the_project',
         'the_renders',
         'movie',
-        'created_at'
+        'created_at',
+        'moeda'
     ];
     protected $casts = [
         'visible_until' => 'datetime:Y-m-d'
@@ -115,7 +116,7 @@ class Propertie extends Model
             'technical_details_img'     => 'mimes:jpg,jpeg,png',
             'the_project'               => 'mimes:pdf,zip',
             'the_renders'               => 'mimes:pdf,zip',
-            'movie'                     => 'mimes:mp4,webp',
+            'movie'                     => 'nullable|file|mimetypes:video/mp4,video/webm,video/ogg,video/quicktime|max:102400',
         ];
     }
     public function getTechnicalDetailsImgUrlAttribute()

@@ -13,7 +13,37 @@
           <div>
             <div class="slide-one-item home-slider owl-carousel">
              
-                <div><img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Image" class="img-fluid"></div>
+                <div>
+                  <img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Image" class="d-block">
+
+                  <div class="carousel-caption d-none d-md-block"  style="top: 37%;">
+                  <div class="dentro">
+                        <span class="d-inline-block {{ $propertie->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }} text-white px-3 mb-3 property-offer-type rounded">
+                              <div class="offer-type-wrap">
+                                  @switch($propertie->business_id)
+                                          @case(1)
+                                              {{ __('messages.Vend1') }}
+                                              @break
+
+                                          @case(2)
+                                              {{ __('messages.Rend1') }}
+                                              @break
+
+                                          @case(3)
+                                              {{ __('messages.Vend1') }} e {{ __('messages.Rend1') }}
+                                              @break
+
+                                          @case(4)
+                                            {{ __('messages.fot6') }} 
+                                              @break
+                                      @endswitch
+                              </div>
+                        </span>
+                          
+                  </div>
+                  </div>
+
+                </div>
               {{--
                 @foreach ($images as $image)
               <div>
@@ -26,26 +56,37 @@
           </div>
           <div class="bg-white property-body border-bottom border-left border-right">
             <div class="row mb-5">
-              <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
-                <span class="d-inline-block text-black mb-0 caption-text"> {{__('messages.d1')}} </span>
-                <strong class="d-block">{{$propertie->condition_name}}</strong>
-              </div>
-              <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
-                <span class="d-inline-block text-black mb-0 caption-text">{{__('messages.d2')}} </span>
-                <strong class="d-block">{{$propertie->ano_construcao}}</strong>
-              </div>
+              @if($propertie->condition_name !== 'N/AP')
+                <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
+                    <span class="d-inline-block text-black mb-0 caption-text">{{ __('messages.d1') }}</span>
+                    <strong class="d-block">{{ $propertie->condition_name }}</strong>
+                </div>
+              @endif
+
+              @if(!is_null($propertie->ano_construcao))
+                  <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
+                      <span class="d-inline-block text-black mb-0 caption-text">{{ __('messages.d2') }}</span>
+                      <strong class="d-block">{{ $propertie->ano_construcao }}</strong>
+                  </div>
+              @endif
               <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">
                 <span class="d-inline-block text-black mb-0 caption-text">{{__('messages.d3')}} </span>
-                <strong class="d-block">{{ number_format($propertie->price, 2) }} Kz </strong>
+                <strong class="d-block">{{ number_format($propertie->price, 2) }} {{$propertie->moeda }} 
+                  @if($propertie->negociavel === 1)
+                           <span class="mb-2" style="color:#8504a5;background: #fff ; border-radius: 4px; padding: 5px" > {{__('messages.fot7')}} </span>
+                        
+                  @endif
+                </strong>
               </div>
 
             </div>
+            
             <h2 class="h4 text-black">{{__('messages.d4')}} </h2>
             <p>{{$propertie->description}}</p>
             <p>{{$propertie->abstract}}</p>
             <hr>
             <span class="property-icon icon-room"></span>{{$propertie->provincia_name}} - {{$propertie->municipio_name}}-{{$propertie->distrito_name}} - {{$propertie->cidade}}
-            <ul class="property-specs-wrap mb-3 mb-lg-0">
+            <ul class="property-specs-wrap mb-3 mb-lg-0 font-bold" style="color:#8504a5;">
                                 
                  @if(isset($visitCounts[$propertie->id]))
                     <span class="property-specs">

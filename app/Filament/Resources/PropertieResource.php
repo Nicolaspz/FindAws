@@ -106,6 +106,11 @@ class PropertieResource extends Resource
                             ->stripCharacters(',')
                             ->numeric()
                             ->label("Preço"),
+                            Select::make('Moeda')
+                                ->options([
+                                    'Kwanza' => 'Kz',
+                                    'Dollar' => 'USD',
+                                ]),
                     Forms\Components\TextInput::make('title')
                             ->maxLength(255)
                             ->label("Titulo da Propriedade"),
@@ -175,7 +180,11 @@ class PropertieResource extends Resource
                         Forms\Components\FileUpload::make('movie')
                             ->disk('public')
                             ->directory('videos')
-                    ->label("Vídeo de Apresentação"),
+                            ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg', 'video/quicktime'])
+                            
+                            ->hint('Formatos aceitos: mp4, webm, ogg, até 100MB')
+                            ->nullable() 
+                            ->label("Vídeo de Apresentação"),
                     ]),
             ]);
     }

@@ -10,6 +10,8 @@
                     <option value="">{{__('messages.placehoolder1')}}</option>
                     <option value="2">{{__('messages.venda')}}</option>
                     <option value="1">{{__('messages.renda')}}</option>
+                    <option value="3">{{__('messages.venda')}} e {{__('messages.renda')}} </option>
+                    <option value="4">{{__('messages.fot6')}}</option>
                   </select>
                 </div>
 

@@ -107,6 +107,7 @@ Our mission is to simplify and make the process of renting, buying, and selling 
 'fot3' => 'About',
 'fot4' => 'Partners',
 'fot5' => 'This System Was Developed by the Company MeuKubiku',
-
+'fot6'=>'daily',
+'fot7'=>'Negotiable',
 
 ];

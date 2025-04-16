@@ -51,7 +51,7 @@ class Controller extends BaseController
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name'
             );
-
+           // dd($baseQuery->get());
         // Consulta para $properties
         $properties = clone $baseQuery;
         $properties = $properties
@@ -104,7 +104,7 @@ class Controller extends BaseController
                 'municipios.name as municipio_name',
                 'provinces.name as provincia_name'
             );
-
+            //dd($baseQuery);
         // Consulta para $properties
         $properties = clone $baseQuery;
         $properties = $properties
@@ -645,6 +645,7 @@ class Controller extends BaseController
 
         )
          ->get();
+         //dd($properties);
         $baseQuery = DB::table('properties')
             ->leftJoin('users', 'properties.user_id', '=', 'users.id')
             ->leftJoin('businesses', 'properties.business_id', '=', 'businesses.id')
