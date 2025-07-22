@@ -78,37 +78,52 @@
                     </div>
                     
                     <!-- Seção de Compartilhamento Melhorada -->
-                    <div class="share-buttons mt-3 mb-3">
-                        <span class="share-text">{{ __('messages.share') }}:</span>
-                        
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->full()) }}&quote={{ urlencode($propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda) }}" 
-                           target="_blank" class="btn btn-sm btn-facebook" 
-                           onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
-                           <i class="fab fa-facebook-f"></i>
-                        </a>
-                        
-                        <a href="https://twitter.com/intent/tweet?text={{ urlencode($propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
-                           target="_blank" class="btn btn-sm btn-twitter" 
-                           onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
-                           <i class="fab fa-twitter"></i>
-                        </a>
-                        
-                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->full()) }}" 
-                           target="_blank" class="btn btn-sm btn-linkedin" 
-                           onclick="window.open(this.href, 'linkedin-share', 'width=600,height=500'); return false;">
-                           <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        
-                        <a href="https://api.whatsapp.com/send?text={{ urlencode($propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
-                           target="_blank" class="btn btn-sm btn-whatsapp" 
-                           onclick="window.open(this.href, 'whatsapp-share', 'width=600,height=500'); return false;">
-                           <i class="fab fa-whatsapp"></i>
-                        </a>
-                        
-                        <button onclick="copyToClipboard('{{ __('messages.link_copied') }}')" class="btn btn-sm btn-secondary">
-                            <i class="fas fa-link"></i> {{ __('messages.copy_link') }}
-                        </button>
-                    </div>
+                    @php
+                    $businessType = '';
+                    switch($propertie->business_id) {
+                        case 1: $businessType = __('messages.Vend1'); break;
+                        case 2: $businessType = __('messages.Rend1'); break;
+                        case 3: $businessType = __('messages.Vend1').' e '.__('messages.Rend1'); break;
+                        case 4: $businessType = __('messages.fot6'); break;
+                    }
+                    $shareTitle = $businessType.' - '.$propertie->title;
+                @endphp
+
+                <div class="share-buttons mt-3 mb-3">
+                    <span class="share-text">{{ __('messages.share') }}:</span>
+                    
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->full()) }}&quote={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda) }}" 
+                    target="_blank" class="btn btn-sm btn-facebook" 
+                    onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
+                    <i class="fab fa-facebook-f"></i>
+                    </a>
+                    
+                    <!-- Twitter -->
+                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
+                    target="_blank" class="btn btn-sm btn-twitter" 
+                    onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
+                    <i class="fab fa-twitter"></i>
+                    </a>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->full()) }}" 
+                    target="_blank" class="btn btn-sm btn-linkedin" 
+                    onclick="window.open(this.href, 'linkedin-share', 'width=600,height=500'); return false;">
+                    <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://api.whatsapp.com/send?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
+                    target="_blank" class="btn btn-sm btn-whatsapp" 
+                    onclick="window.open(this.href, 'whatsapp-share', 'width=600,height=500'); return false;">
+                    <i class="fab fa-whatsapp"></i>
+                    </a>
+                    
+                    <button onclick="copyToClipboard('{{ __('messages.link_copied') }}')" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-link"></i> {{ __('messages.copy_link') }}
+                    </button>
+                </div>
                     
                     <h2 class="h4 text-black">{{__('messages.d4')}} </h2>
                     <p>{{$propertie->description}}</p>

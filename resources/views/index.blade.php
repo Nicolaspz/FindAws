@@ -35,35 +35,83 @@
           <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
           <style>
 
-          .share-buttons {
-              display: flex;
-              align-items: center;
-              gap: 8px;
-          }
-          .share-text {
-              margin-right: 5px;
-              font-weight: bold;
-          }
-          .btn-sm {
-              padding: 0.25rem 0.5rem;
-              font-size: 0.875rem;
-          }
-          .btn-facebook {
-              background-color: #3b5998;
-              color: white;
-          }
-          .btn-twitter {
-              background-color: #1da1f2;
-              color: white;
-          }
-          .btn-linkedin {
-              background-color: #0077b5;
-              color: white;
-          }
-          .btn-whatsapp {
-              background-color: #25d366;
-              color: white;
-          }
+          /* Estilos para os botões de compartilhamento */
+        .share-container {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .share-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #343a40;
+        }
+        
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            min-width: 120px;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            opacity: 0.9;
+            color: white;
+        }
+        
+        .share-btn i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .btn-facebook { background-color: #1877f2; }
+        .btn-whatsapp { background-color: #25d366; }
+        .btn-instagram { 
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            color: white;
+        }
+        .btn-copylink { background-color: #6c757d; }
+        
+        /* Animação para feedback ao copiar link */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .share-alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            border-radius: 6px;
+            background-color: #28a745;
+            color: white;
+            font-weight: 500;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: fadeIn 0.3s ease;
+            display: none;
+        }
 
                 .carousel-item {
               height: 95vh; /* Altura ajustada */
