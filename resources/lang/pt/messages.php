@@ -119,5 +119,8 @@ A nossa missão é simplificar e tornar mais seguro o processo de arrendamento, 
 'fot5'=>'Este Sistema Foi Desenvolvido pela Empresa MeuKubiku',
 'fot6'=>'Diária',  
 'fot7'=>'Negociável',
+'share'=>'Partilhar',
+'copy_link'=>'Copiar',
+'link_copied'=>'Link copiado'
 
 ];

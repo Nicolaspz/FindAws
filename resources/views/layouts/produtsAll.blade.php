@@ -37,6 +37,7 @@
                             </div>
                             <img src="{{ Storage::url($property->technical_details_img) }}" alt="Image" class="img-fluid">
                         </a>
+
                         <div class="p-4 property-body">
                             @if ($property->destaque=== 1)
                                 <a href="/detail/{{$property->id}}#property_details" style="background: #8504a5;" class="property-favorite">
@@ -70,6 +71,7 @@
                             </ul>
                         </div>
                     </div>
+                    
                 </div>
                 @endforeach
             @else  {{-- Caso não haja propriedades, exibe a mensagem --}}

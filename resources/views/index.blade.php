@@ -2,44 +2,21 @@
 <html lang="en">
   <head>
       <link rel="icon" type="image/x-icon" href="{{ asset('images/logo1.ico') }}">
-    <title>@yield('title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')</title>
-    <meta charset="utf-8">
-    
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3XVXKJQVK"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-W3XVXKJQVK');
-      </script>
-
-
-
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-          <meta name="description" content="Venda e arrendamento de casas, apartamentos, salões de festas, e armazéns em Angola. Confira as melhores ofertas no MeuKubiku.">
-          <meta name="keywords" content="Venda de Casas, Arrenda de casas, Arrendamentos, casas Angola, Imobiliarias Angola, Meu kubico, MeuKubiku, MeuKubiko, Apartamentos, Salão de festas, Armazéns,meu cubicu">
-          <!-- Restante do seu código -->
-          <!-- Meta Description -->
-          <meta name="description" content="@yield('description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku, sua plataforma de confiança para casas e escritórios.')">
-
-          <!-- Meta Keywords -->
-          <meta name="keywords" content="@yield('keywords', 'Meu Kubiku, imóveis, casas, escritórios, venda, arrendamento, alugar, imobiliária')">
-
-          <!-- Open Graph Metadata -->
-          <meta property="og:title" content="@yield('og_title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')">
-          <meta property="og:description" content="@yield('og_description', 'Encontre as melhores opções de casas e escritórios no Meu Kubiku. Veja mais detalhes e encontre o imóvel ideal para você.')">
-          <meta property="og:image" content="@yield('og_image', asset('frame/images/default-image.jpg'))">
-          <meta property="og:url" content="@yield('og_url', url()->current())">
-          <meta property="og:type" content="website">
-
-          <!-- Twitter Metadata -->
-          <meta name="twitter:card" content="summary_large_image">
-          <meta name="twitter:title" content="@yield('twitter_title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')">
-          <meta name="twitter:description" content="@yield('twitter_description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku.')">
-          <meta name="twitter:image" content="@yield('twitter_image', asset('frame/images/default-image.jpg'))">
-
+      <title>@yield('title', 'Meu Kubiku - Venda e Arrendamento de Casas e Escritórios')</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Venda e arrendamento de casas, apartamentos, salões de festas, e armazéns em Angola. Confira as melhores ofertas no MeuKubiku.">
+      <meta name="keywords" content="Venda de Casas, Arrenda de casas, Arrendamentos, casas Angola, Imobiliarias Angola, Meu kubico, MeuKubiku, MeuKubiko, Apartamentos, Salão de festas, Armazéns,meu cubicu">
+      <meta name="description" content="@yield('description', 'Encontre imóveis para venda e arrendamento no Meu Kubiku, sua plataforma de confiança para casas e escritórios.')">
+      <meta name="keywords" content="@yield('keywords', 'Meu Kubiku, imóveis, casas, escritórios, venda, arrendamento, alugar, imobiliária')">
+       
+       <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@yield('og_url', url('/'))">
+    <meta property="og:title" content="@yield('og_title', 'Título Padrão')">
+    <meta property="og:description" content="@yield('og_description', 'Descrição Padrão')">
+    <meta property="og:image" content="@yield('og_image', asset('images/default-share.jpg'))">
+         
 
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
           <link rel="stylesheet" href="{{ asset('frame/fonts/icomoon/style.css') }}">
@@ -58,6 +35,36 @@
           <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
           <style>
 
+          .share-buttons {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+          }
+          .share-text {
+              margin-right: 5px;
+              font-weight: bold;
+          }
+          .btn-sm {
+              padding: 0.25rem 0.5rem;
+              font-size: 0.875rem;
+          }
+          .btn-facebook {
+              background-color: #3b5998;
+              color: white;
+          }
+          .btn-twitter {
+              background-color: #1da1f2;
+              color: white;
+          }
+          .btn-linkedin {
+              background-color: #0077b5;
+              color: white;
+          }
+          .btn-whatsapp {
+              background-color: #25d366;
+              color: white;
+          }
+
                 .carousel-item {
               height: 95vh; /* Altura ajustada */
             }
@@ -67,6 +74,7 @@
               object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
             }
 
+            
             @media (max-width: 768px) {
               .carousel-item {
                 height: 300px; /* Altura menor para telas pequenas */
@@ -78,7 +86,7 @@
               }
             }
     </style>
-
+    @yield('meta')
   </head>
   <body>
 
