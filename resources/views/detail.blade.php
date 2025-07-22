@@ -92,7 +92,7 @@
                     </a>
                     
                     <!-- Twitter -->
-                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
+                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($propertie->business_name.' - '.$propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
                     target="_blank" class="btn btn-sm btn-twitter" 
                     onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
                    <img src="https://img.icons8.com/?size=25&id=5MQ0gPAYYx7a&format=png&color=000000" alt="twitter">
@@ -106,7 +106,7 @@
                     </a>
                     
                     <!-- WhatsApp -->
-                    <a href="https://api.whatsapp.com/send?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
+                    <a href="https://api.whatsapp.com/send?text={{ urlencode($propertie->business_name.' - '.$propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
                     target="_blank" class="btn btn-sm btn-whatsapp" 
                     onclick="window.open(this.href, 'whatsapp-share', 'width=600,height=500'); return false;">
                      <img src="https://img.icons8.com/?size=25&id=16713&format=png&color=000000" alt="Whatsap">
