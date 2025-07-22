@@ -96,28 +96,28 @@
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->full()) }}&quote={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda) }}" 
                     target="_blank" class="btn btn-sm btn-facebook" 
                     onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
-                    <i class="fab fa-facebook-f"></i>
+                    <img src="https://img.icons8.com/?size=25&id=118497&format=png&color=000000" alt="Facebook">
                     </a>
                     
                     <!-- Twitter -->
                     <a href="https://twitter.com/intent/tweet?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
                     target="_blank" class="btn btn-sm btn-twitter" 
                     onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
-                    <i class="fab fa-twitter"></i>
+                   <img src="https://img.icons8.com/?size=25&id=5MQ0gPAYYx7a&format=png&color=000000" alt="twitter">
                     </a>
                     
                     <!-- LinkedIn -->
                     <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->full()) }}" 
                     target="_blank" class="btn btn-sm btn-linkedin" 
                     onclick="window.open(this.href, 'linkedin-share', 'width=600,height=500'); return false;">
-                    <i class="fab fa-linkedin-in"></i>
+                    <img src="https://img.icons8.com/?size=25&id=xuvGCOXi8Wyg&format=png&color=000000" alt="Linkdn"> 
                     </a>
                     
                     <!-- WhatsApp -->
                     <a href="https://api.whatsapp.com/send?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
                     target="_blank" class="btn btn-sm btn-whatsapp" 
                     onclick="window.open(this.href, 'whatsapp-share', 'width=600,height=500'); return false;">
-                    <i class="fab fa-whatsapp"></i>
+                     <img src="https://img.icons8.com/?size=25&id=16713&format=png&color=000000" alt="Whatsap">
                     </a>
                     
                     <button onclick="copyToClipboard('{{ __('messages.link_copied') }}')" class="btn btn-sm btn-secondary">
