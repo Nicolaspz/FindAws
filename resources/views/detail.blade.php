@@ -79,16 +79,7 @@
                     </div>
                     
                     <!-- Seção de Compartilhamento Melhorada -->
-                    @php
-                    $businessType = '';
-                    switch($propertie->business_id) {
-                        case 1: $businessType = __('messages.Vend1'); break;
-                        case 2: $businessType = __('messages.Rend1'); break;
-                        case 3: $businessType = __('messages.Vend1').' e '.__('messages.Rend1'); break;
-                        case 4: $businessType = __('messages.fot6'); break;
-                    }
-                    $shareTitle = $businessType.' - '.$propertie->title;
-                @endphp
+                    
 
                 <div class="share-buttons mt-3 mb-3">
                     <span class="share-text">{{ __('messages.share') }}:</span>
@@ -101,7 +92,7 @@
                     </a>
                     
                     <!-- Twitter -->
-                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
+                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($propertie->business_name.' - '.$propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
                     target="_blank" class="btn btn-sm btn-twitter" 
                     onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
                    <img src="https://img.icons8.com/?size=25&id=5MQ0gPAYYx7a&format=png&color=000000" alt="twitter">
