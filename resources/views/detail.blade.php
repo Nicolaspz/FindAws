@@ -2,30 +2,14 @@
 
 
 @section('meta')
-    @php
-        $fullTitle = $propertie->business_name . ' - ' . $propertie->title;
-        $shareDescription = Str::limit($propertie->description, 150);
-        $shareImage = Storage::url($propertie->technical_details_img);
-        $shareUrl = url()->current() . '?v=' . time(); // Adiciona parâmetro de cache
-    @endphp
-    
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="{{ $fullTitle }}">
-    <meta name="description" content="{{ $shareDescription }}">
+@section('og_title', $propertie->title)
+@section('og_description', Str::limit($propertie->description, 150))
+@section('og_image', Storage::url($propertie->technical_details_img))
+@section('og_url', url()->current())
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ $shareUrl }}">
-    <meta property="og:title" content="{{ $fullTitle }}">
-    <meta property="og:description" content="{{ $shareDescription }}">
-    <meta property="og:image" content="{{ $shareImage }}">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ $shareUrl }}">
-    <meta property="twitter:title" content="{{ $fullTitle }}">
-    <meta property="twitter:description" content="{{ $shareDescription }}">
-    <meta property="twitter:image" content="{{ $shareImage }}">
+@section('twitter_title', $propertie->title)
+@section('twitter_description', Str::limit($propertie->description, 150))
+@section('twitter_image', Storage::url($propertie->technical_details_img))
 @endsection
 
 @section('produts')
@@ -95,47 +79,52 @@
                     </div>
                     
                     <!-- Seção de Compartilhamento Melhorada -->
-                   @php
-                        $shareText = $propertie->business_name . ' - ' . $propertie->title . ' - ' . number_format($propertie->price, 2) . ' ' . $propertie->moeda;
-                        $whatsappText = '*' . $propertie->business_name . '*%0A*' . $propertie->title . '*%0A*' . number_format($propertie->price, 2) . ' ' . $propertie->moeda . '*%0A%0A';
-                        $shareUrl = url()->full() . '?v=' . time();
-                    @endphp
+                    @php
+                    $businessType = '';
+                    switch($propertie->business_id) {
+                        case 1: $businessType = __('messages.Vend1'); break;
+                        case 2: $businessType = __('messages.Rend1'); break;
+                        case 3: $businessType = __('messages.Vend1').' e '.__('messages.Rend1'); break;
+                        case 4: $businessType = __('messages.fot6'); break;
+                    }
+                    $shareTitle = $businessType.' - '.$propertie->title;
+                @endphp
 
-                    <div class="share-buttons mt-3 mb-3">
-                        <span class="share-text">{{ __('messages.share') }}:</span>
-                        
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($shareUrl) }}&quote={{ urlencode($shareText) }}" 
-                        target="_blank" class="btn btn-sm btn-facebook" 
-                        onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
-                        <img src="https://img.icons8.com/?size=25&id=118497&format=png&color=000000" alt="Facebook">
-                        </a>
-                        
-                        <!-- Twitter -->
-                        <a href="https://twitter.com/intent/tweet?text={{ urlencode($shareText . ' ' . $shareUrl) }}" 
-                        target="_blank" class="btn btn-sm btn-twitter" 
-                        onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
-                        <img src="https://img.icons8.com/?size=25&id=5MQ0gPAYYx7a&format=png&color=000000" alt="Twitter">
-                        </a>
-                        
-                        <!-- LinkedIn -->
-                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode($shareUrl) }}" 
-                        target="_blank" class="btn btn-sm btn-linkedin" 
-                        onclick="window.open(this.href, 'linkedin-share', 'width=600,height=500'); return false;">
-                        <img src="https://img.icons8.com/?size=25&id=xuvGCOXi8Wyg&format=png&color=000000" alt="LinkedIn"> 
-                        </a>
-                        
-                        <!-- WhatsApp -->
-                        <a href="https://api.whatsapp.com/send?text={{ urlencode($whatsappText . $shareUrl) }}" 
-                        target="_blank" class="btn btn-sm btn-whatsapp" 
-                        onclick="window.open(this.href, 'whatsapp-share', 'width=600,height=500'); return false;">
-                        <img src="https://img.icons8.com/?size=25&id=16713&format=png&color=000000" alt="WhatsApp">
-                        </a>
-                        
-                        <button onclick="copyToClipboard('{{ __('messages.link_copied') }}')" class="btn btn-sm btn-secondary">
-                        <img src="https://img.icons8.com/?size=25&id=59773&format=png&color=000000" alt="{{ __('messages.copy_link') }}">
-                        </button>
-                    </div>
+                <div class="share-buttons mt-3 mb-3">
+                    <span class="share-text">{{ __('messages.share') }}:</span>
+                    
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->full().'?v='.time()) }}&quote={{ urlencode($propertie->business_name.' - '.$propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda) }}" 
+                   target="_blank" class="btn btn-sm btn-facebook" 
+                   onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
+                    <img src="https://img.icons8.com/?size=25&id=118497&format=png&color=000000" alt="Facebook">
+                    </a>
+                    
+                    <!-- Twitter -->
+                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
+                    target="_blank" class="btn btn-sm btn-twitter" 
+                    onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
+                   <img src="https://img.icons8.com/?size=25&id=5MQ0gPAYYx7a&format=png&color=000000" alt="twitter">
+                    </a>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->full()) }}" 
+                    target="_blank" class="btn btn-sm btn-linkedin" 
+                    onclick="window.open(this.href, 'linkedin-share', 'width=600,height=500'); return false;">
+                    <img src="https://img.icons8.com/?size=25&id=xuvGCOXi8Wyg&format=png&color=000000" alt="Linkdn"> 
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://api.whatsapp.com/send?text={{ urlencode($shareTitle.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
+                    target="_blank" class="btn btn-sm btn-whatsapp" 
+                    onclick="window.open(this.href, 'whatsapp-share', 'width=600,height=500'); return false;">
+                     <img src="https://img.icons8.com/?size=25&id=16713&format=png&color=000000" alt="Whatsap">
+                    </a>
+                    
+                    <button onclick="copyToClipboard('{{ __('messages.link_copied') }}')" class="btn btn-sm btn-secondary">
+                       <img src="https://img.icons8.com/?size=25&id=59773&format=png&color=000000" alt="{{ __('messages.copy_link') }}"></i> 
+                    </button>
+                </div>
                     
                     <h2 class="h4 text-black">{{__('messages.d4')}} </h2>
                     <p>{{$propertie->description}}</p>
@@ -274,25 +263,13 @@
 <script>
     // Função para copiar link com feedback visual
     function copyToClipboard(message) {
-    // Remove parâmetros de cache ao copiar
-    const urlToCopy = window.location.href.split('?')[0];
-    
-    navigator.clipboard.writeText(urlToCopy).then(() => {
-        showNotification(message, 'success');
-    }).catch(err => {
-        showNotification('Erro ao copiar link', 'error');
-        console.error('Erro ao copiar: ', err);
-        
-        // Fallback para navegadores mais antigos
-        const tempInput = document.createElement('input');
-        tempInput.value = urlToCopy;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-        showNotification(message, 'success');
-    });
-}
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showNotification(message, 'success');
+        }).catch(err => {
+            showNotification('Erro ao copiar link', 'error');
+            console.error('Erro ao copiar: ', err);
+        });
+    }
 
     // Função para mostrar notificação
     function showNotification(message, type = 'success') {
