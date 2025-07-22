@@ -2,17 +2,13 @@
 
 @section('og_meta')
     <!-- Meta Tags para Redes Sociais -->
-    <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $propertie->title }} - Meu Kubiku">
     <meta property="og:description" content="{{ Str::limit($propertie->description, 160) }}">
     <meta property="og:image" content="{{ Storage::url($propertie->technical_details_img) }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="{{ $propertie->title }}">
     
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $propertie->title }}">
     <meta name="twitter:description" content="{{ Str::limit($propertie->description, 160) }}">
     <meta name="twitter:image" content="{{ Storage::url($propertie->technical_details_img) }}">
@@ -95,10 +91,10 @@
                         <span class="share-text">{{ __('messages.share') }}:</span>
                         
                         <!-- Facebook -->
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}&quote={{ urlencode($propertie->title . ' - ' . number_format($propertie->price, 2) . ' ' . $propertie->moeda) }}" 
-                           target="_blank" class="btn btn-sm btn-facebook" 
-                           onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
-                           <i class="fab fa-facebook-f"></i> Facebook
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}&display=popup&ref=plugin&src=share_button" 
+                        target="_blank" class="btn btn-sm btn-facebook" 
+                        onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
+                        <i class="fab fa-facebook-f"></i> Facebook
                         </a>
                         
                         <!-- WhatsApp - Versão Melhorada -->
