@@ -2,12 +2,12 @@
 
 
 @section('meta')
-@section('og_title', $propertie->title)
+@section('og_title', $propertie->business_name.' - '.$propertie->title)
 @section('og_description', Str::limit($propertie->description, 150))
 @section('og_image', Storage::url($propertie->technical_details_img))
 @section('og_url', url()->current())
 
-@section('twitter_title', $propertie->title)
+@section('twitter_title', $propertie->business_name.' - '.$propertie->title)
 @section('twitter_description', Str::limit($propertie->description, 150))
 @section('twitter_image', Storage::url($propertie->technical_details_img))
 @endsection
@@ -85,7 +85,7 @@
                     <span class="share-text">{{ __('messages.share') }}:</span>
                     
                     <!-- Facebook -->
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->full().'?v='.time()) }}&quote={{ urlencode($propertie->business_name.' - '.$propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda) }}" 
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{urlencode($propertie->business_name.' - '.$propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda) }}" 
                    target="_blank" class="btn btn-sm btn-facebook" 
                    onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
                     <img src="https://img.icons8.com/?size=25&id=118497&format=png&color=000000" alt="Facebook">
