@@ -645,7 +645,7 @@ class Controller extends BaseController
 
         )
          ->get();
-         //dd($properties);
+         //d($properties);
         $baseQuery = DB::table('properties')
             ->leftJoin('users', 'properties.user_id', '=', 'users.id')
             ->leftJoin('businesses', 'properties.business_id', '=', 'businesses.id')
@@ -694,7 +694,8 @@ class Controller extends BaseController
         'images' => $images,
         'properties_destaque'=>$properties_destaque,
         'propertie_Type'=>$propertie_Type,
-        'visitCounts'=> $visitCounts
+        'visitCounts'=> $visitCounts,
+        ''
         ]);
     }
 
