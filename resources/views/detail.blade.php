@@ -1,16 +1,29 @@
 @extends('index')
+
+@section('og_meta')
+    <!-- Meta Tags para Redes Sociais -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $propertie->title }} - Meu Kubiku">
+    <meta property="og:description" content="{{ Str::limit($propertie->description, 160) }}">
+    <meta property="og:image" content="{{ Storage::url($propertie->technical_details_img) }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ $propertie->title }}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $propertie->title }}">
+    <meta name="twitter:description" content="{{ Str::limit($propertie->description, 160) }}">
+    <meta name="twitter:image" content="{{ Storage::url($propertie->technical_details_img) }}">
+    
+    <!-- WhatsApp Specific -->
+    <meta property="og:image:secure_url" content="{{ Storage::url($propertie->technical_details_img) }}">
+@endsection
+
 @section('title', $propertie->title)
-@section('description', Str::limit($propertie->description, 150))
+@section('description', Str::limit($propertie->description, 160))
 @section('keywords', $propertie->tags ?? 'casas, imóveis, Angola')
-
-@section('og_title', $propertie->title)
-@section('og_description', Str::limit($propertie->description, 150))
-@section('og_image', Storage::url($propertie->technical_details_img))
-@section('og_url', url()->current())
-
-@section('twitter_title', $propertie->title)
-@section('twitter_description', Str::limit($propertie->description, 150))
-@section('twitter_image', Storage::url($propertie->technical_details_img))
 
 @section('produts')
 <div class="site-section site-section-sm property-details" id="property_details">
@@ -25,7 +38,7 @@
                 <div>
                     <div class="slide-one-item home-slider owl-carousel">
                         <div>
-                            <img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Image" class="d-block">
+                            <img src="{{ Storage::url($propertie->technical_details_img) }}" alt="{{ $propertie->title }}" class="d-block">
                             <div class="carousel-caption d-none d-md-block" style="top: 37%;">
                                 <div class="dentro">
                                     <span class="d-inline-block {{ $propertie->business_id === 1 ? 'custom-bg-danger' : 'bg-info' }} text-white px-3 mb-3 property-offer-type rounded">
@@ -81,40 +94,31 @@
                     <div class="share-buttons mt-3 mb-3">
                         <span class="share-text">{{ __('messages.share') }}:</span>
                         
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->full()) }}&quote={{ urlencode($propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda) }}" 
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}&quote={{ urlencode($propertie->title . ' - ' . number_format($propertie->price, 2) . ' ' . $propertie->moeda) }}" 
                            target="_blank" class="btn btn-sm btn-facebook" 
                            onclick="window.open(this.href, 'facebook-share', 'width=600,height=400'); return false;">
-                           <i class="fab fa-facebook-f"></i>
+                           <i class="fab fa-facebook-f"></i> Facebook
                         </a>
                         
-                        <a href="https://twitter.com/intent/tweet?text={{ urlencode($propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
-                           target="_blank" class="btn btn-sm btn-twitter" 
-                           onclick="window.open(this.href, 'twitter-share', 'width=600,height=300'); return false;">
-                           <i class="fab fa-twitter"></i>
-                        </a>
-                        
-                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->full()) }}" 
-                           target="_blank" class="btn btn-sm btn-linkedin" 
-                           onclick="window.open(this.href, 'linkedin-share', 'width=600,height=500'); return false;">
-                           <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        
-                        <a href="https://api.whatsapp.com/send?text={{ urlencode($propertie->title.' - '.number_format($propertie->price, 2).' '.$propertie->moeda.' '.url()->full()) }}" 
-                           target="_blank" class="btn btn-sm btn-whatsapp" 
+                        <!-- WhatsApp - Versão Melhorada -->
+                        <a href="https://wa.me/?text={{ urlencode($propertie->title . ' - ' . number_format($propertie->price, 2) . ' ' . $propertie->moeda . '%0A%0A' . Str::limit($propertie->description, 100) . '%0A%0A' . url()->current()) }}" 
+                           target="_blank" class="btn btn-sm btn-whatsapp"
                            onclick="window.open(this.href, 'whatsapp-share', 'width=600,height=500'); return false;">
-                           <i class="fab fa-whatsapp"></i>
+                           <i class="fab fa-whatsapp"></i> WhatsApp
                         </a>
                         
-                        <button onclick="copyToClipboard('{{ __('messages.link_copied') }}')" class="btn btn-sm btn-secondary">
+                        <!-- Copiar Link - Versão Funcional -->
+                        <button onclick="copyPropertyLink()" class="btn btn-sm btn-secondary">
                             <i class="fas fa-link"></i> {{ __('messages.copy_link') }}
                         </button>
                     </div>
                     
                     <h2 class="h4 text-black">{{__('messages.d4')}} </h2>
-                    <p>{{$propertie->description}}</p>
-                    <p>{{$propertie->abstract}}</p>
+                    <p>{{ $propertie->description }}</p>
+                    <p>{{ $propertie->abstract }}</p>
                     <hr>
-                    <span class="property-icon icon-room"></span>{{$propertie->provincia_name}} - {{$propertie->municipio_name}}-{{$propertie->distrito_name}} - {{$propertie->cidade}}
+                    <span class="property-icon icon-room"></span>{{ $propertie->provincia_name }} - {{ $propertie->municipio_name }} - {{ $propertie->distrito_name }} - {{ $propertie->cidade }}
                     <ul class="property-specs-wrap mb-3 mb-lg-0 font-bold" style="color:#8504a5;">
                         @if(isset($visitCounts[$propertie->id]))
                             <span class="property-specs">
@@ -124,11 +128,17 @@
                     </ul>
 
                     <div class="row no-gutters mt-5">
+                        @if($propertie->movie)
                         <div class="col-md-12">
                             <h5>{{__('messages.d6')}}</h5>
-                            <video style="width: 100%;" controls src="{{Storage::url($propertie->movie) }}"></video>
+                            <video style="width: 100%;" controls>
+                                <source src="{{ Storage::url($propertie->movie) }}" type="video/mp4">
+                                Seu navegador não suporta vídeos HTML5.
+                            </video>
                         </div>
+                        @endif
 
+                        @if($images->count() > 0)
                         <div class="col-12">
                             <h2 class="h4 text-black mb-3">{{__('messages.d7')}}</h2>
                         </div>
@@ -136,15 +146,16 @@
                             @foreach ($image->url as $imgUrl)
                                 <div class="col-sm-6 col-md-4 col-lg-3">
                                     <a href="{{ Storage::url($imgUrl) }}" class="image-popup gal-item">
-                                        <img src="{{ Storage::url($imgUrl) }}" alt="Image" class="img-fluid">
+                                        <img src="{{ Storage::url($imgUrl) }}" alt="Imagem da propriedade" class="img-fluid">
                                     </a>
                                 </div>
                             @endforeach
                         @endforeach
+                        @endif
 
                         <div class="col-sm-6 col-md-4 col-lg-3">
                             <a href="{{ Storage::url($propertie->technical_details_img) }}" class="image-popup gal-item">
-                                <img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Image" class="img-fluid">
+                                <img src="{{ Storage::url($propertie->technical_details_img) }}" alt="Imagem principal da propriedade" class="img-fluid">
                             </a>
                         </div>
                     </div>
@@ -156,58 +167,70 @@
                     <h3 class="h4 text-black widget-title mb-3">{{__('messages.d8')}}</h3>
                     <div class="col text-muted">
                         <div class="flex-container">
+                            @if($propertie->area)
                             <div class="flex-item">
-                                <p class="mb-2"><img src="{{asset('images/area.png')}}" class="property-details-icons"/> {{__('messages.d9')}}: {{ $propertie->area ? $propertie->area : 'N/A' }} m<sup>2</sup></p>
+                                <p class="mb-2"><img src="{{ asset('images/area.png') }}" class="property-details-icons"/> {{__('messages.d9')}}: {{ $propertie->area }} m<sup>2</sup></p>
                             </div>
+                            @endif
+                            
                             @if ($propertie->piscina)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/piscina.png')}}" class="property-details-icons"/> {{__('messages.d10')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/piscina.png') }}" class="property-details-icons"/> {{__('messages.d10')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->terraco)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/terraco.png')}}" class="property-details-icons"/> {{__('messages.d11')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/terraco.png') }}" class="property-details-icons"/> {{__('messages.d11')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->jardin)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/jardim.png')}}" class="property-details-icons"/> {{__('messages.d12')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/jardim.png') }}" class="property-details-icons"/> {{__('messages.d12')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->park > 0)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/garagem.png')}}" class="property-details-icons"/>{{$propertie->park }} {{__('messages.d13')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/garagem.png') }}" class="property-details-icons"/> {{ $propertie->park }} {{__('messages.d13')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->ar_condicionado)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/ar-condicionado.png')}}" class="property-details-icons"/> {{__('messages.d14')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/ar-condicionado.png') }}" class="property-details-icons"/> {{__('messages.d14')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->roupeiro_imbutido)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/armario-embutido.png')}}" class="property-details-icons"/> {{__('messages.d15')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/armario-embutido.png') }}" class="property-details-icons"/> {{__('messages.d15')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->elevator)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/elevador.png')}}" class="property-details-icons"/> {{__('messages.d16')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/elevador.png') }}" class="property-details-icons"/> {{__('messages.d16')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->propiedade_acessivel)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/acessibilidade.png')}}" class="property-details-icons"/> {{__('messages.d17')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/acessibilidade.png') }}" class="property-details-icons"/> {{__('messages.d17')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->quarto)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/quartos.png')}}" class="property-details-icons"/>{{ $propertie->quarto }} {{__('messages.d18')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/quartos.png') }}" class="property-details-icons"/> {{ $propertie->quarto }} {{__('messages.d18')}}</p>
+                            </div>
                             @endif
+                            
                             @if ($propertie->banheiro)
-                                <div class="flex-item">
-                                    <p class="mb-2"><img src="{{asset('images/wc.png')}}" class="property-details-icons"/>{{ $propertie->banheiro }} {{__('messages.d19')}}</p>
-                                </div>
+                            <div class="flex-item">
+                                <p class="mb-2"><img src="{{ asset('images/wc.png') }}" class="property-details-icons"/> {{ $propertie->banheiro }} {{__('messages.d19')}}</p>
+                            </div>
                             @endif
                         </div>
                     </div>
@@ -245,85 +268,123 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API&callback=initMap" async defer></script>
 <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.7/dist/inputmask.min.js"></script>
 <script>
-    // Função para copiar link com feedback visual
-    function copyToClipboard(message) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            showNotification(message, 'success');
+    // Função para copiar link da propriedade
+    function copyPropertyLink() {
+        const link = window.location.href;
+        navigator.clipboard.writeText(link).then(() => {
+            showAlert('{{ __("messages.link_copied") }}', 'success');
         }).catch(err => {
-            showNotification('Erro ao copiar link', 'error');
-            console.error('Erro ao copiar: ', err);
+            showAlert('{{ __("messages.copy_error") }}', 'danger');
+            console.error('Erro ao copiar:', err);
         });
     }
 
-    // Função para mostrar notificação
-    function showNotification(message, type = 'success') {
-        const notification = document.createElement('div');
-        notification.style.position = 'fixed';
-        notification.style.bottom = '20px';
-        notification.style.right = '20px';
-        notification.style.backgroundColor = type === 'success' ? '#4CAF50' : '#f44336';
-        notification.style.color = 'white';
-        notification.style.padding = '15px';
-        notification.style.borderRadius = '5px';
-        notification.style.zIndex = '10000';
-        notification.style.transition = 'all 0.3s ease';
-        notification.innerText = message;
-        document.body.appendChild(notification);
+    // Função para mostrar alerta
+    function showAlert(message, type) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} fixed-alert`;
+        alertDiv.style.position = 'fixed';
+        alertDiv.style.bottom = '20px';
+        alertDiv.style.right = '20px';
+        alertDiv.style.zIndex = '10000';
+        alertDiv.style.padding = '15px';
+        alertDiv.style.borderRadius = '5px';
+        alertDiv.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+        alertDiv.style.animation = 'fadeIn 0.3s';
+        alertDiv.textContent = message;
+        
+        document.body.appendChild(alertDiv);
         
         setTimeout(() => {
-            notification.style.opacity = '0';
+            alertDiv.style.animation = 'fadeOut 0.3s';
             setTimeout(() => {
-                document.body.removeChild(notification);
+                document.body.removeChild(alertDiv);
             }, 300);
         }, 3000);
     }
 
-    // Inicialização do mapa
-    var map;
+    // Inicialização do Mapa
     function initMap() {
-        var latitude = {{ $propertie->lat }};
-        var longitude = {{ $propertie->lng }};
-        var propLocation = {lat: latitude, lng: longitude};
-
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: propLocation,
-            zoom: 15
+        const latitude = {{ $propertie->lat ?? -8.839987 }};
+        const longitude = {{ $propertie->lng ?? 13.289437 }};
+        const propertyLocation = { lat: latitude, lng: longitude };
+        
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: propertyLocation,
+            zoom: 15,
+            mapTypeControl: false,
+            streetViewControl: false
         });
-
-        var marker = new google.maps.Marker({
-            position: propLocation,
+        
+        new google.maps.Marker({
+            position: propertyLocation,
             map: map,
-            title: 'Localização da Propriedade'
+            title: '{{ $propertie->title }}'
         });
     }
 
     // Máscara para telefone
-    Inputmask("999999999").mask(document.getElementById("phone"));
-
-    // Garantir que a data da visita não seja no passado
-    document.getElementById("data_vista").setAttribute("min", new Date().toISOString().split("T")[0]);
+    document.addEventListener('DOMContentLoaded', function() {
+        Inputmask("999999999").mask(document.getElementById("phone"));
+        
+        // Garantir que a data da visita não seja no passado
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("data_vista").setAttribute("min", today);
+    });
 
     // Redirecionamento suave para âncoras
     $(document).ready(function() {
         $('a[href^="#"]').on('click', function(e) {
             e.preventDefault();
-            var target = $(this.getAttribute('href'));
+            const target = $(this.getAttribute('href'));
             if(target.length) {
                 $('html, body').stop().animate({
                     scrollTop: target.offset().top - 80
-                }, 1000);
+                }, 800);
             }
         });
         
-        // Verifica hash na URL ao carregar a página
+        // Verificar hash na URL ao carregar a página
         if(window.location.hash) {
-            var target = $(window.location.hash);
+            const target = $(window.location.hash);
             if(target.length) {
-                $('html, body').stop().animate({
-                    scrollTop: target.offset().top - 80
-                }, 1000);
+                setTimeout(() => {
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 80
+                    }, 800);
+                }, 300);
             }
         }
     });
 </script>
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(20px); }
+    }
+    .fixed-alert {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .share-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin: 15px 0;
+    }
+    .share-buttons .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .btn-facebook { background-color: #3b5998; color: white; }
+    .btn-whatsapp { background-color: #25D366; color: white; }
+    .btn-secondary { background-color: #6c757d; color: white; }
+</style>
 @endsection
