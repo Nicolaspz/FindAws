@@ -188,7 +188,4 @@ class Propertie extends Model
         return $this->belongsTo(Municipio::class);
     }
 
-
-
-
 }

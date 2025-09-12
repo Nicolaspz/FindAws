@@ -100,8 +100,14 @@ class PropertieResource extends Resource
 
                     Section::make('Informações da Propriedade')->columns(3)->columnSpan(2)->schema([
                         
-                        
-                    Forms\Components\TextInput::make('price')
+                     Forms\Components\TextInput::make('order')
+                        ->label('Ordem')
+                        ->numeric()          // 🔹 Garante que aceita apenas números
+                        ->step(1)            // 🔹 Incremento de 1 (podes mudar para 0.1 se quiser decimais)
+                        ->default(0)         // 🔹 Valor padrão
+                        ->minValue(-9999)    // 🔹 Limite mínimo negativo
+                        ->maxValue(9999), 
+                                        Forms\Components\TextInput::make('price')
                             ->mask(RawJs::make('$money($input)'))
                             ->stripCharacters(',')
                             ->numeric()
@@ -181,7 +187,7 @@ class PropertieResource extends Resource
                             ->disk('public')
                             ->directory('videos')
                             ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg', 'video/quicktime'])
-                            
+                            ->maxSize(245760)
                             ->hint('Formatos aceitos: mp4, webm, ogg, até 100MB')
                             ->nullable() 
                             ->label("Vídeo de Apresentação"),

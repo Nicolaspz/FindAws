@@ -58,6 +58,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.fechado', 0)
+            ->orderBy('properties.order', 'asc')
             ->paginate(10);
 
         // Consulta para $properties_destaque
@@ -111,6 +112,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.fechado', 0)
+            ->orderBy('properties.order', 'asc')
             ->paginate(10);
 
         // Consulta para $properties_destaque
@@ -438,6 +440,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.business_id', 2)
+            ->orderBy('properties.order', 'asc')
             ->paginate(10);
 
             //dd($properties);
@@ -449,6 +452,7 @@ class Controller extends BaseController
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
             ->where('properties.fechado', 0)
+            ->orderBy('properties.order', 'asc')
             ->get();
 
         $tipologies = Tipologies::all();
@@ -496,6 +500,7 @@ class Controller extends BaseController
             ->where('properties.reservedo', 0)
             ->where('properties.publish', 1)
             ->where('properties.business_id', 1)
+            ->orderBy('properties.order', 'asc')
 
             ->paginate(10);
 
@@ -506,6 +511,7 @@ class Controller extends BaseController
             ->where('properties.publish', 1)
             ->where('properties.destaque', 1)
             ->where('properties.fechado', 0)
+            ->orderBy('properties.order', 'asc')
             ->get();
 
             $tipologies = Tipologies::all();
@@ -554,6 +560,7 @@ class Controller extends BaseController
             ->where('properties.publish', 1)
             ->where('properties.business_id', 2)
             ->where('properties.fechado', 0)
+            ->orderBy('properties.order', 'asc')
             ->paginate(10);
 
 
